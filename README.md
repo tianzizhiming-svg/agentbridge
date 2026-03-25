@@ -10,6 +10,7 @@ AI agents pay-per-fetch to access Chinese web content (Xiaohongshu, Zhihu, etc.)
 
 **链上收款记录：** 已成功收款 4 笔，合计 0.13625 USDC  
 🔗 [查看链上验证记录](./docs/verification.md)
+- 💰 **Price:** $0.003 per request (USDC on Base)
 
 ## 🎯 项目定位
 
