@@ -2,7 +2,7 @@
 
 [![402 Index](https://img.shields.io/badge/402%20Index-AgentBridge-blue)](https://402index.io/directory?search=AgentBridge)
 
-> 让 AI 代理通过 x402 协议自动发起链上支付（USDC）的中间层
+AI agents pay-per-fetch to access Chinese web content (Xiaohongshu, Zhihu, etc.) — returns clean markdown, settled in USDC on Base via x402.
 
 ## 🚀 当前状态
 
