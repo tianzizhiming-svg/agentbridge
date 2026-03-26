@@ -5,6 +5,7 @@
 AI agents pay-per-fetch to access Chinese web content (Xiaohongshu, Zhihu, etc.) — returns clean markdown, settled in USDC on Base via x402.
 
 ---
+> ⚠️ **Legal Notice**: By using this service, you agree to the [Legal Disclaimer](./DISCLAIMER.md).
 
 ## What It Does
 
