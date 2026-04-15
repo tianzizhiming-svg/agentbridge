@@ -58,6 +58,7 @@ It converts messy web pages into clean, token-efficient Markdown — no API keys
 - [AgentBridge: Building a Pay-Per-Fetch Gateway for AI Agents on Base](https://medium.com/@leizhenbing/agentbridge-building-a-pay-per-fetch-gateway-for-ai-agents-on-base)
 - [How AI Agents Can Legally Access Chinese Public Data](https://medium.com/p/6e956b24e4c1)
 - [AgentBridge: The Missing Data Layer for AI Agents Targeting China](https://medium.com/@leizhenbing/agentbridge-the-missing-data-layer-for-ai-agents-targeting-china-8ba58f8ef795)
+- [How We Built a Pay-Per-Report Data Service for 72 Chinese Universities Using x402](https://medium.com/p/6e9a6cfd5c65?postPublishedType=initial)
 
 ---
 ## Disclaimer
