@@ -59,6 +59,7 @@ It converts messy web pages into clean, token-efficient Markdown — no API keys
 - [How AI Agents Can Legally Access Chinese Public Data](https://medium.com/p/6e956b24e4c1)
 - [AgentBridge: The Missing Data Layer for AI Agents Targeting China](https://medium.com/@leizhenbing/agentbridge-the-missing-data-layer-for-ai-agents-targeting-china-8ba58f8ef795)
 - [How We Built a Pay-Per-Report Data Service for 72 Chinese Universities Using x402](https://medium.com/p/6e9a6cfd5c65?postPublishedType=initial)
+- [From Motorcycle Rebel to World Champion: How Data Is Powering China’s New Manufacturing](https://medium.com/p/cfe0fb3a2e47?postPublishedType=initial)
 
 ---
 ## Disclaimer
