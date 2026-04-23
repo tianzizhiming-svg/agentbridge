@@ -1,0 +1,72 @@
+agentbridge memo-20260423（完整版）
+项目名称：China Higher Education Knowledge Base (2025)
+发布平台：Hugging Face & X (Twitter)
+操作日期：2026-04-23
+更新备注：2026-04-24 补充后续行动建议及已上传报告清单
+
+一、核心成果
+资产数字化
+
+成功将《西安交通大学》《广州南方学院》及《上海交通大学医学院》的深度就业/教学质量报告转化为 RAG 友好的 .txt 结构化文档。
+
+已上传三份核心数据文件（详见第五节）。
+
+全球挂牌
+
+在 Hugging Face 建立了 AgentBridge Data Node，实现数据集云端托管与公开访问。
+
+数据集链接：https://huggingface.co/datasets/AgentBridge/China-Higher-Education-KB-2025
+
+生态链接
+
+打通了 数据源 → 托管平台 → 社交媒体宣传 全链路，正式面向 GaiaNet 等 AI 生态供货。
+
+在 X 平台发布推文推广该数据集，获得初步曝光。
+
+二、技术操作要点
+环节	要点	说明
+文件命名	AgentBridge_学校缩写_年份_类型_Insight.txt	例如 AgentBridge_XJTU_2025_Employment_Insight.txt，便于 AI Agent 索引。
+README 建设	中英文双语说明	明确 x402 协议、商业归属权（@manniusl），将数据转化为有版权的商业资产。
+权限配置	必须设为 Public	Hugging Face 默认 Private，切换后需用无痕浏览器二次验证链接有效性。
+三、避坑经验总结（血泪教训）
+坑点	教训	正确做法
+权限地雷	HF 新建项目默认 Private	外部宣发前手动切换为 Public，并用无痕模式验证。
+链接格式	目录链接（Tree/main）预览效果差	使用主页链接（Summary）发布到社交平台。
+平台风控	频繁删改带链接的推文易导致限流	尽量“一发入魂”；若遇限流，通过图片+评论区链接曲线救国。
+四、后续行动建议（2026-04-24 补充）
+1. Hugging Face 仓库“保鲜”策略
+节奏：剩余 70+ 份报告按周分批上传，保持仓库活跃度（Trending 权重）。
+
+联动：每上传一批，在 Medium 发一篇对应行业洞察（如“广东民办院校就业率排名”），文中自然引用 HF 链接。
+
+2. GaiaNet 生态渗透话术
+前往 GaiaNet Discord 的 #showcase 或 #data-providers 频道发送：
+
+“AgentBridge Data Node – 72 Chinese university employment reports structured for RAG. Live on HF, paying via x402 on Base. Looking for feedback from the GaiaNet community.”
+
+附上 HF 链接及产品页链接，以“寻求反馈”为钩子引发互动。
+
+3. X 账号养护计划（小红旗已解除）
+每天 1-2 条：
+
+转发 x402 / Base / 教育类 KOL 推文，配 10-20 词评论。
+
+发布“数据快报”：例如“72 所高校中 IT 行业就业占比最高的 5 所民办院校”，配简单图表。
+
+周末发布项目进展（如“本周新增上传 10 份报告到 Hugging Face”）。
+
+目标：一周内显著提升账号权重，摆脱此前限流影响。
+
+4. 链接追踪
+使用 Bitly 或 Twitter Premium 自带的链接分析监控点击量。若点击量极低，说明仍有限流，需继续养号。
+
+五、近期任务优先级
+时间	任务	备注
+今天（4月24日）	在 GaiaNet Discord 发送第一条消息	按上述话术
+明天（4月25日）	上传第二批报告到 HF，同步发 X 推文	配截图
+周末（4月26-27日）	写 Medium 短文：“72 所高校就业数据中最令我惊讶的三个发现”	文末附 HF 链接
+六、已上传报告清单（截至 2026-04-23）
+文件名	内容说明
+AgentBridge_XJTU_2025_Employment_Insight.txt	C9 联盟工程强校（西安交通大学）就业深度解读
+AgentBridge_GZNF_2025_Employment_Insight.txt	民办排名第一高校（广州南方学院）就业深度解读
+AgentBridge_SJTU_Medicine_2025_Deep_Insight.txt	上海交通大学医学院教学质量与就业综合分析
