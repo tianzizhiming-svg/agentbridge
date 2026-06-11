@@ -1,25 +1,4 @@
-{
-  "name": "AgentBridge",
-  "description": "Chinese web proxy for AI Agents. Access Zhihu, Weibo, Sspai and more. Fetch any Chinese webpage and get clean markdown. Static pages: $0.003, dynamic/JS pages: $0.008.",
-  "version": "0.5.0",
-  "url": "https://api.060504.shop",
-  "icon": "https://tianzizhiming-svg.github.io/agentbridge/logo.svg",
-  "category": "data",
-  "tags": ["web scraping", "chinese web", "x402"],
-  "endpoints": {
-    "/v1/fetch/dynamic": {
-      "method": "POST",
-      "description": "Fetch any Chinese web page, returns markdown or HTML",
-      "payment": {
-        "protocol": "x402",
-        "network": "base",
-        "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
-        "price": "0.003/0.008",
-        "payTo": "0x1630c8E0833c367F39f0ca909b6b67f5159d7A00"
-      }
-    }
-  },
-  "contact": {
-    "twitter": "@manniusl"
-  }
-}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <rect width="200" height="200" rx="30" fill="#0a5e8c"/>
+  <text x="100" y="135" font-size="90" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-weight="bold">AB</text>
+</svg>
