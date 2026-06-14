@@ -1,0 +1,58 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "AgentBridge API",
+    "description": "Chinese web proxy for AI Agents. Fetch any Chinese webpage and get clean markdown.",
+    "version": "0.5.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.060504.shop"
+    }
+  ],
+  "paths": {
+    "/v1/fetch/dynamic": {
+      "post": {
+        "summary": "Fetch a Chinese webpage",
+        "description": "Returns clean markdown or HTML from any Chinese webpage. Static pages: $0.003, dynamic/JS pages: $0.008.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "description": "The URL to fetch"
+                  },
+                  "output_format": {
+                    "type": "string",
+                    "enum": ["markdown", "html"],
+                    "default": "markdown"
+                  }
+                },
+                "required": ["url"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment Required – x402 challenge"
+          }
+        }
+      }
+    }
+  }
+}
