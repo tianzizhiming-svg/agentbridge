@@ -3,7 +3,7 @@
   "info": {
     "title": "AgentBridge API",
     "description": "Chinese web proxy for AI Agents. Fetch any Chinese webpage and get clean markdown.",
-    "version": "0.5.0"
+    "version": "0.6.0"
   },
   "servers": [
     {
@@ -49,7 +49,15 @@
             }
           },
           "402": {
-            "description": "Payment Required – x402 challenge"
+            "description": "Payment Required – x402 v2 challenge",
+            "headers": {
+              "PAYMENT-REQUIRED": {
+                "description": "Base64-encoded x402 v2 PaymentRequired object",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       }
