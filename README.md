@@ -6,6 +6,8 @@ AI agents pay-per-fetch to access Chinese web content (Xiaohongshu, Zhihu, etc.)
 
 ---
 > ⚠️ **Legal Notice**: By using this service, you agree to the [Legal Disclaimer](./DISCLAIMER.md).
+>
+> AgentBridge is built on the x402 protocol — now supported by the Linux Foundation x402 Foundation with members like AWS, Google, Visa, and Coinbase.
 
 ## What It Does
 
