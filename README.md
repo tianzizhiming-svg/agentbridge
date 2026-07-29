@@ -1,12 +1,14 @@
 # AgentBridge — Machine Commerce for China-Facing AI Agents
 
+![x402 Protocol](https://img.shields.io/badge/Protocol-x402-blue)
+![Network](https://img.shields.io/badge/Network-Base%20USDC-blue)
+![Status](https://img.shields.io/badge/Status-Live-brightgreen)
+
 > Not affiliated with other projects named "AgentBridge" (Unreal Engine plugins, JetBrains plugins, agent frameworks, etc.). This project is specifically about **machine commerce for China-related digital capabilities**, paid via the x402 protocol.
 
 AgentBridge lets AI agents discover, purchase, and consume machine-readable digital capabilities related to China — through standardized APIs and x402 payments settled in USDC on Base. No API keys, no subscriptions, no account setup: an agent pays per call and gets a result.
 
 Built on the x402 protocol, now stewarded by the Linux Foundation's x402 Foundation (members include AWS, Google, Visa, and Coinbase).
-
-⚠️ **Legal Notice**: By using this service, you agree to the [Legal Disclaimer](https://github.com/tianzizhiming-svg/agentbridge/blob/master/DISCLAIMER.md).
 
 ---
 
@@ -18,19 +20,21 @@ Capabilities are organized into two categories. Check which one you need before 
 
 Fast, unreviewed raw content, priced in fractions of a cent. Use this when you just need to read what's currently published at a specific URL, as-is.
 
-| Capability | What it does | Price |
-|---|---|---|
-| **Web Fetch** | Converts a Chinese webpage (Xiaohongshu, Zhihu, etc.) into clean Markdown/HTML. Handles JS rendering, anti-bot pages, and messy HTML that's normally hard for an agent to parse directly. | $0.003 (static) / $0.008 (dynamic) |
+> **Reliability note**: this returns the raw content as currently published at the source, at the moment of the fetch — unverified and not human-reviewed. If the source changes or is wrong, the result reflects that.
+
+| Capability | Endpoint | What it does | Price |
+|---|---|---|---|
+| **Web Fetch** | `POST /v1/fetch/dynamic` | Converts a Chinese webpage (Xiaohongshu, Zhihu, etc.) into clean Markdown/HTML. Handles JS rendering, anti-bot pages, and messy HTML that's normally hard for an agent to parse directly. | $0.003 (static) / $0.008 (dynamic) |
 
 ### 🔸 `verified-analysis` — human-authored, decision-grade
 
 Slower to produce, priced higher, includes original comparative judgment — not just extracted facts. Use this when the task needs an answer you can act on, not just raw data.
 
-| Capability | What it does | Price |
-|---|---|---|
-| **University Employment Reports** | Human-authored deep-dive analysis of a Chinese university's officially published 2025 graduate employment report. | 90 USDC/report |
-| **University Teaching-Quality Reports** | Same, for officially published teaching-quality reports, across 8 fixed analytical dimensions per institution. | 90 USDC/dimension |
-| **"15th Five-Year Plan" Strategic Notes** | Human-authored analysis of China's 2026–2030 national plan as it relates to college application decisions. 41 articles. | 90 USDC/package |
+| Capability | Endpoint | What it does | Price |
+|---|---|---|---|
+| **University Employment Reports** | `POST /v1/reports/employment/{school_id}` | Human-authored deep-dive analysis of a Chinese university's officially published 2025 graduate employment report. | 90 USDC/report |
+| **University Teaching-Quality Reports** | `POST /v1/reports/teaching/{college_id}/{dimension}` | Same, for officially published teaching-quality reports, across 8 fixed analytical dimensions per institution. | 90 USDC/dimension |
+| **"15th Five-Year Plan" Strategic Notes** | `POST /v1/notes/15-5-package` | Human-authored analysis of China's 2026–2030 national plan as it relates to college application decisions. 41 articles. | 90 USDC/package |
 
 Free full-length samples (not excerpts) for all `verified-analysis` products, plus the live, continuously updated catalog of available schools/colleges, are at the [storefront](https://tianzizhiming-svg.github.io/agentbridge/).
 
@@ -49,6 +53,43 @@ No API keys. No subscriptions. No account registration required for x402 payment
 
 ---
 
+## When to Use Which
+
+| If the task is... | Use | Why |
+|---|---|---|
+| "Get the current Zhihu Hot List / trending topics" | `raw-content` | You just need what's on the page right now, no judgment needed on it. |
+| "Summarize what's currently on this Xiaohongshu post" | `raw-content` | Raw extraction of existing published content. |
+| "Analyze the employment quality of a specific Chinese university" | `verified-analysis` | Requires comparative judgment, benchmarking against peer institutions, and interpretation — not just numbers off a page. |
+| "Should a student choose College A over College B based on teaching quality?" | `verified-analysis` | A decision-grade answer, not a data dump. |
+
+---
+
+## Quickstart for Agent Developers
+
+```bash
+# Calling the raw-content fetch endpoint (returns 402 if unpaid)
+curl -i -X POST https://api.060504.shop/v1/fetch/dynamic \
+  -H "Content-Type: application/json" \
+  -d '{"url": "https://www.zhihu.com/question/xxx"}'
+```
+
+An unpaid call returns `402 Payment Required` with the payment challenge in the `PAYMENT-REQUIRED` response header (base64-encoded x402 v2 object). Decode it, pay the required amount in USDC on Base, and retry the request with your `X-Payment` header set to the signed payment payload — see the [x402 specification](https://www.x402.org/) for the full handshake, or the [full OpenAPI spec](https://api.060504.shop/openapi.json) for this service's exact schemas.
+
+```python
+import requests
+
+url = "https://api.060504.shop/v1/fetch/dynamic"
+payload = {"url": "https://www.zhihu.com/question/xxx"}
+
+res = requests.post(url, json=payload)
+if res.status_code == 402:
+    payment_required = res.headers.get("PAYMENT-REQUIRED")  # base64-encoded x402 v2 challenge
+    # decode it, sign and settle payment with your Base/USDC wallet per the x402 spec,
+    # then retry the POST with an X-Payment header carrying the signed payload
+```
+
+---
+
 ## Status
 
 - ✅ Live API: `https://api.060504.shop`
@@ -63,7 +104,7 @@ No API keys. No subscriptions. No account registration required for x402 payment
 - [API Documentation (openapi.json)](https://api.060504.shop/openapi.json)
 - [Storefront & Free Samples](https://tianzizhiming-svg.github.io/agentbridge/)
 - [402 Index Listing](https://402index.io/directory?search=AgentBridge)
-- [Legal Disclaimer](https://github.com/tianzizhiming-svg/agentbridge/blob/master/DISCLAIMER.md)
+- [Legal Disclaimer](https://github.com/tianzizhiming-svg/agentbridge/blob/master/DISCLAIMER.md) — by using this service, you agree to its terms
 
 ## Writing / Background
 
@@ -75,4 +116,4 @@ No API keys. No subscriptions. No account registration required for x402 payment
 
 ---
 
-*This service fetches only publicly accessible content, or provides original human-authored analysis of officially published source material. See the [Legal Disclaimer](https://github.com/tianzizhiming-svg/agentbridge/blob/master/DISCLAIMER.md) for the full terms and scope.*
+*Two categories, one platform: raw web content and human-authored analysis, both discoverable and payable the same way.*
