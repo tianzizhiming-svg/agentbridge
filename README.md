@@ -1,10 +1,17 @@
 # AgentBridge — Machine Commerce for China-Facing AI Agents
 
-![x402 Protocol](https://img.shields.io/badge/Protocol-x402-blue)
-![Network](https://img.shields.io/badge/Network-Base%20USDC-blue)
-![Status](https://img.shields.io/badge/Status-Live-brightgreen)
+![x402 Protocol](...)
+![Network](...)
+![Status](...)
 
-> Not affiliated with other projects named "AgentBridge" (Unreal Engine plugins, JetBrains plugins, agent frameworks, etc.). This project is specifically about **machine commerce for China-related digital capabilities**, paid via the x402 protocol.
+> The internet was built for humans. APIs were built for software.
+> But AI agents need something different: a way to discover, pay for, and consume digital capabilities autonomously.
+>
+> AgentBridge is an experiment toward that future — building machine commerce infrastructure where AI agents can access specialized digital capabilities without accounts, subscriptions, or human intervention.
+
+---
+
+> Not affiliated with other projects named "AgentBridge" ...
 
 AgentBridge lets AI agents discover, purchase, and consume machine-readable digital capabilities related to China — through standardized APIs and x402 payments settled in USDC on Base. No API keys, no subscriptions, no account setup: an agent pays per call and gets a result.
 
