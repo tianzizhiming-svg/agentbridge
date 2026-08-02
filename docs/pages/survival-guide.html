@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Digital Survival Guide for Foreigners in China — AgentBridge</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #f5f7fa;
+            color: #1a2c3e;
+            line-height: 1.75;
+        }
+
+        /* Hero */
+        .hero-wrap {
+            background: linear-gradient(160deg, #0d2d44 0%, #0a5e8c 100%);
+            padding: 52px 24px 44px;
+            text-align: center;
+        }
+        .hero-wrap .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+            font-size: 12px;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+        }
+        .hero-wrap h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.25;
+            margin-bottom: 8px;
+        }
+        .hero-wrap .subtitle {
+            font-size: 16px;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 20px;
+        }
+        .hero-wrap .meta {
+            font-size: 13px;
+            color: rgba(255,255,255,0.55);
+        }
+
+        /* Body */
+        .content {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 48px 24px 80px;
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #0d2d44;
+            margin: 44px 0 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #d1e4f0;
+        }
+        h3 {
+            font-size: 17px;
+            font-weight: 700;
+            color: #0a5e8c;
+            margin: 28px 0 8px;
+        }
+        p { margin-bottom: 14px; }
+        ul, ol { margin: 10px 0 14px 22px; }
+        li { margin-bottom: 6px; }
+
+        /* Checklist */
+        .checklist { list-style: none; margin-left: 0; }
+        .checklist li { padding-left: 28px; position: relative; margin-bottom: 7px; }
+        .checklist li::before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            color: #0a5e8c;
+            font-size: 16px;
+        }
+
+        /* Pitfalls */
+        .pitfall { list-style: none; margin-left: 0; }
+        .pitfall li { padding-left: 28px; position: relative; margin-bottom: 7px; }
+        .pitfall li::before {
+            content: "❌";
+            position: absolute;
+            left: 0;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            margin: 16px 0 20px;
+        }
+        th {
+            background: #0d2d44;
+            color: #fff;
+            padding: 10px 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        td { padding: 9px 12px; border-bottom: 1px solid #dde8f0; }
+        tr:nth-child(even) td { background: #eef4f9; }
+
+        /* Callout boxes */
+        .callout {
+            border-left: 4px solid #0a5e8c;
+            background: #eef4f9;
+            padding: 14px 18px;
+            border-radius: 0 6px 6px 0;
+            margin: 18px 0;
+            font-size: 15px;
+        }
+        .callout.warning {
+            border-left-color: #c0392b;
+            background: #fdf3f2;
+        }
+        .callout.tip {
+            border-left-color: #27ae60;
+            background: #f0faf4;
+        }
+
+        /* Flashcard */
+        .flashcard {
+            background: #fff;
+            border: 2px solid #0a5e8c;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 16px 0;
+        }
+        .flashcard .lang-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: #0a5e8c;
+            margin-bottom: 4px;
+        }
+        .flashcard p { margin-bottom: 10px; font-size: 15px; }
+        .flashcard p:last-child { margin-bottom: 0; }
+
+        /* Emergency table */
+        .emergency th { background: #c0392b; }
+
+        /* Footer */
+        .footer {
+            background: #0d2d44;
+            color: rgba(255,255,255,0.55);
+            text-align: center;
+            font-size: 13px;
+            padding: 24px;
+        }
+        .footer a { color: rgba(255,255,255,0.75); text-decoration: none; }
+    </style>
+</head>
+<body>
+
+<div class="hero-wrap">
+    <div class="badge">AgentBridge · verified-analysis</div>
+    <h1>The Digital Survival Guide<br>for Foreigners in China</h1>
+    <div class="subtitle">Complete English Edition — Updated August 2026</div>
+    <div class="meta">Human-authored · Decision-grade · 0.99 USDC</div>
+</div>
+
+<div class="content">
+
+<!-- Foreword -->
+<h2>Foreword</h2>
+<p>You have arrived in China. Your phone is now a very expensive clock.</p>
+<p>Google Maps is blocked. WhatsApp is gone. You cannot call Uber, you cannot pay at restaurants, and hotel clerks stare because you are waving a credit card that does not work here.</p>
+<p>This is not a travel guide about the Great Wall or the Forbidden City. You can find those anywhere. This is the manual that 47 million foreign travelers wish they had before boarding their flight. No politics. No fluff. Just the hard-core digital toolkit you need to operate in a country where everything runs on apps you have never heard of—and where your usual digital ecosystem is completely absent.</p>
+<p>China lives inside smartphones. Cash is practically dead. International credit cards are not accepted at local stalls. If you land thinking you can "wing it" with Google, Uber, and your physical credit card, you are going to pay a massive "ignorance tax" in every taxi, restaurant, and souvenir shop.</p>
+<p><strong>This guide will make sure you don't.</strong></p>
+
+<!-- Part I -->
+<h2>Part I: What You're Walking Into</h2>
+<h3>The Parallel Digital Universe</h3>
+<p>China runs on its own internet ecosystem—a parallel digital universe that is genuinely impressive once you get the hang of it. But if you arrive unprepared, the Great Firewall will quietly block most of the apps that keep your life together.</p>
+<p>Here is what gets cut off the moment you land:</p>
+<table>
+    <tr><th>Service Category</th><th>Blocked / Unavailable</th></tr>
+    <tr><td>Search &amp; Email</td><td>Google (Maps, Gmail, Translate — all of it)</td></tr>
+    <tr><td>Social Media</td><td>Instagram, Facebook, X/Twitter</td></tr>
+    <tr><td>Messaging</td><td>WhatsApp, Telegram</td></tr>
+    <tr><td>Entertainment</td><td>YouTube, Netflix</td></tr>
+    <tr><td>VPN Apps</td><td>Many — if downloaded inside China</td></tr>
+</table>
+<div class="callout warning">
+    <strong>The trap:</strong> Most tourists Google "best VPN for China" from their hotel room on day one. Too late. The app stores are already geo-restricted.<br><br>
+    <strong>The move:</strong> Set up everything before you board the plane. Everything.
+</div>
+
+<!-- Part II -->
+<h2>Part II: Pre-Departure Checklist</h2>
+<p>Complete these tasks before you leave home:</p>
+<ul class="checklist">
+    <li>Download and test VPN at home</li>
+    <li>Set up Alipay with international card (International version)</li>
+    <li>Set up WeChat Pay (optional but recommended)</li>
+    <li>Download offline maps (Google Maps offline or Maps.me)</li>
+    <li>Install DiDi international app <strong>and verify your phone number before departure</strong></li>
+    <li>Download Pleco for offline translation</li>
+    <li>Download Chinese language pack for Google Translate (offline)</li>
+    <li>Download Baidu Maps or Amap</li>
+    <li>Save offline maps for your destination cities</li>
+    <li>Notify your bank about travel to China</li>
+    <li>Check passport validity (minimum 6 months from entry date)</li>
+    <li>Purchase eSIM or confirm roaming package (ensure SMS roaming is enabled)</li>
+    <li>Pack plug adapter (types A, C, I)</li>
+</ul>
+
+<!-- Part III -->
+<h2>Part III: The VPN Situation — Get This Right First</h2>
+<p>Not all VPNs work in China, and the ones that do have varying reliability. As of 2026, names with decent track records include ExpressVPN, Astrill, and NordVPN — though China's firewall updates regularly, so nothing is guaranteed.</p>
+<h3>What to Do</h3>
+<ul>
+    <li>Download your VPN at home, not in China</li>
+    <li>Set up and test the connection before departure</li>
+    <li>Save offline maps on Google Maps before you fly (or switch to Maps.me, which works without data)</li>
+</ul>
+<div class="callout tip">
+    <strong>Pro tip:</strong> Astrill tends to be the most consistently reliable for mainland China, but it is pricier. If budget matters, grab ExpressVPN and keep Astrill as backup. Pay for two. You will thank yourself later.
+</div>
+<p><strong>Plan B:</strong> International SIMs/eSIMs like Airalo or your home carrier's roaming package give you data that bypasses Chinese restrictions — meaning you get your regular internet, no VPN needed for data. The tradeoff: it is often slower and more expensive per GB.</p>
+
+<!-- Part IV -->
+<h2>Part IV: Payment — The Number One Survival Skill</h2>
+<h3>The Reality</h3>
+<p>Cash is practically dead in China's major cities. International credit cards are rarely accepted at local vendors, street stalls, taxis, or small restaurants. This is the single most important setup step for your trip.</p>
+
+<h3>Alipay (Primary Choice)</h3>
+<p>Since 2023, Alipay has become significantly more accessible for foreigners. You can now link an international Visa or Mastercard directly to Alipay — no Chinese bank account required.</p>
+<p><strong>Step-by-step setup:</strong></p>
+<ol>
+    <li>Download Alipay before arriving</li>
+    <li>Open the app and select the "International" option</li>
+    <li>Link your foreign credit card (Visa/Mastercard)</li>
+    <li>Complete identity verification (passport details)</li>
+    <li>You are ready to pay</li>
+</ol>
+
+<h3>WeChat Pay (Backup Option)</h3>
+<p>WeChat Pay has also opened up to international cards, though the setup is slightly more involved through the WeChat app itself.</p>
+
+<h3>The 3% Transaction Fee Rule</h3>
+<div class="callout">
+    When you link a foreign Visa or Mastercard to Alipay or WeChat Pay, a <strong>3% transaction fee</strong> applies to each payment. This fee is charged on top of the purchase amount and is in addition to any foreign transaction fee your home bank may charge.<br><br>
+    <strong>What this means in practice:</strong> A ¥100 meal costs you ¥103 via Alipay with a foreign card. For small daily purchases this is negligible, but for large hotel bills or shopping it adds up quickly.<br><br>
+    <strong>How to minimize it:</strong> If you are staying more than a week, consider loading a prepaid CNY-denominated card through your bank before departure, or using cash for larger transactions where the fee becomes significant.
+</div>
+
+<h3>Payment Methods at a Glance</h3>
+<table>
+    <tr><th>Payment Method</th><th>Supported for Foreigners</th><th>Ease of Setup</th><th>Acceptance Rate</th></tr>
+    <tr><td>Alipay (International)</td><td>✅ Yes</td><td>Medium</td><td>Very High</td></tr>
+    <tr><td>WeChat Pay</td><td>✅ Yes</td><td>Medium</td><td>Very High</td></tr>
+    <tr><td>Cash (CNY)</td><td>✅ Yes</td><td>Easy</td><td>Medium (declining)</td></tr>
+    <tr><td>Foreign Credit Card</td><td>⚠️ Limited</td><td>Easy</td><td>Low</td></tr>
+</table>
+
+<h3>Government-Backed Guidance</h3>
+<p>In 2026, the China Payment and Clearing Association (PCAC) published the "Payment Guide for Foreigners in China," covering bank cards, mobile payments, cash, accounts, and digital RMB. This reflects a nationwide push to improve payment accessibility for international visitors.</p>
+<p>The Chinese government has made improving digital payment convenience for foreigners a policy priority. A 2026 directive from 11 national ministries explicitly calls for:</p>
+<ul>
+    <li>Supporting more overseas e-wallets for use in China</li>
+    <li>Expanding cashless payment options for international visitors</li>
+    <li>Enabling more foreign banks and payment platforms to connect with Chinese systems</li>
+    <li>Streamlining passport verification processes</li>
+</ul>
+
+<h3>Official Chinese Government Resources for Foreigners</h3>
+<ul>
+    <li><em>"A Guide to Working and Living in China as Business Expatriates (2025 Edition)"</em> — issued by multiple ministries including the Ministry of Commerce and the People's Bank of China. Covers SIM cards, bank cards, mobile payment, transportation, accommodation, residence registration, work permits, and social insurance.</li>
+    <li><em>"Payment Guide for Foreigners in China"</em> — published by the China Payment and Clearing Association (PCAC). Available through Chinese consulates and embassies.</li>
+    <li>Immigration and visa information — available at local Chinese embassies and through the National Immigration Administration.</li>
+</ul>
+
+<!-- Part V -->
+<h2>Part V: Connectivity — SIM Cards vs. eSIM</h2>
+<h3>Option 1: International SIM or eSIM</h3>
+<p>Services like Airalo or your home carrier's roaming package give you data that bypasses Chinese restrictions — meaning you get your regular internet, no VPN needed for data. The tradeoff: slower and more expensive per GB.</p>
+
+<h3>Option 2: Local Chinese SIM</h3>
+<p>Available at the airport and at China Unicom / China Mobile shops, a local SIM gives you fast, cheap data. But everything runs through China's network, meaning you still need your VPN to access blocked apps.</p>
+<p>Foreigners can bring passports or Foreign Permanent Resident ID Cards to service offices of telecom operators (China Telecom, China Mobile, China Unicom) to apply for a SIM card and activate mobile communication services in China.</p>
+
+<h3>Option 3: Pocket WiFi Rental</h3>
+<p>Available at Pudong and Hongqiao airports. Good for groups. Slightly annoying to carry everywhere.</p>
+
+<h3>Recommendation</h3>
+<p>For most tourists, Airalo eSIM + a reliable VPN combo is the cleanest setup. Fast enough, flexible, and you are not dependent on finding a SIM shop while jet-lagged at 6am.</p>
+
+<!-- Part VI -->
+<h2>Part VI: Essential Apps — Your Digital Toolkit</h2>
+<table>
+    <tr><th>Old App</th><th>Replacement</th><th>Notes</th></tr>
+    <tr><td>Google Maps</td><td>Baidu Maps or Amap</td><td>Works offline, has English mode, genuinely accurate. Google Maps may show you walking through solid concrete walls or completely freeze in mountain zones.</td></tr>
+    <tr><td>Uber</td><td>DiDi</td><td>China's Uber. Use the international version. Has English interface, automatically translates messages to the driver, charges your linked card.</td></tr>
+    <tr><td>WhatsApp</td><td>WeChat</td><td>China's everything app — messaging, payments, maps, food delivery.</td></tr>
+    <tr><td>Google Translate</td><td>Pleco or Google Translate (offline)</td><td>Pleco is an offline Chinese dictionary. Google Translate with downloaded Chinese language pack works offline.</td></tr>
+    <tr><td>Payment (Cash/Card)</td><td>Alipay</td><td>Pay for everything from a $2 USD street noodle bowl to hotel bills.</td></tr>
+    <tr><td>Amazon</td><td>Taobao</td><td>Use visual photo-search camera tool to find items cheaper online. Delivery to your hotel in 24–48 hours.</td></tr>
+    <tr><td>Travel Booking</td><td>Trip.com or Mafengwo</td><td>Local travel booking in English.</td></tr>
+</table>
+
+<h3>DiDi: The Ride-Hailing Lifeboat</h3>
+<p>Never hail a traditional taxi on the street in tourist zones — they will notice you are a foreigner and charge you double. Use DiDi instead.</p>
+
+<div class="callout">
+    <strong>DiDi Setup — Critical Details</strong><br><br>
+    <strong>The SMS Problem:</strong> The standalone DiDi app requires SMS verification during registration. If your foreign SIM does not have international SMS roaming enabled in China, you will not receive the OTP code — leaving you stranded at the airport.<br><br>
+    <strong>Zero-SMS Bypass (Recommended):</strong> Open Alipay, search for "DiDi" in the top search bar, and launch the DiDi mini-program. Because your identity and foreign card are already linked to Alipay, it bypasses the need for a separate DiDi registration or SMS verification entirely.<br><br>
+    <strong>If Using the Standalone DiDi App:</strong> Register and verify your phone number at home before departure, or confirm your foreign carrier has incoming SMS roaming enabled for China.<br><br>
+    <strong>The "Last 4 Digits" Rule:</strong> When you get in the car, the driver will almost always ask for a 4-digit code. This is the last 4 digits of the phone number registered on your DiDi account — used to confirm you are the correct passenger before the trip starts.
+</div>
+
+<h3>Taobao: The Ultimate Pricing Hack</h3>
+<p>See a beautiful "regional exclusive" souvenir in a historic town for $8 USD? Open Taobao, use the visual photo-search camera tool, and watch the exact same official factory item pop up online for $2 USD.</p>
+
+<h3>WeChat: More Than Messaging</h3>
+<p>WeChat is China's everything app — messaging, payments, maps, mini-programs, and food delivery all in one place.</p>
+
+<!-- Part VII -->
+<h2>Part VII: Residence Registration — The Legal Requirement</h2>
+<div class="callout warning"><strong>This is not optional.</strong> Failure to register can result in fines.</div>
+
+<h3>If You Stay in a Hotel</h3>
+<p>Residence registration is handled by the hotel. Present a valid passport or other international travel documents to reception upon check-in.</p>
+
+<h3>If You Stay Elsewhere (Airbnb, Friends, Rental)</h3>
+<p>You must register at the local police station (Pàichūsuǒ 派出所) within 24 hours of arrival at that address.</p>
+
+<div class="callout">
+    <strong>What to Bring to the Police Station</strong><br><br>
+    <ul style="margin-top:8px;">
+        <li><strong>Passport:</strong> Original + copy of photo page + copy of valid visa/entry stamp page</li>
+        <li><strong>Accommodation Proof:</strong> Printed Airbnb confirmation, lease contract, or landlord's property certificate copy (Fángchǎn zhèng 房产证)</li>
+        <li><strong>Landlord's Info:</strong> Copy of landlord's Chinese ID (Shēnfèn zhèng 身份证) and contact phone number</li>
+    </ul>
+</div>
+
+<h3>Practical Chinese Flashcard — Show This to the Police Officer</h3>
+<div class="flashcard">
+    <div class="lang-label">Chinese</div>
+    <p>您好！我是外籍游客。我住在附近的公寓/民宿，来办理"境外人员临时住宿登记"。这是我的护照和住址证明。谢谢！</p>
+    <div class="lang-label">Pinyin</div>
+    <p>Nínhǎo! Wǒ shì wàijí yóukè. Wǒ zhù zài fùjìn de gōngyù/mínsù, lái bànlǐ "jìngwài rényuán línshí zhùsù dēngjì". Zhè shì wǒ de hùzhào hé zhùzhǐ zhèngmíng. Xièxie!</p>
+    <div class="lang-label">English</div>
+    <p>"Hello! I am a foreign tourist staying at a nearby apartment/homestay. I am here to complete the Foreigner Temporary Residence Registration. Here are my passport and proof of address. Thank you!"</p>
+</div>
+
+<h3>Online Self-Registration Option</h3>
+<p>Major tier-1 cities (Shanghai, Beijing, Shenzhen, Guangzhou) now offer online foreign residence registration via web portals or WeChat mini-programs. Check with your landlord or local expat groups to see if you can upload photos of your passport and lease without visiting the station in person.</p>
+
+<h3>Visa and Residence Permit Deadlines</h3>
+<table>
+    <tr><th>Requirement</th><th>Deadline</th></tr>
+    <tr><td>Apply for residence permit (entering with Z visa)</td><td>Within 30 days from entry date</td></tr>
+    <tr><td>Apply for visa extension</td><td>At least 7 days before visa expiration</td></tr>
+    <tr><td>Apply for residence permit extension</td><td>30 days before expiration</td></tr>
+    <tr><td>Report changes (passport number, address)</td><td>Within 10 days of change</td></tr>
+</table>
+
+<h3>Work Permit Timeline</h3>
+<ul>
+    <li>For work ≤90 days: Apply for Z visa with Notification Letter for Foreigner's Work Permit</li>
+    <li>For work &gt;90 days: Apply for Z visa → enter China → apply for residence permit for work</li>
+    <li>Employer applies for extension: 30 days before work permit expires</li>
+    <li>Personal information changes (name, passport number, position): Report within 10 working days</li>
+</ul>
+
+<!-- Part VIII -->
+<h2>Part VIII: Visa-Free Transit (144-Hour Policy)</h2>
+<p>China's 144-hour visa-free transit policy allows citizens of certain countries to stay in designated cities for up to 6 days without a visa — provided they are transiting to a third country or region. This requires precise logistical execution. Key areas to plan:</p>
+<ul>
+    <li>Mandatory legal frameworks to ensure compliance and prevent border rejections</li>
+    <li>Digital survival strategies for configuring Alipay, WeChat Pay, eSIMs, and VPNs before arrival</li>
+    <li>Optimized fast-track itineraries for Beijing, Shanghai, and Chengdu</li>
+    <li>High-speed rail transfers, subway navigation, and ride-hailing protocols</li>
+</ul>
+<p>As of November 2024, China expanded visa-free entry to ordinary passport holders from Bulgaria, Romania, Malta, Croatia, Montenegro, North Macedonia, Estonia, Latvia, and Japan on a trial basis. China also extended visa-free stays from 15 days to 30 days and added "exchange visit" as a qualifying purpose. Currently, 38 countries participate in this visa-free arrangement.</p>
+<div class="callout warning">Visa-free policies change frequently. Always verify the current list of eligible countries and conditions through official Chinese embassy or consulate websites before travel.</div>
+
+<!-- Part IX -->
+<h2>Part IX: Translation and Communication</h2>
+<h3>Pleco: The Offline Dictionary</h3>
+<p>Pleco is an offline Chinese dictionary and translator. A must-have for any foreigner in China.</p>
+
+<h3>Google Translate with Offline Package</h3>
+<p>Download the Chinese language pack before arrival. This works even without internet access.</p>
+
+<h3>Government Translation Efforts</h3>
+<p>A 2026 directive aims to improve foreign-language digital services across China, including:</p>
+<ul>
+    <li>Encouraging digital service platforms to prominently display interface translation functions or publish multilingual versions</li>
+    <li>Using AI to improve the immediacy and accuracy of foreign language translations</li>
+    <li>Compiling translation guides for proper nouns (geography, culture, regulations)</li>
+    <li>Strengthening digital foreign-language guidance at key scenarios</li>
+</ul>
+
+<!-- Part X -->
+<h2>Part X: Official Government Policy Context</h2>
+<h3>The Digital Services Initiative</h3>
+<p>In 2026, China's Cyberspace Administration (CAC) and 10 other ministries jointly issued the "Implementation Opinions on Improving Digital Service Convenience for Foreigners Entering China." This policy aims to create an interconnected, inclusive, and mutually recognized digital service system by 2027.</p>
+<p><strong>By 2027:</strong> Digital basic services are smoother and more efficient; payment, living, medical, tourism, and public service digital application bottlenecks are largely resolved; application scenarios comprehensively expanded.</p>
+<p><strong>By 2030:</strong> Digital services for inbound travelers reach internationally leading levels; full-scenario digital services deeply aligned with international models.</p>
+<h3>Key Policy Areas</h3>
+<ul>
+    <li><strong>Digital Basic Services:</strong> Streamlined telecom handling, more foreign-language digital services, comprehensive digital service platforms</li>
+    <li><strong>Digital Payment Services:</strong> Supporting more overseas e-wallets in China, expanded deposit-free policies</li>
+    <li><strong>Digital Tourism Services:</strong> Online reservations at museums and scenic spots using foreign ID documents, multilingual transportation apps, simplified online hotel registration</li>
+    <li><strong>Digital Public Services:</strong> International medical service platforms, online investment and business services, integrated government services ("one-stop online processing")</li>
+</ul>
+
+<!-- Part XI -->
+<h2>Part XI: Working and Living in China</h2>
+<h3>Work Permit Integration</h3>
+<p>Since December 1, 2024, China has integrated the Foreigner Work Permit with the Social Security Card. Foreign workers can now apply for an electronic Social Security Card (e-SSC) following the official guide.</p>
+<h3>Digital Services in Cities</h3>
+<p><strong>Shanghai:</strong> The city has gone almost entirely cashless. Alipay for foreigners has become much more accessible since 2023. You can now link an international Visa or Mastercard directly to Alipay — no Chinese bank account required.</p>
+<p><strong>Guangzhou:</strong> Guangzhou's cyberspace office has implemented policies to improve digital services for inbound travelers, focusing on telecommunications, payments, tourism, and public services.</p>
+
+<!-- Part XII -->
+<h2>Part XII: Emergency and Safety</h2>
+<table class="emergency">
+    <tr><th>Emergency Type</th><th>Phone Number</th></tr>
+    <tr><td>Police</td><td>110</td></tr>
+    <tr><td>Fire</td><td>119</td></tr>
+    <tr><td>Ambulance</td><td>120</td></tr>
+    <tr><td>Traffic Accidents</td><td>122</td></tr>
+</table>
+<h3>Lost Passport</h3>
+<ol>
+    <li>Immediately report to the local police station</li>
+    <li>Contact your country's embassy or consulate</li>
+    <li>You will need a police report to apply for an emergency travel document</li>
+</ol>
+<h3>Social Media Compliance</h3>
+<p>Foreigners must abide by Chinese laws and regulations when posting comments on social media in China.</p>
+<h3>Data Privacy</h3>
+<p>China's 2026 directive emphasizes data protection for inbound travelers, including strengthening personal information protection, preventing leakage and misuse of ID documents, health records, and other sensitive information, and enabling cross-border data flows while protecting security.</p>
+
+<!-- Part XIII -->
+<h2>Part XIII: Quick Reference Card</h2>
+<h3>Before Departure Checklist</h3>
+<ul class="checklist">
+    <li>Download and test VPN at home</li>
+    <li>Set up Alipay with international card</li>
+    <li>Download DiDi international app and verify phone number</li>
+    <li>Download Baidu Maps or Amap</li>
+    <li>Download Pleco offline dictionary</li>
+    <li>Download offline Chinese language pack for Google Translate</li>
+    <li>Save offline maps for destination cities</li>
+    <li>Notify bank about China travel</li>
+    <li>Check passport validity (≥6 months)</li>
+    <li>Purchase eSIM or confirm roaming (including incoming SMS)</li>
+    <li>Pack plug adapter (types A, C, I)</li>
+</ul>
+<h3>Upon Arrival Checklist</h3>
+<ul class="checklist">
+    <li>Connect to VPN immediately</li>
+    <li>Verify Alipay works</li>
+    <li>Log in to WeChat</li>
+    <li>Get local SIM (optional)</li>
+    <li>Register residence (hotel handles this OR go to police station within 24 hours)</li>
+    <li>Download all essential apps (if not done at home)</li>
+</ul>
+<h3>Common Pitfalls to Avoid</h3>
+<ul class="pitfall">
+    <li>Waiting until arrival to download VPN</li>
+    <li>Relying on cash as primary payment</li>
+    <li>Assuming Google Maps works</li>
+    <li>Using WhatsApp as primary communication</li>
+    <li>Not registering residence within 24 hours</li>
+    <li>Missing visa/permit renewal deadlines</li>
+    <li>Registering DiDi without enabling SMS roaming first</li>
+    <li>Ignoring the 3% foreign card fee on Alipay/WeChat Pay transactions</li>
+</ul>
+
+<!-- Part XIV -->
+<h2>Part XIV: City-Specific Notes</h2>
+<h3>Beijing</h3>
+<ul>
+    <li>Use DiDi for ride-hailing — taxis in tourist zones will overcharge</li>
+    <li>Baidu Maps is 100% accurate; Google Maps may show you walking through walls</li>
+    <li>Many historical sites require advance online booking</li>
+</ul>
+<h3>Shanghai</h3>
+<ul>
+    <li>Digital center of China — the city has gone almost entirely cashless</li>
+    <li>French Concession at golden hour, Yu Garden chaos on a weekday morning, locals doing tai chi along the Bund before sunrise — best enjoyed without an app</li>
+    <li>Monster Day Tours runs free walking tours through Shanghai that go where tourists don't</li>
+</ul>
+<h3>Chengdu</h3>
+<ul>
+    <li>Panda reserves require advance booking</li>
+    <li>Sichuan hot pot restaurants often use QR code ordering (requires WeChat or Alipay)</li>
+</ul>
+<h3>General City Travel Tips</h3>
+<ul>
+    <li>High-speed rail is the best way to travel between cities</li>
+    <li>Subway navigation works with Baidu Maps or Amap</li>
+</ul>
+
+<!-- Part XV -->
+<h2>Part XV: The Human Element</h2>
+<p>Here is the secret nobody puts in a digital survival guide: the best parts of China do not need an app.</p>
+<p>The French Concession at golden hour. The chaos of Yu Garden on a weekday morning. The locals doing tai chi along the Bund before sunrise. You cannot Yelp your way into those moments.</p>
+<p>The most useful thing you can do — after sorting your VPN and Alipay — is put the phone down and wander. China rewards the people who get lost in it.</p>
+<p>China is one of the most exciting countries on the planet. Do not let a Wi-Fi wall be the reason you spend your first afternoon staring at a loading screen. Get the setup right, then go actually see the place.</p>
+
+<!-- Appendix -->
+<h2>Appendix: Resources and Further Reading</h2>
+<h3>Official Government Resources</h3>
+<ul>
+    <li><em>"A Guide to Working and Living in China as Business Expatriates (2025 Edition)"</em> — Ministry of Commerce and 10 other ministries. Covers SIM cards, bank cards, mobile payment, residence registration, work permits, social insurance, and tax. Available through Chinese embassies and consulates.</li>
+    <li><em>"Payment Guide for Foreigners in China"</em> — China Payment and Clearing Association (PCAC). Available through Chinese consulates and embassies.</li>
+    <li>Visa and Immigration Information — official embassy and consulate websites. Verify current visa-free policies before travel.</li>
+</ul>
+<h3>Recommended Books</h3>
+<ul>
+    <li><em>"China Unlocked: How to Actually Survive: The Digital Survival Guide to Payments, Apps, Transport &amp; 12 Must-See Cities"</em> by Wei Zhu. 348 pages. Independently published, 2026. ISBN: 9798198712904. Available on Amazon.</li>
+    <li><em>"The 144-Hour China Visa Guide: Fast-Track Itineraries for Maximizing Layovers in Beijing, Shanghai and Chengdu"</em> by Georgina and Annabella. Independently published, 2026.</li>
+</ul>
+<p style="margin-top:24px; font-size:13px; color:#6c757d;">This guide is based on information available as of August 2026. Policies regarding visas, VPNs, payment services, and internet access change frequently. Always verify current information through official government websites before travel.</p>
+
+</div>
+
+<div class="footer">
+    <p>AgentBridge · verified-analysis · <a href="../index.html">← Back to Store</a></p>
+    <p style="margin-top:6px;">© 2026 AgentBridge. Endpoint: /v1/knowledge/travel/survival-guide-2026</p>
+</div>
+
+</body>
+</html>

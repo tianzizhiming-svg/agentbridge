@@ -1,7 +1,7 @@
 ﻿{
   "version": "2026-08-02",
   "updated": "2026-08-02T12:00:00Z",
-  "total_products": 72,
+  "total_products": 73,
   "categories": {
     "types": [
       { "id": "industry", "label": "📊 行业/市场研究", "description": "描述一个行业的规模、结构、趋势、竞争格局" },
@@ -1712,7 +1712,25 @@
       "source_files": [],
       "province": null,
       "sample_url": null,
-      "tags": ["签证", "144小时", "过境", "免签", "北京", "上海", "成都"]
+      "tags": ["签证", "144小时", "过境", "免签", "北京", "上海", "成都"],
+    {
+      "id": "guide-survival-2026",
+      "name": "The Digital Survival Guide for Foreigners in China (2026 Edition)",
+      "type": "guide",
+      "type_label": "馃摉 鎸囧崡/鏁欑▼",
+      "domain": ["travel"],
+      "domain_labels": ["鉁堬笍 鏉ュ崕"],
+      "description": "Complete English-language digital survival guide for foreigners entering China in 2026. Covers VPN setup, Alipay/WeChat Pay (incl. 3% fee rule), DiDi SMS bypass, residence registration toolkit with Chinese flashcard, 144-hour visa-free transit, and city-specific tips for Beijing, Shanghai, and Chengdu.",
+      "price": 0.99,
+      "currency": "USDC",
+      "format": ["HTML"],
+      "endpoint": "/v1/knowledge/travel/survival-guide-2026",
+      "status": "available",
+      "published": "2026-08-02",
+      "source_files": [],
+      "province": null,
+      "sample_url": null,
+      "tags": ["鏉ュ崕", "澶栧浗浜?, "鏀荤暐", "鏀粯", "DiDi", "Alipay", "VPN", "灞呬綇鐧昏", "144灏忔椂", "2026"]
     }
   ]
 }
