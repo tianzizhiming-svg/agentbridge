@@ -16,102 +16,6 @@
   },
   "assets": [
     {
-      "id": "industry",
-      "name": null,
-      "kind": "asset",
-      "domain": [],
-      "description": "描述一个行业的规模、结构、趋势、竞争格局",
-      "tags": [],
-      "price": 0,
-      "currency": "USDC",
-      "payment": "x402",
-      "endpoint": "/v1/assets/industry",
-      "format": "pdf",
-      "version": "1.0",
-      "created_time": "2026-08-07",
-      "updated_time": "2026-08-07"
-    },
-    {
-      "id": "enterprise",
-      "name": null,
-      "kind": "asset",
-      "domain": [],
-      "description": "针对特定机构/公司的深度剖析",
-      "tags": [],
-      "price": 0,
-      "currency": "USDC",
-      "payment": "x402",
-      "endpoint": "/v1/assets/enterprise",
-      "format": "pdf",
-      "version": "1.0",
-      "created_time": "2026-08-07",
-      "updated_time": "2026-08-07"
-    },
-    {
-      "id": "audience",
-      "name": null,
-      "kind": "asset",
-      "domain": [],
-      "description": "特定人群的行为、态度、消费特征",
-      "tags": [],
-      "price": 0,
-      "currency": "USDC",
-      "payment": "x402",
-      "endpoint": "/v1/assets/audience",
-      "format": "pdf",
-      "version": "1.0",
-      "created_time": "2026-08-07",
-      "updated_time": "2026-08-07"
-    },
-    {
-      "id": "topic",
-      "name": null,
-      "kind": "asset",
-      "domain": [],
-      "description": "针对一个问题的深度拆解，包含归因和建设性输出",
-      "tags": [],
-      "price": 0,
-      "currency": "USDC",
-      "payment": "x402",
-      "endpoint": "/v1/assets/topic",
-      "format": "pdf",
-      "version": "1.0",
-      "created_time": "2026-08-07",
-      "updated_time": "2026-08-07"
-    },
-    {
-      "id": "guide",
-      "name": null,
-      "kind": "asset",
-      "domain": [],
-      "description": "结构化操作知识，手把手教'怎么做'",
-      "tags": [],
-      "price": 0,
-      "currency": "USDC",
-      "payment": "x402",
-      "endpoint": "/v1/assets/guide",
-      "format": "pdf",
-      "version": "1.0",
-      "created_time": "2026-08-07",
-      "updated_time": "2026-08-07"
-    },
-    {
-      "id": "monitor",
-      "name": null,
-      "kind": "asset",
-      "domain": [],
-      "description": "定期更新的数据简报",
-      "tags": [],
-      "price": 0,
-      "currency": "USDC",
-      "payment": "x402",
-      "endpoint": "/v1/assets/monitor",
-      "format": "pdf",
-      "version": "1.0",
-      "created_time": "2026-08-07",
-      "updated_time": "2026-08-07"
-    },
-    {
       "id": "employment-S001",
       "name": "内蒙古科技大学 2025届毕业生就业质量报告",
       "kind": "industry",
@@ -1721,64 +1625,13 @@
       "version": "1.0",
       "created_time": "2026-07-01",
       "updated_time": "2026-07-01"
-    },
-    {
-      "id": "guide-china-survival",
-      "name": "2026 外国人来华数字生存手册（完整版）",
-      "kind": "guide",
-      "domain": [
-        "travel"
-      ],
-      "description": "完整覆盖支付、交通、住宿、签证、VPN、应急等场景的来华数字生存指南，包含Alipay绑定、DiDi免短信验证、警察局登记中文对话卡等独家实用内容",
-      "tags": [
-        "来华",
-        "旅行",
-        "数字生存",
-        "Alipay",
-        "DiDi",
-        "2026"
-      ],
-      "price": 0.01,
-      "currency": "USDC",
-      "payment": "x402",
-      "endpoint": "/v1/knowledge/travel/survival-guide-2026",
-      "format": "PDF",
-      "version": "1.0",
-      "created_time": "2026-08-02",
-      "updated_time": "2026-08-02"
-    },
-    {
-      "id": "guide-144-hour-visa",
-      "name": "144小时过境签证快轨攻略",
-      "kind": "guide",
-      "domain": [
-        "travel"
-      ],
-      "description": "基于中国144小时过境免签政策（38国适用），提供北京、上海、成都三城6天无签证最优路线规划与通关秘籍",
-      "tags": [
-        "签证",
-        "144小时",
-        "过境",
-        "免签",
-        "北京",
-        "上海",
-        "成都"
-      ],
-      "price": 0.01,
-      "currency": "USDC",
-      "payment": "x402",
-      "endpoint": "/v1/knowledge/travel/144-hour-visa-guide",
-      "format": "PDF",
-      "version": "1.0",
-      "created_time": "2026-08-02",
-      "updated_time": "2026-08-02"
     }
   ],
   "discoveries": [],
   "services": [],
   "meta": {
     "updated_time": "2026-08-07T13:30:00Z",
-    "total_assets": 78,
+    "total_assets": 70,
     "total_discoveries": 0,
     "total_services": 0
   }
