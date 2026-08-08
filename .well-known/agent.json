@@ -1,1 +1,20 @@
-
+{
+  "name": "AgentBridge Atlas",
+  "description": "A machine commerce layer for AI agents to discover, purchase, and consume digital capabilities.",
+  "url": "https://tianzizhiming-svg.github.io/agentbridge/",
+  "api": "https://api.060504.shop/openapi.json",
+  "protocols": [
+    "mcp",
+    "x402"
+  ],
+  "payment": {
+    "protocol": "x402",
+    "network": "base",
+    "currency": "USDC"
+  },
+  "capabilities": {
+    "discovery": true,
+    "purchase": true,
+    "machine_readable_catalog": true
+  }
+}
