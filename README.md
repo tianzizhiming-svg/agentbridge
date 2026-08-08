@@ -112,6 +112,7 @@ if res.status_code == 402:
 - [Storefront & Free Samples](https://tianzizhiming-svg.github.io/agentbridge/)
 - [402 Index Listing](https://402index.io/directory?search=AgentBridge)
 - [Legal Disclaimer](https://github.com/tianzizhiming-svg/agentbridge/blob/master/DISCLAIMER.md) — by using this service, you agree to its terms
+- [AgentBridge Atlas Vision](docs/atlas.md)
 
 ## Writing / Background
 
