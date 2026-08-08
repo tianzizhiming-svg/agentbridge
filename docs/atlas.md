@@ -2,8 +2,7 @@
 
 ## The AI-native marketplace for machine commerce
 
-
-AgentBridge Atlas is the marketplace layer built on top of AgentBridge.
+AgentBridge Atlas is the machine commerce layer powered by AgentBridge.
 
 The internet was designed for humans.
 APIs were designed for software.
