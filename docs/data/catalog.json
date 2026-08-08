@@ -16,6 +16,373 @@
   },
   "assets": [
     {
+      "id": "api-policy",
+      "name": "China Policy API",
+      "kind": "api",
+      "domain": [
+        "policy",
+        "china-data"
+      ],
+      "description": "中国政策与规划数据 API，如\"十五五\"规划战略笔记（41 篇合集）。",
+      "tags": [
+        "policy",
+        "15th five-year plan"
+      ],
+      "price": 90,
+      "currency": "USDC",
+      "payment": "x402",
+      "endpoint": "/v1/assets/api-policy",
+      "format": "API",
+      "version": "1.0"
+    },
+    {
+      "id": "api-university",
+      "name": "China University API",
+      "kind": "api",
+      "domain": [
+        "education",
+        "china-data"
+      ],
+      "description": "中国高校就业质量报告与本科教学质量报告 API，支持按学校与维度查询。",
+      "tags": [
+        "university",
+        "education reports"
+      ],
+      "price": 90,
+      "currency": "USDC",
+      "payment": "x402",
+      "endpoint": "/v1/assets/api-university",
+      "format": "API",
+      "version": "1.0"
+    },
+    {
+      "id": "api-web-fetch",
+      "name": "China Web Fetch API",
+      "kind": "api",
+      "domain": [
+        "technology",
+        "china-data"
+      ],
+      "description": "按次抓取任意中国网页，返回干净的 Markdown 或 HTML。静态页 $0.003，动态页 $0.008。",
+      "tags": [
+        "web fetch",
+        "scraping"
+      ],
+      "price": 0.003,
+      "currency": "USDC",
+      "payment": "x402",
+      "endpoint": "/v1/assets/api-web-fetch",
+      "format": "API",
+      "version": "1.0"
+    },
+    {
+      "id": "brief-ai",
+      "name": "中国AI产业季度数据简报（Q2 2026）",
+      "kind": "monitor",
+      "domain": [
+        "technology"
+      ],
+      "description": "中国AI产业Q2 2026季度数据简报：AI核心产业规模突破1.2万亿元，上半年AI融资超3000亿元，智能算力达2185 EFLOPS，高技术制造业FDI增长33.2%。",
+      "tags": [
+        "AI",
+        "科技",
+        "季度简报",
+        "Q2 2026"
+      ],
+      "price": 4.99,
+      "currency": "USDC",
+      "payment": "x402",
+      "endpoint": "/v1/assets/brief-ai",
+      "format": [
+        "PDF"
+      ],
+      "version": "1.0",
+      "created_time": "2026-08-05",
+      "updated_time": "2026-08-05"
+    },
+    {
+      "id": "brief-av",
+      "name": "中国自动驾驶产业季度数据简报（Q2 2026）",
+      "kind": "monitor",
+      "domain": [
+        "ev"
+      ],
+      "description": "中国自动驾驶产业Q2 2026季度数据简报：L2渗透率70.5%，NOA车型超30%；上半年自动驾驶融资超350亿元，成为全球最大智驾市场。",
+      "tags": [
+        "自动驾驶",
+        "智能驾驶",
+        "汽车",
+        "季度简报",
+        "Q2 2026"
+      ],
+      "price": 4.99,
+      "currency": "USDC",
+      "payment": "x402",
+      "endpoint": "/v1/assets/brief-av",
+      "format": [
+        "PDF"
+      ],
+      "version": "1.0",
+      "created_time": "2026-08-05",
+      "updated_time": "2026-08-05"
+    },
+    {
+      "id": "brief-av-icv",
+      "name": "中国自动驾驶与智能网联汽车产业季度数据简报（Q2 2026）",
+      "kind": "monitor",
+      "domain": [
+        "ev"
+      ],
+      "description": "中国自动驾驶与智能网联汽车产业Q2 2026季度数据简报：2025自动驾驶市场规模4502亿元，L2渗透率70%，比亚迪全系标配智驾。",
+      "tags": [
+        "自动驾驶",
+        "智能网联",
+        "汽车",
+        "季度简报",
+        "Q2 2026"
+      ],
+      "price": 4.99,
+      "currency": "USDC",
+      "payment": "x402",
+      "endpoint": "/v1/assets/brief-av-icv",
+      "format": [
+        "PDF"
+      ],
+      "version": "1.0",
+      "created_time": "2026-08-05",
+      "updated_time": "2026-08-05"
+    },
+    {
+      "id": "brief-battery",
+      "name": "中国固态电池产业季度数据简报（Q2 2026）",
+      "kind": "monitor",
+      "domain": [
+        "ev"
+      ],
+      "description": "中国固态电池产业Q2 2026季度数据简报：2025半固态装机31.7 GWh（+272%），渗透率4.1%；2026上半年固态电池领域计划投资超500亿元。",
+      "tags": [
+        "固态电池",
+        "电池",
+        "新能源",
+        "季度简报",
+        "Q2 2026"
+      ],
+      "price": 4.99,
+      "currency": "USDC",
+      "payment": "x402",
+      "endpoint": "/v1/assets/brief-battery",
+      "format": [
+        "PDF"
+      ],
+      "version": "1.0",
+      "created_time": "2026-08-05",
+      "updated_time": "2026-08-05"
+    },
+    {
+      "id": "brief-biopharma",
+      "name": "中国生物医药产业季度数据简报（Q2 2026）",
+      "kind": "monitor",
+      "domain": [
+        "finance"
+      ],
+      "description": "中国生物医药产业Q2 2026季度数据简报：上半年BD出海交易额约1100亿美元，占2025全年80%；获批1类创新药38款，医疗健康融资725.6亿元。",
+      "tags": [
+        "生物医药",
+        "创新药",
+        "季度简报",
+        "Q2 2026"
+      ],
+      "price": 4.99,
+      "currency": "USDC",
+      "payment": "x402",
+      "endpoint": "/v1/assets/brief-biopharma",
+      "format": [
+        "PDF"
+      ],
+      "version": "1.0",
+      "created_time": "2026-08-05",
+      "updated_time": "2026-08-05"
+    },
+    {
+      "id": "brief-compliance",
+      "name": "中国境外主体数字内容合规季度简报（Q2 2026）",
+      "kind": "monitor",
+      "domain": [
+        "policy"
+      ],
+      "description": "中国境外主体数字内容合规Q2 2026季度简报：五部门MCN新规9月1日生效，ICP许可限境内或中外合资中资控股主体，跨境内容合规要点梳理。",
+      "tags": [
+        "内容合规",
+        "MCN",
+        "ICP",
+        "政策",
+        "Q2 2026"
+      ],
+      "price": 4.99,
+      "currency": "USDC",
+      "payment": "x402",
+      "endpoint": "/v1/assets/brief-compliance",
+      "format": [
+        "PDF"
+      ],
+      "version": "1.0",
+      "created_time": "2026-08-05",
+      "updated_time": "2026-08-05"
+    },
+    {
+      "id": "brief-consumer",
+      "name": "中国消费市场季度数据简报（Q2 2026）",
+      "kind": "monitor",
+      "domain": [
+        "consumer"
+      ],
+      "description": "中国消费市场Q2 2026季度数据简报：上半年社零总额24.8万亿元，服务零售增长5.3%，网上零售10.07万亿元，智能眼镜销售增长超150%。",
+      "tags": [
+        "消费",
+        "零售",
+        "季度简报",
+        "Q2 2026"
+      ],
+      "price": 4.99,
+      "currency": "USDC",
+      "payment": "x402",
+      "endpoint": "/v1/assets/brief-consumer",
+      "format": [
+        "PDF"
+      ],
+      "version": "1.0",
+      "created_time": "2026-08-05",
+      "updated_time": "2026-08-05"
+    },
+    {
+      "id": "brief-humanoid",
+      "name": "中国人形机器人产业季度数据简报（Q2 2026）",
+      "kind": "monitor",
+      "domain": [
+        "technology"
+      ],
+      "description": "中国人形机器人产业Q2 2026季度数据简报：上半年产量超4万台（2025全年约2万台），全年预计超10万台；上半年行业融资1041亿元。",
+      "tags": [
+        "人形机器人",
+        "机器人",
+        "季度简报",
+        "Q2 2026"
+      ],
+      "price": 4.99,
+      "currency": "USDC",
+      "payment": "x402",
+      "endpoint": "/v1/assets/brief-humanoid",
+      "format": [
+        "PDF"
+      ],
+      "version": "1.0",
+      "created_time": "2026-08-05",
+      "updated_time": "2026-08-05"
+    },
+    {
+      "id": "brief-new-energy",
+      "name": "中国新能源产业季度数据简报（Q2 2026）",
+      "kind": "monitor",
+      "domain": [
+        "ev"
+      ],
+      "description": "中国新能源产业Q2 2026季度数据简报：可再生能源占新增装机73.9%，6月新能源车渗透率62.8%，动力电池单月装机76.5 GWh。",
+      "tags": [
+        "新能源",
+        "电动车",
+        "季度简报",
+        "Q2 2026"
+      ],
+      "price": 4.99,
+      "currency": "USDC",
+      "payment": "x402",
+      "endpoint": "/v1/assets/brief-new-energy",
+      "format": [
+        "PDF"
+      ],
+      "version": "1.0",
+      "created_time": "2026-08-05",
+      "updated_time": "2026-08-05"
+    },
+    {
+      "id": "brief-semiconductor",
+      "name": "中国半导体产业季度数据简报（Q2 2026）",
+      "kind": "monitor",
+      "domain": [
+        "technology"
+      ],
+      "description": "中国半导体产业Q2 2026季度数据简报：2026年市场规模预计8121亿美元（同比+92.9%），存储芯片4496亿美元，上半年IC出口1773亿美元。",
+      "tags": [
+        "半导体",
+        "芯片",
+        "存储",
+        "季度简报",
+        "Q2 2026"
+      ],
+      "price": 4.99,
+      "currency": "USDC",
+      "payment": "x402",
+      "endpoint": "/v1/assets/brief-semiconductor",
+      "format": [
+        "PDF"
+      ],
+      "version": "1.0",
+      "created_time": "2026-08-05",
+      "updated_time": "2026-08-05"
+    },
+    {
+      "id": "brief-solar",
+      "name": "中国光伏产业季度数据简报（Q2 2026）",
+      "kind": "monitor",
+      "domain": [
+        "ev"
+      ],
+      "description": "中国光伏产业Q2 2026季度数据简报：上半年新增装机72.07 GW（同比-66%，回归理性），光伏出口172.9亿美元（+24.3%）。",
+      "tags": [
+        "光伏",
+        "太阳能",
+        "新能源",
+        "季度简报",
+        "Q2 2026"
+      ],
+      "price": 4.99,
+      "currency": "USDC",
+      "payment": "x402",
+      "endpoint": "/v1/assets/brief-solar",
+      "format": [
+        "PDF"
+      ],
+      "version": "1.0",
+      "created_time": "2026-08-05",
+      "updated_time": "2026-08-05"
+    },
+    {
+      "id": "brief-talent",
+      "name": "中国人才引进政策季度简报（Q2 2026）",
+      "kind": "monitor",
+      "domain": [
+        "policy"
+      ],
+      "description": "中国人才引进政策Q2 2026季度简报：外国人工作许可平均办理时间缩短至6个工作日（降幅70%），R签证5-10年多次往返，京沪严格执行薪资门槛。",
+      "tags": [
+        "人才引进",
+        "政策",
+        "工作许可",
+        "签证",
+        "Q2 2026"
+      ],
+      "price": 4.99,
+      "currency": "USDC",
+      "payment": "x402",
+      "endpoint": "/v1/assets/brief-talent",
+      "format": [
+        "PDF"
+      ],
+      "version": "1.0",
+      "created_time": "2026-08-05",
+      "updated_time": "2026-08-05"
+    },
+    {
       "id": "employment-S001",
       "name": "内蒙古科技大学 2025届毕业生就业质量报告",
       "kind": "industry",
@@ -750,6 +1117,100 @@
       "version": "1.0",
       "created_time": "2026-07-15",
       "updated_time": "2026-07-15"
+    },
+    {
+      "id": "guide-144-hour-visa",
+      "name": "144-Hour Transit Visa Express Guide",
+      "kind": "guide",
+      "domain": [
+        "travel"
+      ],
+      "description": "基于中国144小时过境免签政策（38国适用），提供北京、上海、成都三城6天无签证最优路线规划与通关秘籍",
+      "tags": [
+        "visa",
+        "144-hour transit",
+        "transit",
+        "visa-free",
+        "Beijing",
+        "Shanghai",
+        "Chengdu"
+      ],
+      "price": 0.01,
+      "currency": "USDC",
+      "payment": "x402",
+      "endpoint": "/v1/assets/guide-144-hour-visa",
+      "format": "PDF",
+      "version": "1.0"
+    },
+    {
+      "id": "guide-china-survival",
+      "name": "2026 Digital Survival Handbook for Foreign Visitors to China (Full Edition)",
+      "kind": "guide",
+      "domain": [
+        "travel"
+      ],
+      "description": "完整覆盖支付、交通、住宿、签证、VPN、应急等场景的来华数字生存指南，包含Alipay绑定、DiDi免短信验证、警察局登记中文对话卡等独家实用内容",
+      "tags": [
+        "visiting China",
+        "travel",
+        "digital survival",
+        "Alipay",
+        "DiDi",
+        "2026"
+      ],
+      "price": 0.01,
+      "currency": "USDC",
+      "payment": "x402",
+      "endpoint": "/v1/assets/guide-china-survival",
+      "format": "PDF+JSON+Markdown",
+      "version": "1.0"
+    },
+    {
+      "id": "guide-social-media-registration",
+      "name": "外籍人士中国社交媒体平台注册实操指南",
+      "kind": "guide",
+      "domain": [
+        "travel"
+      ],
+      "description": "小红书、微信、抖音、快手等平台外籍人士注册实操指南：哪些能注册、需要什么验证方式、分平台逐步操作步骤。",
+      "tags": [
+        "社交媒体",
+        "注册",
+        "外籍",
+        "来华",
+        "小红书",
+        "微信"
+      ],
+      "price": 0.01,
+      "currency": "USDC",
+      "payment": "x402",
+      "endpoint": "/v1/assets/guide-social-media-registration",
+      "format": [
+        "PDF"
+      ],
+      "version": "1.0",
+      "created_time": "2026-08-05",
+      "updated_time": "2026-08-05"
+    },
+    {
+      "id": "svc-china-guide",
+      "name": "Foreigners Coming to China Guide",
+      "kind": "service",
+      "domain": [
+        "travel",
+        "china-data"
+      ],
+      "description": "一站式来华指南：签证、支付、交通、住宿、应急，人工撰写并持续更新。",
+      "tags": [
+        "coming to china",
+        "guide"
+      ],
+      "price": 9.99,
+      "currency": "USDC",
+      "payment": "x402",
+      "endpoint": "/v1/assets/svc-china-guide",
+      "format": "Service",
+      "version": "1.0"
     },
     {
       "id": "teaching-C001",
@@ -1630,8 +2091,8 @@
   "discoveries": [],
   "services": [],
   "meta": {
-    "updated_time": "2026-08-07T13:30:00Z",
-    "total_assets": 70,
+    "updated_time": "2026-08-08T00:00:00Z",
+    "total_assets": 89,
     "total_discoveries": 0,
     "total_services": 0
   }
