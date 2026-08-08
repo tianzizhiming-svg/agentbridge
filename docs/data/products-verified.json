@@ -7123,7 +7123,7 @@
       "format": [
         "PDF"
       ],
-      "endpoint": null,
+      "endpoint": "/v1/assets/brief-ai",
       "status": "available",
       "published": "2026-08-05",
       "source_file": "59d63fa2-China AI Industry Quarterly Data Briefing— Q2 2026-2.pdf",
@@ -7182,7 +7182,7 @@
       "format": [
         "PDF"
       ],
-      "endpoint": null,
+      "endpoint": "/v1/assets/brief-new-energy",
       "status": "available",
       "published": "2026-08-05",
       "source_file": "96dd139f-China New Energy Industry Quarterly Data Briefing — Q2 2026-3.pdf",
@@ -7241,7 +7241,7 @@
       "format": [
         "PDF"
       ],
-      "endpoint": null,
+      "endpoint": "/v1/assets/brief-biopharma",
       "status": "available",
       "published": "2026-08-05",
       "source_file": "f260c76a-China Biopharma Industry Quarterly Data Briefing-1.pdf",
@@ -7300,7 +7300,7 @@
       "format": [
         "PDF"
       ],
-      "endpoint": null,
+      "endpoint": "/v1/assets/brief-consumer",
       "status": "available",
       "published": "2026-08-05",
       "source_file": "b54fb768-China Consumer Market Quarterly Data Briefing — Q2 2026-1.pdf",
@@ -7359,7 +7359,7 @@
       "format": [
         "PDF"
       ],
-      "endpoint": null,
+      "endpoint": "/v1/assets/brief-semiconductor",
       "status": "available",
       "published": "2026-08-05",
       "source_file": "26ff8922-China Semiconductor Industry Quarterly Data Briefing — Q2 2026-2.pdf",
@@ -7420,7 +7420,7 @@
       "format": [
         "PDF"
       ],
-      "endpoint": null,
+      "endpoint": "/v1/assets/brief-talent",
       "status": "available",
       "published": "2026-08-05",
       "source_file": "a2b3200c-China Talent Introduction Policy Quarterly Briefin-3.pdf",
@@ -7482,7 +7482,7 @@
       "format": [
         "PDF"
       ],
-      "endpoint": null,
+      "endpoint": "/v1/assets/brief-humanoid",
       "status": "available",
       "published": "2026-08-05",
       "source_file": "cda6a0f0-China Humanoid Robot Industry Quarterly Data Briefing — Q2 2026-1.pdf",
@@ -7541,7 +7541,7 @@
       "format": [
         "PDF"
       ],
-      "endpoint": null,
+      "endpoint": "/v1/assets/brief-battery",
       "status": "available",
       "published": "2026-08-05",
       "source_file": "71ec3777-China Solid-State Battery Industry Quarterly Data Briefing — Q2 2026-2.pdf",
@@ -7602,7 +7602,7 @@
       "format": [
         "PDF"
       ],
-      "endpoint": null,
+      "endpoint": "/v1/assets/brief-solar",
       "status": "available",
       "published": "2026-08-05",
       "source_file": "61c006b9-China Solar PV Industry Quarterly Data Briefing — Q2 2026-3.pdf",
@@ -7663,7 +7663,7 @@
       "format": [
         "PDF"
       ],
-      "endpoint": null,
+      "endpoint": "/v1/assets/brief-av",
       "status": "available",
       "published": "2026-08-05",
       "source_file": "c2ab8471-China Autonomous Driving Industry Quarterly Data Briefing — Q2 2026-1.pdf",
@@ -7724,7 +7724,7 @@
       "format": [
         "PDF"
       ],
-      "endpoint": null,
+      "endpoint": "/v1/assets/brief-av-icv",
       "status": "available",
       "published": "2026-08-05",
       "source_file": "89afaf5e-China Autonomous Driving & Intelligent Connected Vehicle Industry Quarterly Data Briefing — Q2 2026-2.pdf",
@@ -7785,7 +7785,7 @@
       "format": [
         "PDF"
       ],
-      "endpoint": null,
+      "endpoint": "/v1/assets/brief-compliance",
       "status": "available",
       "published": "2026-08-05",
       "source_file": "feceef28-China Foreign Entity Digital Content Compliance Quarterly Briefing — Q2 2026-3.pdf",
@@ -7847,7 +7847,7 @@
       "format": [
         "PDF"
       ],
-      "endpoint": null,
+      "endpoint": "/v1/assets/guide-social-media-registration",
       "status": "available",
       "published": "2026-08-05",
       "source_file": "8fd9c91a-A Practical Guide to Registering on Chinese Social Media Platforms-1.pdf",
