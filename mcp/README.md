@@ -125,3 +125,19 @@ Install dependencies:
 
 ```bash
 pip install -r requirements.txt
+Run MCP server:
+
+python server.py
+
+The server exposes AgentBridge Atlas capabilities through MCP tools.
+
+Available tools:
+
+discover_capabilities
+get_capability_info
+purchase_capability
+
+提交：
+
+```text
+Add MCP local development guide
