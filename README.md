@@ -97,6 +97,32 @@ if res.status_code == 402:
 
 ---
 
+## Agent Integration
+
+AgentBridge Atlas is designed for the emerging agent economy.
+
+AI agents can discover and consume Atlas capabilities through machine-readable interfaces.
+
+Supported integration layers:
+
+- OpenAPI — standard API access
+- x402 — machine-native payments with USDC on Base
+- MCP — agent tool integration
+- Agent discovery metadata — machine-readable identity
+
+Resources:
+
+- Agent discovery:
+  `.well-known/agent.json`
+
+- MCP adapter:
+  `/mcp`
+
+- Claude Desktop example:
+  `/examples/claude_desktop_config.json`
+
+The goal is to make AgentBridge Atlas discoverable and usable by autonomous AI agents and agent frameworks.
+
 ## Status
 
 - ✅ Live API: `https://api.060504.shop`
