@@ -3,199 +3,619 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AgentBridge Atlas — AI Knowledge Marketplace</title>
-    <meta name="description" content="AgentBridge Atlas connects AI agents with China knowledge assets through x402." />
+    <link rel="icon" type="image/svg+xml" href="./logo.svg" />
+    <title>AgentBridge Atlas — China Data &amp; Services</title>
+    <meta name="description" content="AgentBridge Atlas — developer APIs billed via x402 in USDC on Base, and China knowledge assets. No accounts, no subscriptions, no API keys." />
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-            background: #fafafa;
-            color: #111;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #fafbfc;
+            color: #1a2433;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
-        .header {
-            border-bottom: 2px solid #111;
-            padding-bottom: 1rem;
-            margin-bottom: 2rem;
-        }
-        .header h1 {
-            font-size: 2.5rem;
-            margin: 0;
-            font-weight: 700;
-        }
-        .header .tagline {
-            font-size: 1.1rem;
-            color: #555;
-            margin-top: 0.25rem;
-        }
-        .search-box {
-            width: 100%;
-            max-width: 600px;
-            padding: 0.75rem 1rem;
-            font-size: 1rem;
-            border: 2px solid #ccc;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            background: #fff;
-        }
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.25rem;
-        }
-        .card {
-            background: #fff;
-            border: 1px solid #e0e0e0;
-            border-radius: 12px;
-            padding: 1.25rem;
-            cursor: pointer;
-            transition: box-shadow 0.2s;
-        }
-        .card:hover {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        }
-        .card .badge {
-            display: inline-block;
-            font-size: 0.7rem;
-            font-weight: 600;
-            padding: 0.2rem 0.6rem;
-            border-radius: 20px;
-            background: #eee;
-            color: #333;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-        }
-        .card .badge.asset { background: #e3f0ff; color: #0057b3; }
-        .card .badge.discovery { background: #e6f7e6; color: #1a7a1a; }
-        .card h3 {
-            font-size: 1rem;
-            margin: 0 0 0.4rem 0;
-            font-weight: 600;
-        }
-        .card .description {
-            font-size: 0.9rem;
-            color: #555;
-            margin: 0 0 0.6rem 0;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        .card .meta {
-            font-size: 0.8rem;
-            color: #888;
+        a { color: inherit; text-decoration: none; }
+
+        /* ---------- Topbar ---------- */
+        .topbar {
+            background: #0d2d44;
+            padding: 0 32px;
+            height: 60px;
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid #f0f0f0;
-            padding-top: 0.6rem;
-            margin-top: 0.4rem;
+            position: sticky;
+            top: 0;
+            z-index: 50;
         }
-        .card .price {
-            font-weight: 700;
-            font-size: 0.95rem;
-            color: #111;
+        .brand { display: flex; align-items: center; gap: 12px; }
+        .brand .logo { width: 26px; height: 26px; }
+        .brand .name { color: #fff; font-size: 17px; font-weight: 650; letter-spacing: -0.01em; }
+        .brand .name span { color: #7fb4d8; font-weight: 500; margin-left: 6px; font-size: 13px; }
+        .topnav { display: flex; align-items: center; gap: 8px; }
+        .topnav a {
+            color: rgba(255,255,255,0.72); font-size: 13.5px; font-weight: 500;
+            padding: 7px 14px; border-radius: 20px; transition: 0.15s;
         }
-        .card .domain-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.3rem;
-            margin-top: 0.4rem;
+        .topnav a:hover { color: #fff; background: rgba(255,255,255,0.1); }
+        .topnav a.active { color: #fff; background: rgba(255,255,255,0.14); }
+
+        /* ---------- Hero ---------- */
+        .hero-wrap {
+            background: linear-gradient(155deg, #0d2d44 0%, #0a5e8c 100%);
+            padding: 72px 32px 56px;
         }
-        .card .domain-tags span {
-            font-size: 0.65rem;
-            background: #f0f0f0;
-            padding: 0.15rem 0.5rem;
-            border-radius: 12px;
-            color: #555;
+        .hero { max-width: 1100px; margin: 0 auto; }
+        .hero .eyebrow {
+            font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase;
+            color: #7fb4d8; font-weight: 600; margin-bottom: 14px;
         }
+        .hero h1 {
+            font-size: 44px; font-weight: 700; color: #fff;
+            letter-spacing: -0.025em; line-height: 1.14; margin-bottom: 16px;
+        }
+        .hero .tagline { font-size: 18px; color: rgba(255,255,255,0.8); font-weight: 400; max-width: 720px; line-height: 1.5; }
+        .hero .desc {
+            font-size: 14.5px; color: rgba(255,255,255,0.6); max-width: 700px;
+            margin-top: 14px; line-height: 1.75;
+        }
+        .hero .desc strong { color: rgba(255,255,255,0.92); }
+        .hero .badge-row { display: flex; flex-wrap: wrap; gap: 10px 14px; margin-top: 24px; }
+        .hero .badge-row .badge {
+            font-size: 12.5px; background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2); padding: 4px 16px; border-radius: 20px;
+            color: rgba(255,255,255,0.85);
+        }
+        .hero .badge-row .badge.green {
+            background: rgba(34,197,94,0.16); border-color: rgba(34,197,94,0.35); color: #86efac;
+        }
+
+        /* ---------- Search & Filter ---------- */
+        .search-wrap { padding: 0 32px; margin-top: -24px; position: relative; z-index: 10; }
+        .search-box {
+            max-width: 720px; margin: 0 auto;
+            background: #fff; border: 1px solid #dde3ea; border-radius: 14px;
+            box-shadow: 0 8px 28px rgba(13,45,68,0.12);
+            padding: 14px 20px; display: flex; align-items: center; gap: 12px;
+        }
+        .search-box .s-icon { font-size: 18px; color: #0a5e8c; }
+        .search-box input {
+            flex: 1; border: none; outline: none; font-size: 15px; color: #1a2433; background: transparent;
+        }
+        .search-box input::placeholder { color: #9aa5b3; }
+        .filters { max-width: 1100px; margin: 20px auto 0; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 0 32px; }
+        .filters .chip {
+            font-size: 12.5px; font-weight: 600; color: #4a5568; background: #fff;
+            border: 1px solid #dde3ea; padding: 5px 14px; border-radius: 20px; cursor: pointer; transition: 0.15s;
+        }
+        .filters .chip:hover { border-color: #0a5e8c; color: #0a5e8c; }
+        .filters .chip.active { background: #0a5e8c; color: #fff; border-color: #0a5e8c; }
+
+        /* ---------- Body ---------- */
+        .body-wrap { padding: 36px 32px 72px; }
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        /* ---------- Section headers ---------- */
+        .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
+        .sec-head h2 { font-size: 19px; font-weight: 700; color: #1a2433; letter-spacing: -0.01em; }
+        .sec-head .meta { font-size: 12.5px; color: #6b7686; }
+        .sec-head .meta strong { color: #1a2433; }
+
+        /* ---------- Home list rows ---------- */
+        .home-list { display: flex; flex-direction: column; gap: 10px; }
+        .home-row {
+            background: #fff; border: 1px solid #e6eaef; border-radius: 10px;
+            padding: 13px 16px; display: flex; align-items: center; gap: 14px; transition: 0.15s;
+            cursor: pointer;
+        }
+        .home-row:hover { border-color: #c9d6e2; box-shadow: 0 3px 12px rgba(13,45,68,0.05); }
+        .home-row .hr-icon { font-size: 18px; width: 24px; text-align: center; flex-shrink: 0; }
+        .home-row .hr-main { flex: 1; min-width: 0; }
+        .home-row .hr-name { font-size: 14px; font-weight: 600; color: #1a2433; }
+        .home-row .hr-name .hr-tag {
+            display: inline-block; font-size: 10.5px; font-weight: 600; vertical-align: middle;
+            margin-left: 8px; padding: 1px 8px; border-radius: 10px;
+            background: #e8f3fb; color: #0a5e8c;
+        }
+        .home-row .hr-name .hr-tag.free { background: #c03a52; color: #fff; }
+        .home-row .hr-name .hr-tag.promo { background: #fff3cd; color: #8a6d1a; }
+        .home-row .hr-meta { font-size: 12px; color: #8a94a3; margin-top: 1px; }
+        .home-row .hr-foot { font-size: 11.5px; color: #a4aeba; margin-top: 3px; }
+        .home-row .hr-cta {
+            font-size: 12.5px; font-weight: 600; color: #0a5e8c; background: #e8f3fb;
+            padding: 7px 16px; border-radius: 18px; white-space: nowrap; flex-shrink: 0; transition: 0.15s;
+            border: none; cursor: pointer;
+        }
+        .home-row .hr-cta:hover { background: #0a5e8c; color: #fff; }
+        .home-row .hr-cta.dl { background: #fff; border: 1px solid #d9a8b1; color: #7a2233; }
+        .home-row .hr-cta.dl:hover { background: #c03a52; color: #fff; border-color: #c03a52; }
+
+        /* ---------- Free samples strip ---------- */
+        .free-block { margin-bottom: 40px; }
+        .free-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; }
+        .free-card {
+            background: linear-gradient(135deg, #fdf6f7 0%, #fbf0f2 100%);
+            border: 1px dashed #e2b6bd; border-radius: 12px;
+            padding: 16px 18px; display: flex; align-items: center; gap: 14px;
+        }
+        .free-card .fc-icon { font-size: 24px; flex-shrink: 0; }
+        .free-card .fc-main { flex: 1; min-width: 0; }
+        .free-card .fc-name { font-size: 13.5px; font-weight: 650; color: #7a2233; }
+        .free-card .fc-desc { font-size: 12px; color: #8a5560; margin-top: 2px; }
+        .free-card .fc-dl {
+            display: inline-block; flex-shrink: 0; background: #fff; border: 1px solid #d9a8b1; color: #7a2233;
+            font-size: 12.5px; font-weight: 600; padding: 7px 16px; border-radius: 18px; transition: 0.15s;
+        }
+        .free-card .fc-dl:hover { background: #c03a52; color: #fff; border-color: #c03a52; }
+
+        /* ---------- Promo strip ---------- */
+        .promo-block { margin-bottom: 40px; }
+        .promo-row { border-color: #f0e2b8; background: linear-gradient(135deg, #fffdf4 0%, #fff9e8 100%); }
+        .promo-row:hover { border-color: #e2c97a; }
+
+        /* ---------- Main list ---------- */
+        .list-block { margin-bottom: 20px; }
+
+        /* ---------- Modal ---------- */
+        .modal-mask {
+            position: fixed; inset: 0; background: rgba(13,45,68,0.55);
+            display: none; align-items: center; justify-content: center; z-index: 100; padding: 20px;
+        }
+        .modal-mask.open { display: flex; }
         .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.4);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
+            background: #fff; border-radius: 16px; max-width: 760px; width: 100%;
+            max-height: 90vh; overflow-y: auto; padding: 26px 30px;
         }
-        .modal.active { display: flex; }
-        .modal-content {
-            background: #fff;
-            border-radius: 16px;
-            padding: 2rem;
-            max-width: 600px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-            position: relative;
+        .modal .m-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 8px; }
+        .modal .m-name { font-size: 20px; font-weight: 700; color: #1a2433; letter-spacing: -0.01em; }
+        .modal .m-kind { display: inline-block; font-size: 11px; font-weight: 600; margin-top: 8px; padding: 2px 10px; border-radius: 12px; background: #e8f3fb; color: #0a5e8c; }
+        .modal .m-close {
+            background: #f1f4f7; border: none; border-radius: 50%; width: 32px; height: 32px;
+            font-size: 15px; cursor: pointer; color: #5b6675; flex-shrink: 0;
         }
-        .modal-close {
-            position: absolute;
-            top: 1rem; right: 1.5rem;
-            font-size: 1.5rem;
-            cursor: pointer;
-            background: none;
-            border: none;
-            color: #888;
+        .modal .m-close:hover { background: #e3e8ee; }
+        .modal .m-meta { font-size: 12.5px; color: #6b7686; margin: 10px 0 14px; }
+        .modal .m-desc { font-size: 14px; color: #3d4855; line-height: 1.7; }
+        .modal .m-preview { margin: 18px 0; }
+        .modal .m-preview iframe { width: 100%; height: 460px; border: 1px solid #e6eaef; border-radius: 10px; background: #fff; }
+        .modal .m-preview-note { font-size: 12.5px; color: #8a94a3; margin-top: 8px; }
+        .modal .m-buyrow { display: flex; align-items: center; gap: 14px; margin-top: 20px; flex-wrap: wrap; }
+        .modal .m-buy {
+            background: #0a5e8c; color: #fff; border: none; border-radius: 22px;
+            font-size: 15px; font-weight: 650; padding: 12px 34px; cursor: pointer; transition: 0.15s;
         }
-        .modal-close:hover { color: #111; }
-        .btn-pay {
-            background: #111;
-            color: #fff;
-            border: none;
-            padding: 0.75rem 2rem;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 1rem;
+        .modal .m-buy:hover { background: #0d6ca0; }
+        .modal .m-buy.free { background: #c03a52; }
+        .modal .m-buy.free:hover { background: #a82f45; }
+        .modal .m-price { font-size: 16px; font-weight: 700; color: #0a5e8c; }
+        .modal .m-price .free-txt { color: #c03a52; }
+        .modal .m-payguide {
+            margin-top: 18px; border-top: 1px solid #eef2f5; padding-top: 16px;
+            background: #f8fafc; border-radius: 10px; padding: 16px 18px;
         }
-        .btn-pay:hover { background: #333; }
-        .footer {
-            margin-top: 3rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid #e0e0e0;
-            font-size: 0.8rem;
-            color: #aaa;
-            text-align: center;
+        .modal .m-payguide h4 { font-size: 14px; font-weight: 700; color: #1a2433; margin-bottom: 8px; }
+        .modal .m-payguide ol { margin-left: 20px; }
+        .modal .m-payguide li { font-size: 13px; color: #4a5568; margin-bottom: 6px; }
+        .modal .m-payguide code {
+            background: #0d2d44; color: #d6ecff; padding: 1px 7px; border-radius: 4px; font-size: 12px;
         }
-        .catalog-embed { display: none; }
+        .modal .m-goto {
+            display: inline-block; margin-top: 12px; background: #0a5e8c; color: #fff;
+            font-size: 13.5px; font-weight: 600; padding: 10px 22px; border-radius: 20px; transition: 0.15s;
+        }
+        .modal .m-goto:hover { background: #0d6ca0; }
+
+        /* ---------- Footer ---------- */
+        .footer { text-align: center; font-size: 13px; color: #8a94a3; border-top: 1px solid #e6eaef; padding-top: 24px; margin-top: 44px; }
+        .footer a { color: #0a5e8c; }
+        .footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .topbar { padding: 0 16px; }
+            .hero-wrap { padding: 52px 16px 48px; }
+            .hero h1 { font-size: 30px; }
+            .hero .tagline { font-size: 15px; }
+            .search-wrap, .filters, .body-wrap { padding-left: 16px; padding-right: 16px; }
+            .free-grid { grid-template-columns: 1fr; }
+            .home-row { flex-wrap: wrap; row-gap: 6px; }
+            .sec-head { flex-direction: column; align-items: flex-start; gap: 4px; }
+            .modal { padding: 20px; }
+            .modal .m-preview iframe { height: 340px; }
+        }
     </style>
 </head>
 <body>
 
-<div class="header">
-    <h1>⚡ AgentBridge Atlas</h1>
-    <div class="tagline">AI knowledge marketplace powered by AgentBridge.</div>
-    <div class="tagline" style="font-size:0.9rem;color:#777;margin-top:0.1rem;">
-        Discover, access, and purchase China knowledge assets through x402.
+<div class="topbar">
+    <div class="brand">
+        <img class="logo" src="./logo.svg" alt="AgentBridge" />
+        <div class="name">AgentBridge<span>Atlas</span></div>
+    </div>
+    <div class="topnav">
+        <a href="./index.html" class="active">Store</a>
+        <a href="./pages/payment-guide.html">How to Pay</a>
+        <a href="./pages/trust.html">Trust</a>
+        <a href="./openapi.json" target="_blank" rel="noopener">API</a>
     </div>
 </div>
 
-<input class="search-box" type="text" id="searchInput" placeholder="🔍 Search assets, topics, or ask a question..." />
+<div class="hero-wrap">
+    <div class="hero">
+        <div class="eyebrow">Machine Commerce · x402 · USDC on Base</div>
+        <h1>China data &amp; services, bought by machines or people.</h1>
+        <div class="tagline">Pick an item to preview it free, then pay per item in USDC on Base.</div>
+        <div class="desc">
+            <strong>No accounts. No subscriptions. No API keys.</strong> Tap an item, read the free preview,
+            then settle the payment and get the full report, guide, or API result instantly.
+        </div>
+        <div class="badge-row">
+            <span class="badge green" id="totalBadge">89 live assets</span>
+            <span class="badge">APIs · Reports · Guides · Services</span>
+            <span class="badge">eip155:8453 (Base)</span>
+        </div>
+    </div>
+</div>
 
-<div id="cardGrid" class="card-grid"></div>
+<div class="search-wrap">
+    <div class="search-box">
+        <span class="s-icon">🔍</span>
+        <input id="searchInput" type="text" placeholder="Search reports, guides, APIs, services, topics…" />
+    </div>
+</div>
+<div class="filters" id="filters">
+    <button class="chip active" data-kind="all">All</button>
+</div>
+
+<div class="body-wrap">
+    <div class="container">
+
+        <!-- Free samples -->
+        <div class="free-block">
+            <div class="sec-head">
+                <div>
+                    <h2>🎁 Free Samples</h2>
+                    <div class="meta">Full-length samples, free to download — no account needed.</div>
+                </div>
+            </div>
+            <div class="free-grid" id="freeGrid"></div>
+        </div>
+
+        <!-- Promotions -->
+        <div class="promo-block">
+            <div class="sec-head">
+                <div>
+                    <h2>🏷️ Promotions</h2>
+                    <div class="meta">Priced under 1 USDC — perfect for trying the machine-commerce flow.</div>
+                </div>
+            </div>
+            <div class="home-list" id="promoList"></div>
+        </div>
+
+        <!-- Main list -->
+        <div class="list-block">
+            <div class="sec-head">
+                <div>
+                    <h2>📚 All Assets</h2>
+                    <div class="meta">Newest first · <strong id="listCount">0</strong> items</div>
+                </div>
+            </div>
+            <div class="home-list" id="mainList"></div>
+        </div>
+
+    </div>
+</div>
 
 <div class="footer">
-    <span>AgentBridge Atlas &middot; </span>
-    <span>catalog: <a href="data/catalog.json" target="_blank">data/catalog.json</a></span>
-    <span style="margin:0 0.5rem">&middot;</span>
-    <span>API: <a href="https://api.060504.shop" target="_blank">api.060504.shop</a></span>
+    <div>AgentBridge Atlas · powered by <a href="./openapi.json" target="_blank">AgentBridge API</a></div>
+    <div style="margin-top:6px;"><a href="https://github.com/tianzizhiming-svg/agentbridge" target="_blank">GitHub</a> · <a href="./pages/payment-guide.html">How to Pay</a> · <a href="./pages/trust.html">Trust</a></div>
 </div>
 
-<!-- Modal -->
-<div class="modal" id="detailModal">
-    <div class="modal-content">
-        <button class="modal-close" id="modalClose">&times;</button>
-        <div id="modalBody"></div>
+<!-- Detail modal -->
+<div class="modal-mask" id="modalMask">
+    <div class="modal" id="modal">
+        <div class="m-top">
+            <div>
+                <div class="m-name" id="mName"></div>
+                <span class="m-kind" id="mKind"></span>
+            </div>
+            <button class="m-close" id="mClose">✕</button>
+        </div>
+        <div class="m-meta" id="mMeta"></div>
+        <div class="m-desc" id="mDesc"></div>
+        <div class="m-preview" id="mPreview"></div>
+        <div class="m-buyrow">
+            <button class="m-buy" id="mBuy">Buy</button>
+            <span class="m-price" id="mPrice"></span>
+        </div>
+        <div class="m-payguide" id="mPayguide" style="display:none;">
+            <h4>How to pay with x402</h4>
+            <ol>
+                <li>Call <code id="pgEndpoint">the endpoint</code> — the server answers <code>402 Payment Required</code> with an x402 challenge.</li>
+                <li>Sign it with your Base wallet (Coinbase Wallet, MetaMask + Base, or any AI-agent signer).</li>
+                <li>Pay <strong>USDC on Base</strong>, and the full content is delivered instantly.</li>
+            </ol>
+            <a class="m-goto" id="mGoto" href="./pages/payment-guide.html" target="_blank" rel="noopener">Full payment guide →</a>
+        </div>
     </div>
 </div>
 
-<script src="js/render.js"></script>
+<script>
+(function() {
+    'use strict';
+
+    var KIND_ICON = {
+        'report': '📄', 'guide': '🧭', 'api': '🛠️', 'service': '🧑‍💼',
+        'monitor': '📋', 'notes': '📈', 'free': '🎁', 'topic': '📈', 'industry': '📊'
+    };
+    var KIND_LABEL = {
+        'report': 'Report', 'guide': 'Guide', 'api': 'API',
+        'service': 'Service', 'monitor': 'Monitor', 'notes': 'Notes',
+        'free': 'Free Sample', 'topic': 'Topic', 'industry': 'Report'
+    };
+
+    function priceText(price) {
+        if (price == null) return '—';
+        const n = Number(price);
+        if (n === 0) return 'FREE';
+        if (n < 0.01) return '< 0.01 USDC';
+        return n.toFixed(2) + ' USDC';
+    }
+
+    function fmtDate(iso) {
+        if (!iso) return '';
+        const d = new Date(iso);
+        if (isNaN(d.getTime())) return '';
+        const y = d.getUTCFullYear();
+        const m = String(d.getUTCMonth() + 1).padStart(2, '0');
+        const day = String(d.getUTCDate()).padStart(2, '0');
+        return y + '-' + m + '-' + day;
+    }
+
+    function isFree(a) { return Number(a.price) === 0; }
+    function isPromo(a) { const n = Number(a.price); return !isFree(a) && n > 0 && n < 1; }
+    function sortNewest(list) {
+        return list.slice().sort(function(a, b) {
+            return (b.listed_at || b.published || '').localeCompare(a.listed_at || a.published || '');
+        });
+    }
+    function fileHref(f) {
+        const s = String(f);
+        if (!s) return '';
+        if (s.startsWith('samples/') || s.startsWith('free/')) return s;
+        return 'samples/' + s;
+    }
+
+    // ---- modal state ----
+    var state = { assets: [], query: '', kind: 'all', current: null };
+
+    function openAssetModal(a) {
+        state.current = a;
+        const kind = a.kind || a.type || 'Asset';
+        const name = a.name_en || a.name;
+        const desc = a.description_en || a.description || '';
+        document.getElementById('mName').textContent = name;
+        document.getElementById('mKind').textContent = KIND_LABEL[kind] || kind;
+        document.getElementById('mDesc').textContent = desc;
+
+        const meta = [];
+        const listed = fmtDate(a.listed_at || a.published);
+        if (listed) meta.push('Listed ' + listed);
+        const dom = (a.domain_labels_en || a.domain || []).join(', ');
+        if (dom) meta.push(dom);
+        const tagsEn = (a.tags_en || a.tags || []).slice(0, 4);
+        if (tagsEn.length) meta.push(tagsEn.join(' · '));
+        document.getElementById('mMeta').textContent = meta.join('  ·  ');
+
+        // 30% free preview
+        const pvEl = document.getElementById('mPreview');
+        const previewFile = (a.preview_files || [])[0] || '';
+        if (previewFile) {
+            pvEl.innerHTML =
+                '<iframe src="' + fileHref(previewFile) + '" title="Free 30% preview"></iframe>' +
+                '<div class="m-preview-note">This is the first 30% of the document — free to read. The rest unlocks after payment.</div>';
+        } else {
+            pvEl.innerHTML = '';
+        }
+
+        // price + buy
+        const priceEl = document.getElementById('mPrice');
+        const buyEl = document.getElementById('mBuy');
+        const isF = isFree(a);
+        if (isF) {
+            priceEl.innerHTML = '<span class="free-txt">FREE</span>';
+            buyEl.textContent = 'Download';
+            buyEl.className = 'm-buy free';
+        } else {
+            priceEl.textContent = priceText(a.price);
+            buyEl.textContent = 'Buy';
+            buyEl.className = 'm-buy';
+        }
+
+        const payguideEl = document.getElementById('mPayguide');
+        payguideEl.style.display = 'none';
+        document.getElementById('pgEndpoint').textContent = a.endpoint || ('/v1/assets/' + a.id);
+
+        // goto link
+        const params = new URLSearchParams({
+            id: a.id,
+            name: name,
+            price: String(a.price),
+            currency: a.currency || 'USDC',
+            format: (a.format || 'PDF').split('+').join(','),
+            kind: kind,
+            delivery: a.delivery || 'auto',
+            description: desc
+        });
+        document.getElementById('mGoto').href = './pages/payment-guide.html?' + params.toString();
+
+        document.getElementById('modalMask').classList.add('open');
+    }
+
+    function closeModal() {
+        document.getElementById('modalMask').classList.remove('open');
+        state.current = null;
+    }
+
+    // ---- row rendering ----
+    function tagHtml(a) {
+        if (isFree(a)) return '<span class="hr-tag free">FREE</span>';
+        if (isPromo(a)) return '<span class="hr-tag promo">PROMO</span>';
+        const k = a.kind || a.type || 'Asset';
+        return '<span class="hr-tag">' + (KIND_LABEL[k] || k) + '</span>';
+    }
+
+    function rowHtml(p, isPromoRow) {
+        const name = p.name_en || p.name;
+        const desc = p.description_en || p.description || '';
+        const icon = KIND_ICON[p.kind || p.type] || '📄';
+        const listed = fmtDate(p.listed_at || p.published);
+        const foot = [];
+        if (listed) foot.push('Listed ' + listed);
+        const tagsEn = (p.tags_en || p.tags || []).slice(0, 3);
+        if (tagsEn.length) foot.push(tagsEn.join(' · '));
+        const cls = isPromoRow ? 'home-row promo-row' : 'home-row';
+        return `
+            <div class="${cls}" data-id="${p.id}">
+                <div class="hr-icon">${icon}</div>
+                <div class="hr-main">
+                    <div class="hr-name">${name}${tagHtml(p)}</div>
+                    <div class="hr-meta">${desc.length > 110 ? desc.slice(0, 110) + '…' : desc}</div>
+                    ${foot.length ? `<div class="hr-foot">${foot.join(' · ')}</div>` : ''}
+                </div>
+            </div>`;
+    }
+
+    function freeCardHtml(p) {
+        const name = p.name_en || p.name;
+        const desc = p.description_en || p.description || '';
+        const icon = KIND_ICON[p.kind || p.type] || '🎁';
+        const preview = (p.preview_files || [])[0] || '';
+        const firstFile = (p.files || [])[0] || '';
+        const dl = preview || firstFile;
+        return `
+            <div class="free-card">
+                <div class="fc-icon">${icon}</div>
+                <div class="fc-main">
+                    <div class="fc-name">${name}</div>
+                    <div class="fc-desc">${desc.length > 70 ? desc.slice(0, 70) + '…' : desc}</div>
+                </div>
+                ${dl ? `<a class="fc-dl" href="${fileHref(dl)}" target="_blank" rel="noopener">Download</a>` : ''}
+            </div>`;
+    }
+
+    function render() {
+        const q = (state.query || '').toLowerCase();
+        document.querySelectorAll('#filters .chip').forEach(c => {
+            c.classList.toggle('active', c.dataset.kind === state.kind);
+        });
+
+        const matches = (a) => {
+            if (state.kind !== 'all' && (a.kind || a.type) !== state.kind) return false;
+            if (!q) return true;
+            return [a.name_en, a.name, a.id, a.description_en, a.description, (a.tags_en || a.tags || []).join(' '), (a.domain || []).join(' ')]
+                .join(' ').toLowerCase().includes(q);
+        };
+
+        const filtered = state.assets.filter(matches);
+
+        // free block
+        const free = sortNewest(filtered.filter(isFree));
+        document.getElementById('freeGrid').innerHTML =
+            free.map(freeCardHtml).join('') ||
+            '<div class="free-card"><div class="fc-main"><div class="fc-name">No free samples match.</div></div></div>';
+
+        // promotions
+        const promo = sortNewest(filtered.filter(isPromo));
+        document.getElementById('promoList').innerHTML =
+            promo.map(p => rowHtml(p, true)).join('') ||
+            '<div class="home-row" style="cursor:default;"><div class="hr-main"><div class="hr-name">No promotions match.</div></div></div>';
+
+        // main list: everything else, newest first
+        const main = sortNewest(filtered.filter(a => !isFree(a) && !isPromo(a)));
+        document.getElementById('listCount').textContent = main.length;
+        document.getElementById('mainList').innerHTML =
+            main.map(p => rowHtml(p, false)).join('') ||
+            '<div class="home-row" style="cursor:default;"><div class="hr-main"><div class="hr-name">No items match.</div></div></div>';
+
+        bindRows();
+    }
+
+    function bindRows() {
+        document.querySelectorAll('.home-row[data-id]').forEach(row => {
+            row.addEventListener('click', function() {
+                const a = state.assets.find(x => x.id === row.dataset.id);
+                if (a) openAssetModal(a);
+            });
+        });
+    }
+
+    // ---- kind filters ----
+    function buildKindFilters() {
+        const present = {};
+        state.assets.forEach(a => { const k = a.kind || a.type; if (k) present[k] = true; });
+        const order = ['api', 'report', 'guide', 'service', 'topic'];
+        let html = '<button class="chip active" data-kind="all">All</button>';
+        order.forEach(k => {
+            if (present[k]) {
+                html += `<button class="chip" data-kind="${k}">${KIND_ICON[k] || '📄'} ${KIND_LABEL[k] || k}</button>`;
+            }
+        });
+        const filtersEl = document.getElementById('filters');
+        filtersEl.innerHTML = html;
+        filtersEl.querySelectorAll('.chip').forEach(c => {
+            c.addEventListener('click', () => { state.kind = c.dataset.kind; render(); });
+        });
+    }
+
+    // ---- modal close handlers ----
+    document.getElementById('mClose').addEventListener('click', closeModal);
+    document.getElementById('modalMask').addEventListener('click', (e) => {
+        if (e.target === e.currentTarget) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+    });
+
+    // Buy -> reveal price + pay guide (or download for free items)
+    document.getElementById('mBuy').addEventListener('click', function() {
+        const a = state.current;
+        if (!a) return;
+        if (isFree(a)) {
+            const preview = (a.preview_files || [])[0] || '';
+            const firstFile = (a.files || [])[0] || '';
+            const dl = preview || firstFile;
+            if (dl) window.open(fileHref(dl), '_blank', 'noopener');
+            return;
+        }
+        const pg = document.getElementById('mPayguide');
+        const shown = pg.style.display === 'block';
+        pg.style.display = shown ? 'none' : 'block';
+    });
+
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+        state.query = e.target.value;
+        render();
+    });
+
+    function load() {
+        fetch('./data/catalog.json')
+            .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+            .then(catalog => {
+                state.assets = (catalog.assets || []).filter(a => a.status !== 'coming-soon');
+                buildKindFilters();
+                document.getElementById('totalBadge').textContent = state.assets.length + ' live assets';
+                render();
+            })
+            .catch(err => {
+                document.getElementById('mainList').innerHTML =
+                    '<div class="home-row" style="cursor:default;"><div class="hr-main"><div class="hr-name">catalog.json unavailable (' + err + ')</div></div></div>';
+            });
+    }
+
+    load();
+})();
+</script>
+
 </body>
 </html>
