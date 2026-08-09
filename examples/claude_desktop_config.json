@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "agentbridge-atlas": {
+      "command": "python",
+      "args": [
+        "mcp/server.py"
+      ]
+    }
+  }
+}
