@@ -148,6 +148,7 @@
             font-size: 12.5px; font-weight: 600; padding: 7px 16px; border-radius: 18px; transition: 0.15s;
         }
         .free-card .fc-dl:hover { background: #c03a52; color: #fff; border-color: #c03a52; }
+        .free-card .fc-dls { display: flex; flex-direction: column; gap: 6px; flex-shrink: 0; }
 
         /* ---------- Promo strip ---------- */
         .promo-block { margin-bottom: 40px; }
@@ -179,6 +180,24 @@
         .modal .m-desc { font-size: 14px; color: #3d4855; line-height: 1.7; }
         .modal .m-preview { margin: 18px 0; }
         .modal .m-preview iframe { width: 100%; height: 460px; border: 1px solid #e6eaef; border-radius: 10px; background: #fff; }
+        .modal .m-filelist { border: 1px solid #e6eaef; border-radius: 10px; overflow: hidden; }
+        .modal .m-file-row {
+            display: flex; align-items: center; justify-content: space-between; gap: 12px;
+            padding: 11px 14px; font-size: 13.5px; border-bottom: 1px solid #eef2f5;
+        }
+        .modal .m-file-row:last-child { border-bottom: none; }
+        .modal .m-file-row:nth-child(odd) { background: #fafbfc; }
+        .modal .m-file-link { color: #0a5e8c; font-weight: 600; text-decoration: none; }
+        .modal .m-file-link:hover { text-decoration: underline; }
+        .modal .m-file-dl {
+            color: #fff; background: #0a5e8c; border-radius: 14px; padding: 4px 12px;
+            font-size: 12px; font-weight: 600; text-decoration: none; white-space: nowrap;
+        }
+        .modal .m-file-dl:hover { background: #0d6ca0; }
+        .modal .m-nopreview {
+            border: 1px dashed #cfd7df; border-radius: 10px; padding: 22px 16px;
+            text-align: center; font-size: 13.5px; color: #6b7686; background: #fafbfc;
+        }
         .modal .m-preview-note { font-size: 12.5px; color: #8a94a3; margin-top: 8px; }
         .modal .m-buyrow { display: flex; align-items: center; gap: 14px; margin-top: 20px; flex-wrap: wrap; }
         .modal .m-buy {
@@ -407,15 +426,29 @@
         if (tagsEn.length) meta.push(tagsEn.join(' · '));
         document.getElementById('mMeta').textContent = meta.join('  ·  ');
 
-        // 30% free preview
+        // preview area: preview_files if present, else all files (free samples expose the full set)
         const pvEl = document.getElementById('mPreview');
-        const previewFile = (a.preview_files || [])[0] || '';
-        if (previewFile) {
-            pvEl.innerHTML =
-                '<iframe src="' + fileHref(previewFile) + '" title="Free 30% preview"></iframe>' +
-                '<div class="m-preview-note">This is the first 30% of the document — free to read. The rest unlocks after payment.</div>';
+        const previewFiles = (a.preview_files || []).filter(Boolean);
+        const allFiles = (a.files || []).filter(Boolean);
+        const pvItems = previewFiles.length ? previewFiles : allFiles;
+        if (pvItems.length) {
+            const note = previewFiles.length
+                ? 'This is the first 30% of the document — free to read. The rest unlocks after payment.'
+                : 'This item is a free sample — every part is available below.';
+            const rows = pvItems.map((f, i) => {
+                const fn = String(f).split('/').pop() || ('Part ' + (i + 1));
+                const label = previewFiles.length ? fn : 'Part ' + (i + 1);
+                return '<div class="m-file-row">' +
+                    '<a class="m-file-link" href="' + fileHref(f) + '" target="_blank" rel="noopener">' +
+                    label + '</a>' +
+                    '<a class="m-file-dl" href="' + fileHref(f) + '" download>Download</a>' +
+                    '</div>';
+            }).join('');
+            pvEl.innerHTML = '<div class="m-filelist">' + rows + '</div>' +
+                '<div class="m-preview-note">' + note + '</div>';
         } else {
-            pvEl.innerHTML = '';
+            pvEl.innerHTML =
+                '<div class="m-nopreview">30% preview coming soon. Pay with x402 and the full document is delivered instantly.</div>';
         }
 
         // price + buy
@@ -490,9 +523,14 @@
         const name = p.name_en || p.name;
         const desc = p.description_en || p.description || '';
         const icon = KIND_ICON[p.kind || p.type] || '🎁';
-        const preview = (p.preview_files || [])[0] || '';
-        const firstFile = (p.files || [])[0] || '';
-        const dl = preview || firstFile;
+        const preview = (p.preview_files || []).filter(Boolean);
+        const allFiles = (p.files || []).filter(Boolean);
+        const items = preview.concat(allFiles);
+        const dls = items.length
+            ? items.map(function(f) {
+                  return '<a class="fc-dl" href="' + fileHref(f) + '" target="_blank" rel="noopener">Download</a>';
+              }).join('')
+            : '';
         return `
             <div class="free-card">
                 <div class="fc-icon">${icon}</div>
@@ -500,7 +538,7 @@
                     <div class="fc-name">${name}</div>
                     <div class="fc-desc">${desc.length > 70 ? desc.slice(0, 70) + '…' : desc}</div>
                 </div>
-                ${dl ? `<a class="fc-dl" href="${fileHref(dl)}" target="_blank" rel="noopener">Download</a>` : ''}
+                <div class="fc-dls">${dls}</div>
             </div>`;
     }
 
@@ -582,10 +620,16 @@
         const a = state.current;
         if (!a) return;
         if (isFree(a)) {
-            const preview = (a.preview_files || [])[0] || '';
-            const firstFile = (a.files || [])[0] || '';
-            const dl = preview || firstFile;
-            if (dl) window.open(fileHref(dl), '_blank', 'noopener');
+            const preview = (a.preview_files || []).filter(Boolean);
+            const firstFile = (a.files || []).filter(Boolean);
+            const dl = preview.concat(firstFile);
+            if (dl.length) {
+                const url = fileHref(dl[0]);
+                if (dl.length === 1) window.open(url, '_blank', 'noopener');
+                else {
+                    dl.forEach(function(f) { window.open(fileHref(f), '_blank', 'noopener'); });
+                }
+            }
             return;
         }
         const pg = document.getElementById('mPayguide');
