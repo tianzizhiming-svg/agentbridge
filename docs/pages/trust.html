@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="../logo.svg" />
+    <title>About &amp; Trust — AgentBridge Atlas</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #fafbfc;
+            color: #1a2433;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color: inherit; text-decoration: none; }
+
+        .topbar {
+            background: #0d2d44;
+            padding: 0 32px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        .brand { display: flex; align-items: center; gap: 12px; }
+        .brand .logo { width: 26px; height: 26px; }
+        .brand .name { color: #fff; font-size: 17px; font-weight: 650; letter-spacing: -0.01em; }
+        .brand .name span { color: #7fb4d8; font-weight: 500; margin-left: 6px; font-size: 13px; }
+        .topnav { display: flex; align-items: center; gap: 8px; }
+        .topnav a {
+            color: rgba(255,255,255,0.72); font-size: 13.5px; font-weight: 500;
+            padding: 7px 14px; border-radius: 20px; transition: 0.15s;
+        }
+        .topnav a:hover { color: #fff; background: rgba(255,255,255,0.1); }
+        .topnav a.active { color: #fff; background: rgba(255,255,255,0.14); }
+
+        .page-hero {
+            background: linear-gradient(155deg, #0d2d44 0%, #0a5e8c 100%);
+            padding: 56px 32px 48px;
+        }
+        .page-hero-inner { max-width: 820px; margin: 0 auto; }
+        .page-hero h1 { font-size: 36px; font-weight: 700; color: #fff; letter-spacing: -0.02em; margin-bottom: 10px; }
+        .page-hero .sub { font-size: 16px; color: rgba(255,255,255,0.75); }
+
+        .body-wrap { padding: 36px 32px 72px; }
+        .container { max-width: 820px; margin: 0 auto; }
+
+        .section {
+            background: #fff;
+            border: 1px solid #e6eaef;
+            border-radius: 14px;
+            padding: 26px 30px;
+            margin-bottom: 22px;
+        }
+        .section h2 {
+            font-size: 18px; font-weight: 700; color: #1a2433;
+            margin-bottom: 12px; letter-spacing: -0.01em;
+        }
+        .section p { font-size: 14.5px; color: #4a5568; margin-bottom: 10px; }
+        .section p:last-child { margin-bottom: 0; }
+        .section ul { margin: 6px 0 10px 20px; }
+        .section li { font-size: 14.5px; color: #4a5568; margin-bottom: 6px; }
+
+        .who { display: flex; gap: 20px; align-items: flex-start; }
+        .who .who-icon { font-size: 40px; line-height: 1; }
+        .contact-table { width: 100%; border-collapse: collapse; margin-top: 4px; }
+        .contact-table td { padding: 9px 8px; font-size: 14px; border-bottom: 1px solid #eef2f5; vertical-align: top; }
+        .contact-table tr:last-child td { border-bottom: none; }
+        .contact-table td:first-child { color: #8a94a3; width: 120px; font-weight: 600; }
+        .contact-table a { color: #0a5e8c; }
+        .contact-table a:hover { text-decoration: underline; }
+
+        .callout {
+            border-left: 4px solid #0a5e8c;
+            background: #eef4f9;
+            padding: 14px 18px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+            font-size: 14px;
+        }
+        .callout.warn { border-left-color: #d97706; background: #fdf6ec; }
+
+        .footer { text-align: center; font-size: 13px; color: #8a94a3; border-top: 1px solid #e6eaef; padding-top: 24px; margin-top: 36px; }
+        .footer a { color: #0a5e8c; }
+        .footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 640px) {
+            .topbar { padding: 0 16px; }
+            .page-hero { padding: 40px 16px 32px; }
+            .page-hero h1 { font-size: 28px; }
+            .body-wrap { padding: 24px 16px 56px; }
+            .section { padding: 20px; }
+            .who { flex-direction: column; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="topbar">
+    <a class="brand" href="../index.html">
+        <img class="logo" src="../logo.svg" alt="AgentBridge" />
+        <span class="name">AgentBridge<span>Atlas</span></span>
+    </a>
+    <nav class="topnav">
+        <a href="../index.html">Home</a>
+        <a href="./verified-analysis.html">Store</a>
+        <a href="./raw-content.html">Raw API</a>
+        <a href="./survival-guide.html">Guide</a>
+        <a href="./trust.html" class="active">About</a>
+    </nav>
+</div>
+
+<div class="page-hero">
+    <div class="page-hero-inner">
+        <h1>About AgentBridge Atlas</h1>
+        <div class="sub">Who we are, how buying works, and the plain terms that apply to every purchase.</div>
+    </div>
+</div>
+
+<div class="body-wrap">
+    <div class="container">
+
+        <div class="section">
+            <h2>Who we are</h2>
+            <div class="who">
+                <div class="who-icon">🌉</div>
+                <div>
+                    <p>
+                        AgentBridge is an independent research and data shop focused on <strong>China's digital
+                        ecosystem</strong> — university quality reports, employment data, policy research, travel
+                        knowledge, and human guides for navigating life in China.
+                    </p>
+                    <p>
+                        Our reports are written by a single analyst operating as <strong>阿扉 (afield)</strong>.
+                        Every report is built strictly on the source institution's published data; where information
+                        is missing, the report says so and points to how it can be verified, rather than guessing.
+                    </p>
+                    <p>
+                        The store is delivered as a <strong>static, machine-readable catalog</strong> with a live
+                        backend API. Developer products settle via the <strong>x402</strong> protocol in USDC on Base;
+                        human services can be billed by Stripe, PayPal, or crypto.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>What you're buying</h2>
+            <ul>
+                <li><strong>Developer Store (shelf A)</strong> — pay-per-call APIs for AI agents. You trigger a 402 challenge, settle with any Base wallet, and receive the content automatically. No accounts, no API keys.</li>
+                <li><strong>Human Services (shelf B)</strong> — guides and reports for people. Billed by Stripe / PayPal / crypto, delivered by email, typically within 1–2 business days.</li>
+                <li><strong>Free samples</strong> — select full-length reports are free to download, no purchase required, so you can judge our quality before paying.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Pricing &amp; payment</h2>
+            <p>
+                Prices are listed per item. Most reports are priced per copy in USDC on Base
+                (chain <code>eip155:8453</code>). A few low-priced items — web fetches and travel handbooks —
+                are priced per unit as marked.
+            </p>
+            <p>
+                Payment methods differ by shelf:
+            </p>
+            <ul>
+                <li><strong>x402 (developer):</strong> USDC on Base, settled automatically by your wallet or agent.</li>
+                <li><strong>Stripe / PayPal / crypto (human):</strong> for services and reports purchased by people.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Delivery</h2>
+            <ul>
+                <li><strong>Developer items:</strong> delivered immediately by the API after settlement.</li>
+                <li><strong>Human-service items:</strong> delivered to the email you provide at checkout, within 1–2 business days.</li>
+                <li><strong>Free samples:</strong> instant download from this site.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Refunds &amp; fair use</h2>
+            <div class="callout warn">
+                <strong>No refunds on delivered digital content.</strong> Because our reports and data are delivered
+                instantly and are not returnable, all sales of delivered digital content are final.
+            </div>
+            <ul>
+                <li>If your purchase <strong>cannot be delivered</strong> (e.g. an item we can't fulfill), you get a full refund — no questions asked.</li>
+                <li>Report inaccuracies are taken seriously. If a report misstates a fact from the source material, email us and we'll correct it or refund at our discretion.</li>
+                <li>Purchased reports are for your own use. Redistribution of full paid content is not permitted.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Contact</h2>
+            <table class="contact-table">
+                <tr><td>Email</td><td><a href="mailto:support@agentbridge.store">support@agentbridge.store</a></td></tr>
+                <tr><td>GitHub</td><td><a href="https://github.com/tianzizhiming-svg/agentbridge" target="_blank" rel="noopener">github.com/tianzizhiming-svg/agentbridge</a></td></tr>
+                <tr><td>API base</td><td><code>https://api.060504.shop</code></td></tr>
+                <tr><td>MCP discovery</td><td><code>/.well-known/mcp/server-card.json</code></td></tr>
+                <tr><td>Listing</td><td>x402scan · the402.ai · ALMC Security · MCP Servers</td></tr>
+            </table>
+        </div>
+
+        <div class="footer">
+            <a href="https://github.com/tianzizhiming-svg/agentbridge" target="_blank">GitHub</a> ·
+            <a href="../openapi.json" target="_blank">OpenAPI</a> ·
+            <a href="./verified-analysis.html">Store</a> ·
+            v2026.08.05
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>x402 Payment Guide — AgentBridge Atlas</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #f5f7fa;
+            color: #1a2c3e;
+            line-height: 1.65;
+        }
+        .page-hero {
+            background: linear-gradient(160deg, #0d2d44 0%, #0a5e8c 100%);
+            padding: 40px 24px 36px;
+        }
+        .page-hero-inner { max-width: 860px; margin: 0 auto; }
+        .page-hero h1 { font-size: 26px; font-weight: 700; color: #ffffff; margin-bottom: 6px; }
+        .page-hero .sub { font-size: 15px; color: rgba(255,255,255,0.75); }
+        .page-hero .desc { font-size: 13.5px; color: rgba(255,255,255,0.6); margin-top: 8px; line-height: 1.7; }
+        .body-wrap { padding: 28px 24px 60px; }
+        .container { max-width: 860px; margin: 0 auto; }
+
+        .product-bar {
+            background: #ffffff;
+            border: 1px solid #dde6ee;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin-bottom: 22px;
+        }
+        .product-bar .p-name { font-size: 18px; font-weight: 700; color: #0d2d44; }
+        .product-bar .p-meta { font-size: 13.5px; color: #6c757d; margin-top: 6px; line-height: 1.7; }
+        .product-bar .p-price {
+            display: inline-block;
+            margin-top: 12px;
+            background: #e8f3fb;
+            color: #0a5e8c;
+            font-weight: 700;
+            font-size: 15px;
+            padding: 4px 16px;
+            border-radius: 20px;
+        }
+
+        h2 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0d2d44;
+            margin: 32px 0 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #d1e4f0;
+        }
+        p { margin-bottom: 12px; font-size: 14.5px; }
+        code {
+            background: #0d2d44;
+            color: #d6ecff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-family: "SF Mono", "Cascadia Code", Consolas, monospace;
+        }
+        .steps { margin: 12px 0 16px 22px; }
+        .steps li { margin-bottom: 10px; font-size: 14.5px; }
+        .steps strong { color: #0a5e8c; }
+
+        .code-block {
+            background: #0d2d44;
+            border-radius: 10px;
+            padding: 18px 20px;
+            margin: 12px 0 20px;
+            overflow-x: auto;
+        }
+        .code-block pre {
+            color: #d6ecff;
+            font-size: 13px;
+            line-height: 1.65;
+            font-family: "SF Mono", "Cascadia Code", Consolas, monospace;
+            white-space: pre;
+        }
+        .callout {
+            border-left: 4px solid #0a5e8c;
+            background: #eef4f9;
+            padding: 14px 18px;
+            border-radius: 0 6px 6px 0;
+            margin: 18px 0;
+            font-size: 14px;
+        }
+        .callout.warn {
+            border-left-color: #d97706;
+            background: #fdf6ec;
+        }
+        .back {
+            display: inline-block;
+            padding: 8px 22px;
+            border-radius: 20px;
+            border: 1px solid #0a5e8c;
+            color: #0a5e8c;
+            text-decoration: none;
+            font-size: 14px;
+            margin-top: 8px;
+            transition: 0.15s;
+        }
+        .back:hover { background: #e8f3fb; }
+        .footer {
+            text-align: center;
+            font-size: 13px;
+            color: #6c757d;
+            border-top: 1px solid #dde6ee;
+            padding-top: 22px;
+            margin-top: 28px;
+        }
+        .footer a { color: #0a5e8c; text-decoration: none; }
+        @media (max-width: 640px) {
+            .page-hero { padding: 28px 16px 24px; }
+            .body-wrap { padding: 20px 16px 40px; }
+            .code-block { padding: 14px 14px; }
+        }
+    </style>
+</head>
+<body>
+<div class="page-hero">
+    <div class="page-hero-inner">
+        <h1>How to Buy</h1>
+        <div class="sub">Every asset is purchased with x402 — pay-per-call in USDC on Base.</div>
+        <div class="desc">This storefront is a catalog. Every item is purchased by calling the AgentBridge API directly: the endpoint responds with a <strong>402 Payment Required</strong> x402 challenge, your AI agent or wallet signs it, and the content is delivered after settlement. No accounts, no subscriptions, no API keys, no card payments.</div>
+    </div>
+</div>
+
+<div class="body-wrap">
+    <div class="container">
+
+        <div class="product-bar">
+            <div class="p-name" id="pName">—</div>
+            <div class="p-meta">
+                <div id="pDesc" style="margin-bottom:6px;color:#6c757d;"></div>
+                Endpoint: <code id="pEndpoint">—</code><br/>
+                <span id="pFormat"></span>
+            </div>
+            <span class="p-price" id="pPrice">—</span>
+        </div>
+
+        <h2>Which payment applies to this item?</h2>
+        <div class="product-bar" style="background:#fbfdfe;border-color:#cfe0ec;">
+            <div class="p-meta" id="payTrack">
+                Loading payment track…
+            </div>
+        </div>
+
+        <h2>Track A — x402 Payment</h2>
+        <p>For AI agents or wallets. Purchases are executed by calling the API: the endpoint responds with a <code>402 Payment Required</code> challenge, your agent or wallet signs it, and content is delivered after settlement in <strong>USDC on Base</strong>.</p>
+        <ol class="steps">
+            <li><strong>Discover</strong> — call the <code>GET</code> metadata endpoint (free) or read this product's <code>endpoint</code> from the catalog.</li>
+            <li><strong>Trigger the challenge</strong> — send the request without payment. The server replies <code>402 Payment Required</code> with a base64-encoded x402 v2 challenge in the <code>PAYMENT-REQUIRED</code> response header.</li>
+            <li><strong>Sign &amp; settle</strong> — your wallet (or the agent's signer) signs the challenge and broadcasts the USDC transfer on Base.</li>
+            <li><strong>Retry with proof</strong> — resend the request with the signed payload in the <code>X-Payment</code> header. The server verifies the payment and returns the content.</li>
+        </ol>
+
+        <div class="code-block"><pre id="curlSample"></pre></div>
+
+        <h2>Human Wallets</h2>
+        <p>People can use x402 too. The 402 challenge includes the recipient wallet, amount, and a payment link. Open it in any Base-compatible wallet (e.g. Coinbase Wallet, MetaMask with Base network) to sign and settle.</p>
+
+        <div class="callout warn">
+            <strong>Pricing note:</strong> verified-analysis products are priced in whole USDC per report or per dimension. raw-content fetches are priced per request (fractions of a USDC cent). All payments settle in <strong>USDC on Base (eip155:8453)</strong> via x402.
+        </div>
+
+        <a href="javascript:history.back()" class="back">← Back to Atlas</a>
+
+        <div class="footer">
+            <a href="https://github.com/tianzizhiming-svg/agentbridge" target="_blank">GitHub</a> ·
+            <a href="../openapi.json" target="_blank">OpenAPI</a> ·
+            v2026.08.05
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        const params = new URLSearchParams(window.location.search);
+        const assetId = params.get('id') || '';
+
+        function applyProduct(overrides) {
+            const name = overrides.name || params.get('name') || '—';
+            const endpoint = overrides.endpoint !== undefined ? overrides.endpoint : (params.get('endpoint') || '');
+            const price = overrides.price !== undefined ? overrides.price : params.get('price');
+            const format = overrides.format || params.get('format') || 'PDF';
+            const type = overrides.type || params.get('type') || 'verified-analysis';
+            const currency = overrides.currency || params.get('currency') || 'USDC';
+            const delivery = overrides.delivery || params.get('delivery') || 'auto';
+            const description = overrides.description || params.get('description') || '';
+            const track = document.getElementById('payTrack');
+
+            if (Number(price) === 0) {
+                track.innerHTML =
+                    '<strong>Payment track: Free asset</strong> — this item is free to access. ' +
+                    'GET the content endpoint directly, no payment needed.';
+            } else {
+                track.innerHTML =
+                    '<strong>Payment track: x402</strong> — pay-per-call in USDC on Base. ' +
+                    'No accounts, no subscriptions, no API keys, no card. Follow Track A below.';
+            }
+
+            document.getElementById('pName').textContent = name;
+            document.getElementById('pDesc').textContent = description || '';
+            document.getElementById('pEndpoint').textContent = endpoint || '—';
+            document.getElementById('pFormat').textContent = format.split(',').join(' · ');
+            document.getElementById('pPrice').textContent =
+                (price != null && price !== '') ? (Number(price) === 0 ? 'FREE' : (Number(price) < 0.01 ? '< 0.01 ' + currency : price + ' ' + currency)) : '—';
+
+            const curl = (Number(price) === 0
+                ? (endpoint
+                    ? [
+                          '# This is a free asset — no payment required.',
+                          '# GET the content directly:',
+                          'curl -i https://api.060504.shop' + endpoint + ' \\',
+                          '  -H "Accept: application/pdf"'
+                      ].join('\n')
+                    : '# This is a free asset — no payment required.')
+                : (endpoint
+                    ? [
+                          '# 1. Trigger the x402 payment challenge (expects 402)',
+                          'curl -i -X POST https://api.060504.shop' + endpoint + ' \\',
+                          '  -H "Content-Type: application/json" \\',
+                          '  -d \'{}\'',
+                          '',
+                          '# 2. The PAYMENT-REQUIRED header carries the base64 x402 v2 challenge.',
+                          '#    Decode it, sign with your Base wallet, settle the USDC transfer,',
+                          '#    then retry with:',
+                          'curl -i -X POST https://api.060504.shop' + endpoint + ' \\',
+                          '  -H "Content-Type: application/json" \\',
+                          '  -H "X-Payment: &lt;signed-payload&gt;" \\',
+                          '  -d \'{}\''
+                      ].join('\n')
+                    : 'No endpoint configured.'));
+            document.getElementById('curlSample').textContent = curl;
+        }
+
+        if (assetId) {
+            fetch('../data/catalog.json')
+                .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+                .then(catalog => {
+                    const a = (catalog.assets || []).find(x => x.id === assetId);
+                    if (a) {
+                        let ep = a.content || '';
+                        if (ep.startsWith('http')) {
+                            try { ep = new URL(ep).pathname; } catch (e) {}
+                        }
+                        applyProduct({
+                            name: a.name,
+                            endpoint: ep,
+                            price: String(a.price),
+                            format: (a.format || 'PDF').split('+').join(','),
+                            currency: a.currency || 'USDC',
+                            delivery: a.delivery || 'auto',
+                            description: a.description || '',
+                            type: a.kind || '',
+                        });
+                    } else {
+                        applyProduct({});
+                    }
+                })
+                .catch(() => applyProduct({}));
+        } else {
+            applyProduct({});
+        }
+    })();
+</script>
+</body>
+</html>
