@@ -118,3 +118,10 @@ https://api.060504.shop/openapi.json
 
 GitHub:
 https://github.com/tianzizhiming-svg/agentbridge
+
+## Local Development
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
