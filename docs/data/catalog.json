@@ -2271,7 +2271,7 @@
       "format": [
         "PDF"
       ],
-      "endpoint": "/v1/assets/guide-144-hour-visa",
+      "endpoint": null,
       "status": "available",
       "published": "2026-08-02",
       "listed_at": "2026-08-02",
@@ -2327,7 +2327,7 @@
         "JSON",
         "Markdown"
       ],
-      "endpoint": "/v1/assets/guide-china-survival",
+      "endpoint": null,
       "status": "available",
       "published": "2026-08-02",
       "listed_at": "2026-08-02",
@@ -2428,7 +2428,7 @@
       "format": [
         "Service"
       ],
-      "endpoint": "/v1/assets/svc-china-guide",
+      "endpoint": null,
       "status": "available",
       "published": "2026-08-02",
       "listed_at": "2026-08-02",
@@ -2494,7 +2494,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C001/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C001/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C001/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C001/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C001/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C001/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C001/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C001/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "teaching-C002",
@@ -2540,7 +2599,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C002/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C002/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C002/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C002/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C002/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C002/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C002/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C002/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "teaching-C003",
@@ -2586,7 +2704,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C003/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C003/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C003/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C003/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C003/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C003/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C003/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C003/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "teaching-C004",
@@ -2632,7 +2809,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C004/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C004/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C004/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C004/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C004/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C004/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C004/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C004/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "teaching-C005",
@@ -2678,7 +2914,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C005/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C005/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C005/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C005/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C005/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C005/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C005/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C005/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "teaching-C006",
@@ -2724,7 +3019,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C006/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C006/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C006/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C006/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C006/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C006/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C006/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C006/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "teaching-C007",
@@ -2770,7 +3124,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C007/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C007/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C007/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C007/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C007/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C007/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C007/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C007/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "teaching-C008",
@@ -2816,7 +3229,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C008/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C008/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C008/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C008/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C008/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C008/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C008/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C008/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "teaching-C009",
@@ -2862,7 +3334,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C009/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C009/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C009/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C009/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C009/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C009/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C009/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C009/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "teaching-C010",
@@ -2908,7 +3439,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C010/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C010/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C010/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C010/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C010/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C010/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C010/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C010/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "teaching-C011",
@@ -2954,7 +3544,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C011/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C011/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C011/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C011/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C011/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C011/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C011/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C011/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "teaching-C012",
@@ -3000,7 +3649,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C012/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C012/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C012/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C012/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C012/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C012/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C012/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C012/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "teaching-C013",
@@ -3046,7 +3754,59 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C013/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C013/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C013/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C013/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C013/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C013/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C013/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        }
+      ],
+      "dimension_count": 7
     },
     {
       "id": "teaching-C014",
@@ -3092,7 +3852,59 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C014/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C014/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C014/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C014/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C014/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C014/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C014/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        }
+      ],
+      "dimension_count": 7
     },
     {
       "id": "teaching-C015",
@@ -3138,7 +3950,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C015/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C015/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C015/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C015/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C015/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C015/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C015/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C015/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "teaching-C016",
@@ -3184,7 +4055,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C016/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C016/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C016/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C016/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C016/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C016/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C016/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C016/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "teaching-C017",
@@ -3230,7 +4160,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C017/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C017/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C017/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C017/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C017/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C017/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C017/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C017/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "teaching-C018",
@@ -3276,7 +4265,59 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C018/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C018/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C018/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C018/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C018/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C018/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C018/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        }
+      ],
+      "dimension_count": 7
     },
     {
       "id": "teaching-C019",
@@ -3322,7 +4363,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C019/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C019/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C019/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C019/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C019/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C019/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C019/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C019/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "teaching-C020",
@@ -3368,7 +4468,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C020/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C020/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C020/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C020/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C020/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C020/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C020/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C020/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "teaching-C021",
@@ -3414,7 +4573,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C021/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C021/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C021/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C021/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C021/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C021/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C021/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C021/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "teaching-C022",
@@ -3460,7 +4678,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C022/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C022/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C022/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C022/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C022/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C022/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C022/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C022/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "teaching-C023",
@@ -3506,7 +4783,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C023/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C023/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C023/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C023/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C023/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C023/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C023/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C023/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "teaching-C024",
@@ -3552,7 +4888,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C024/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C024/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C024/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C024/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C024/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C024/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C024/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C024/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "teaching-C025",
@@ -3598,7 +4993,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C025/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C025/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C025/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C025/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C025/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C025/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C025/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C025/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "teaching-C026",
@@ -3644,7 +5098,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C026/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C026/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C026/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C026/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C026/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C026/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C026/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C026/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "teaching-C027",
@@ -3690,7 +5203,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C027/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C027/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C027/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C027/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C027/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C027/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C027/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C027/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "teaching-C028",
@@ -3736,7 +5308,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C028/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C028/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C028/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C028/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C028/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C028/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C028/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C028/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "teaching-C029",
@@ -3782,7 +5413,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C029/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C029/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C029/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C029/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C029/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C029/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C029/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C029/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "teaching-C030",
@@ -3828,7 +5518,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C030/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C030/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C030/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C030/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C030/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C030/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C030/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C030/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "teaching-C031",
@@ -3874,7 +5623,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C031/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C031/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C031/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C031/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C031/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C031/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C031/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C031/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "teaching-C032",
@@ -3920,7 +5728,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C032/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C032/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C032/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C032/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C032/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C032/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C032/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C032/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "teaching-C033",
@@ -3966,7 +5833,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C033/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C033/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C033/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C033/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C033/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C033/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C033/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C033/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "teaching-C034",
@@ -4012,7 +5938,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C034/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C034/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C034/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C034/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C034/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C034/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C034/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C034/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "teaching-C035",
@@ -4058,7 +6043,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C035/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C035/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C035/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C035/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C035/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C035/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C035/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C035/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "teaching-C036",
@@ -4104,7 +6148,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C036/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C036/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C036/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C036/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C036/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C036/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C036/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C036/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "teaching-C037",
@@ -4150,7 +6253,66 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "auto"
+      "delivery": "auto",
+      "dimensions": [
+        {
+          "dimension": "01",
+          "name": "师资队伍与教学投入",
+          "endpoint": "/v1/reports/teaching/C037/01",
+          "name_en": "Faculty and Teaching Investment",
+          "label": "01 - Faculty and Teaching Investment"
+        },
+        {
+          "dimension": "02",
+          "name": "生源质量与培养规模",
+          "endpoint": "/v1/reports/teaching/C037/02",
+          "name_en": "Student Intake Quality and Training Scale",
+          "label": "02 - Student Intake Quality and Training Scale"
+        },
+        {
+          "dimension": "03",
+          "name": "教学经费与硬件资源",
+          "endpoint": "/v1/reports/teaching/C037/03",
+          "name_en": "Teaching Funding and Hardware Resources",
+          "label": "03 - Teaching Funding and Hardware Resources"
+        },
+        {
+          "dimension": "04",
+          "name": "课程设置与教学实施",
+          "endpoint": "/v1/reports/teaching/C037/04",
+          "name_en": "Curriculum Design and Teaching Delivery",
+          "label": "04 - Curriculum Design and Teaching Delivery"
+        },
+        {
+          "dimension": "05",
+          "name": "学生发展与学业支持",
+          "endpoint": "/v1/reports/teaching/C037/05",
+          "name_en": "Student Development and Academic Support",
+          "label": "05 - Student Development and Academic Support"
+        },
+        {
+          "dimension": "06",
+          "name": "毕业要求与学习成果",
+          "endpoint": "/v1/reports/teaching/C037/06",
+          "name_en": "Graduation Requirements and Learning Outcomes",
+          "label": "06 - Graduation Requirements and Learning Outcomes"
+        },
+        {
+          "dimension": "07",
+          "name": "就业质量与发展前景",
+          "endpoint": "/v1/reports/teaching/C037/07",
+          "name_en": "Employment Quality and Career Prospects",
+          "label": "07 - Employment Quality and Career Prospects"
+        },
+        {
+          "dimension": "08",
+          "name": "专业建设质量",
+          "endpoint": "/v1/reports/teaching/C037/08",
+          "name_en": "Program Construction Quality",
+          "label": "08 - Program Construction Quality"
+        }
+      ],
+      "dimension_count": 8
     },
     {
       "id": "topic-15th-five-year",

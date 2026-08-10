@@ -149,6 +149,14 @@
         }
         .free-card .fc-dl:hover { background: #c03a52; color: #fff; border-color: #c03a52; }
         .free-card .fc-dls { display: flex; flex-direction: column; gap: 6px; flex-shrink: 0; }
+        .free-card.fc-dim { cursor: pointer; }
+        .free-card.fc-dim:hover { border-color: #c03a52; background: #fdf2f4; }
+        .fc-explore {
+            display: inline-block; flex-shrink: 0; background: #c03a52; border: 1px solid #c03a52;
+            color: #fff; font-size: 12.5px; font-weight: 600; padding: 7px 16px; border-radius: 18px;
+            transition: 0.15s; cursor: pointer; font-family: inherit;
+        }
+        .fc-explore:hover { background: #a82f45; }
 
         /* ---------- Promo strip ---------- */
         .promo-block { margin-bottom: 40px; }
@@ -179,6 +187,30 @@
         .modal .m-meta { font-size: 12.5px; color: #6b7686; margin: 10px 0 14px; }
         .modal .m-desc { font-size: 14px; color: #3d4855; line-height: 1.7; }
         .modal .m-preview { margin: 18px 0; }
+        .modal .m-dims {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 10px; margin: 16px 0;
+        }
+        .modal .m-dim {
+            display: flex; align-items: center; gap: 12px; padding: 12px 14px;
+            border: 1px solid #e2e8ee; border-radius: 10px; background: #fafbfc;
+            cursor: pointer; transition: 0.15s; text-align: left;
+        }
+        .modal .m-dim:hover { border-color: #0a5e8c; background: #f0f6fb; }
+        .modal .m-dim-num {
+            flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%;
+            background: #0a5e8c; color: #fff; font-size: 13px; font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .modal .m-dim-name { font-size: 13px; color: #2a3648; line-height: 1.35; font-weight: 600; }
+        .modal .m-dim-end { font-size: 11px; color: #9aa4b2; margin-top: 2px; word-break: break-all; }
+        .modal .m-dims-note { font-size: 12.5px; color: #8a94a3; margin-top: 10px; }
+        .modal .m-back {
+            background: #eef2f6; border: 1px solid #dbe3ea; color: #1a2433;
+            border-radius: 16px; font-size: 12.5px; font-weight: 600;
+            padding: 5px 14px; cursor: pointer; margin-bottom: 8px; transition: 0.15s;
+        }
+        .modal .m-back:hover { background: #e2e8ef; }
         .modal .m-preview iframe { width: 100%; height: 460px; border: 1px solid #e6eaef; border-radius: 10px; background: #fff; }
         .modal .m-filelist { border: 1px solid #e6eaef; border-radius: 10px; overflow: hidden; }
         .modal .m-file-row {
@@ -335,6 +367,7 @@
     <div class="modal" id="modal">
         <div class="m-top">
             <div>
+                <button class="m-back" id="mBack" style="display:none;">← Back to overview</button>
                 <div class="m-name" id="mName"></div>
                 <span class="m-kind" id="mKind"></span>
             </div>
@@ -342,6 +375,7 @@
         </div>
         <div class="m-meta" id="mMeta"></div>
         <div class="m-desc" id="mDesc"></div>
+        <div class="m-dims" id="mDims"></div>
         <div class="m-preview" id="mPreview"></div>
         <div class="m-buyrow">
             <button class="m-buy" id="mBuy">Buy</button>
@@ -426,34 +460,43 @@
         if (tagsEn.length) meta.push(tagsEn.join(' · '));
         document.getElementById('mMeta').textContent = meta.join('  ·  ');
 
-        // preview area: preview_files if present, else all files (free samples expose the full set)
-        const pvEl = document.getElementById('mPreview');
-        const previewFiles = (a.preview_files || []).filter(Boolean);
-        const allFiles = (a.files || []).filter(Boolean);
-        const pvItems = previewFiles.length ? previewFiles : allFiles;
-        if (pvItems.length) {
-            const note = previewFiles.length
-                ? 'This is the first 30% of the document — free to read. The rest unlocks after payment.'
-                : 'This item is a free sample — every part is available below.';
-            const rows = pvItems.map((f, i) => {
-                const fn = String(f).split('/').pop() || ('Part ' + (i + 1));
-                const label = previewFiles.length ? fn : 'Part ' + (i + 1);
-                return '<div class="m-file-row">' +
-                    '<a class="m-file-link" href="' + fileHref(f) + '" target="_blank" rel="noopener">' +
-                    label + '</a>' +
-                    '<a class="m-file-dl" href="' + fileHref(f) + '" download>Download</a>' +
-                    '</div>';
-            }).join('');
-            pvEl.innerHTML = '<div class="m-filelist">' + rows + '</div>' +
-                '<div class="m-preview-note">' + note + '</div>';
+        // goto link (overview = full asset)
+        setGoto(a, name, desc, kind);
+
+        const dims = (a.dimensions || []).filter(Boolean);
+        document.getElementById('mBack').style.display = 'none';
+        if (dims.length) {
+            renderDimGrid(a, dims);
         } else {
-            pvEl.innerHTML =
-                '<div class="m-nopreview">30% preview coming soon. Pay with x402 and the full document is delivered instantly.</div>';
+            document.getElementById('mDims').style.display = 'none';
+            renderAssetPreview(a);
         }
 
-        // price + buy
+        // price + buy (overview-level)
+        renderBuyRow(a, name, desc, kind);
+
+        document.getElementById('modalMask').classList.add('open');
+    }
+
+    function setGoto(a, name, desc, kind) {
+        const fmt = Array.isArray(a.format) ? a.format.join(',') : String(a.format || 'PDF');
+        const params = new URLSearchParams({
+            id: a.id,
+            name: name,
+            price: String(a.price),
+            currency: a.currency || 'USDC',
+            format: fmt,
+            kind: kind,
+            delivery: a.delivery || 'auto',
+            description: desc
+        });
+        document.getElementById('mGoto').href = './pages/payment-guide.html?' + params.toString();
+    }
+
+    function renderBuyRow(a, name, desc, kind) {
         const priceEl = document.getElementById('mPrice');
         const buyEl = document.getElementById('mBuy');
+        const payguideEl = document.getElementById('mPayguide');
         const isF = isFree(a);
         if (isF) {
             priceEl.innerHTML = '<span class="free-txt">FREE</span>';
@@ -464,25 +507,120 @@
             buyEl.textContent = 'Buy';
             buyEl.className = 'm-buy';
         }
-
-        const payguideEl = document.getElementById('mPayguide');
         payguideEl.style.display = 'none';
         document.getElementById('pgEndpoint').textContent = a.endpoint || ('/v1/assets/' + a.id);
+    }
 
-        // goto link
-        const params = new URLSearchParams({
-            id: a.id,
-            name: name,
-            price: String(a.price),
-            currency: a.currency || 'USDC',
-            format: (a.format || 'PDF').split('+').join(','),
-            kind: kind,
-            delivery: a.delivery || 'auto',
-            description: desc
+    function renderAssetPreview(a) {
+        const pvEl = document.getElementById('mPreview');
+        const previewFiles = (a.preview_files || []).filter(Boolean);
+        const allFiles = (a.files || []).filter(Boolean);
+        if (previewFiles.length) {
+            // paid item with a 30% preview -> embed for reading
+            const one = previewFiles[0];
+            pvEl.innerHTML =
+                '<iframe src="' + fileHref(one) + '" title="Free 30% preview"></iframe>' +
+                '<div class="m-preview-note">This is the first 30% of the document — free to read. The rest unlocks after payment.</div>';
+        } else if (allFiles.length) {
+            // free sample -> expose every part
+            const rows = allFiles.map(function(f, i) {
+                const fn = String(f).split('/').pop() || ('Part ' + (i + 1));
+                const label = 'Part ' + (i + 1);
+                return '<div class="m-file-row">' +
+                    '<a class="m-file-link" href="' + fileHref(f) + '" target="_blank" rel="noopener">' +
+                    label + '</a>' +
+                    '<a class="m-file-dl" href="' + fileHref(f) + '" download>Download</a>' +
+                    '</div>';
+            }).join('');
+            pvEl.innerHTML = '<div class="m-filelist">' + rows + '</div>' +
+                '<div class="m-preview-note">This item is a free sample — every part is available below.</div>';
+        } else {
+            pvEl.innerHTML =
+                '<div class="m-nopreview">30% preview coming soon. Pay with x402 and the full document is delivered instantly.</div>';
+        }
+    }
+
+    // ---- Level 2: dimension grid (teaching reports) ----
+    function renderDimGrid(a, dims) {
+        const gridEl = document.getElementById('mDims');
+        document.getElementById('mBack').style.display = 'none';
+        gridEl.style.display = 'grid';
+        const isF = isFree(a);
+        const note = isF
+            ? 'Free sample — every dimension below is available to read and download.'
+            : '8 dimensions in this report. Each unlocks after one payment for the whole package.';
+        const cards = dims.map(function(d, i) {
+            const num = d.dimension || String(i + 1).padStart(2, '0');
+            const dname = d.name_en || d.name || ('Part ' + num);
+            return '<div class="m-dim" data-num="' + num + '">' +
+                '<div class="m-dim-num">' + num + '</div>' +
+                '<div class="m-dim-main">' +
+                '<div class="m-dim-name">' + dname + '</div>' +
+                '<div class="m-dim-end">' + (d.endpoint || '') + '</div>' +
+                '</div></div>';
+        }).join('');
+        gridEl.innerHTML = cards + '<div class="m-dims-note" style="grid-column:1/-1;">' + note + '</div>';
+
+        gridEl.querySelectorAll('.m-dim[data-num]').forEach(function(card) {
+            card.addEventListener('click', function() {
+                const num = card.dataset.num;
+                const dim = dims.find(function(d) { return (d.dimension || '') === num; }) || {};
+                openDimension(a, dim, num, isF);
+            });
         });
-        document.getElementById('mGoto').href = './pages/payment-guide.html?' + params.toString();
 
-        document.getElementById('modalMask').classList.add('open');
+        document.getElementById('mPreview').innerHTML = '';
+    }
+
+    // ---- Level 3: single dimension detail ----
+    function openDimension(a, dim, num, isF) {
+        const dname = dim.name_en || dim.name || ('Part ' + num);
+        document.getElementById('mName').textContent = dname;
+        document.getElementById('mKind').textContent = (a.kind ? KIND_LABEL[a.kind] : 'Report') + ' · Part ' + num;
+        document.getElementById('mDesc').textContent =
+            'Part ' + num + ' of ' + (a.name_en || a.name);
+        document.getElementById('mMeta').textContent = dim.endpoint || '';
+        document.getElementById('mDims').style.display = 'none';
+        document.getElementById('mBack').style.display = 'inline-block';
+
+        // dimension file: free -> actual pdf from a.files matched by number; paid -> preview placeholder
+        const pvEl = document.getElementById('mPreview');
+        const numKey = String(num);
+        const matched = (a.files || []).filter(Boolean).filter(function(f) {
+            return String(f).match(new RegExp('(^|/)' + numKey + '-'));
+        });
+        if (isF) {
+            const files = matched.length ? matched : ((a.files || []).filter(Boolean));
+            if (files.length) {
+                const rows = files.map(function(f) {
+                    const label = String(f).split('/').pop();
+                    return '<div class="m-file-row">' +
+                        '<a class="m-file-link" href="' + fileHref(f) + '" target="_blank" rel="noopener">' + label + '</a>' +
+                        '<a class="m-file-dl" href="' + fileHref(f) + '" download>Download</a>' +
+                        '</div>';
+                }).join('');
+                pvEl.innerHTML = '<div class="m-filelist">' + rows + '</div>' +
+                    '<div class="m-preview-note">Free sample — full dimension available below.</div>';
+            } else {
+                pvEl.innerHTML = '<div class="m-nopreview">No files are available for this dimension yet.</div>';
+            }
+        } else {
+            const prev = (a.preview_files || []).filter(Boolean);
+            if (prev.length && prev.length >= Number(numKey)) {
+                const pf = prev[Number(numKey) - 1];
+                pvEl.innerHTML =
+                    '<iframe src="' + fileHref(pf) + '" title="Free 30% preview"></iframe>' +
+                    '<div class="m-preview-note">This is the first 30% of this dimension — free to read. The rest unlocks after payment.</div>';
+            } else {
+                pvEl.innerHTML =
+                    '<div class="m-nopreview">30% preview coming soon. Buy the package and this dimension is delivered instantly.</div>';
+            }
+        }
+
+        // buy row: whole package
+        const name = a.name_en || a.name;
+        const desc = a.description_en || a.description || '';
+        renderBuyRow(a, name, desc, a.kind || a.type || 'Report');
     }
 
     function closeModal() {
@@ -523,22 +661,26 @@
         const name = p.name_en || p.name;
         const desc = p.description_en || p.description || '';
         const icon = KIND_ICON[p.kind || p.type] || '🎁';
+        const dims = (p.dimensions || []).filter(Boolean);
         const preview = (p.preview_files || []).filter(Boolean);
         const allFiles = (p.files || []).filter(Boolean);
-        const items = preview.concat(allFiles);
-        const dls = items.length
-            ? items.map(function(f) {
-                  return '<a class="fc-dl" href="' + fileHref(f) + '" target="_blank" rel="noopener">Download</a>';
-              }).join('')
-            : '';
+        const hasDims = dims.length > 0;
+        let cta = '';
+        if (hasDims) {
+            cta = '<button class="fc-dl fc-explore" data-id="' + p.id + '">View ' + dims.length + ' parts</button>';
+        } else if (preview.concat(allFiles).length) {
+            cta = '<div class="fc-dls">' + preview.concat(allFiles).map(function(f) {
+                return '<a class="fc-dl" href="' + fileHref(f) + '" target="_blank" rel="noopener">Download</a>';
+            }).join('') + '</div>';
+        }
         return `
-            <div class="free-card">
+            <div class="free-card${hasDims ? ' fc-dim' : ''}" data-id="${p.id}">
                 <div class="fc-icon">${icon}</div>
                 <div class="fc-main">
                     <div class="fc-name">${name}</div>
                     <div class="fc-desc">${desc.length > 70 ? desc.slice(0, 70) + '…' : desc}</div>
                 </div>
-                <div class="fc-dls">${dls}</div>
+                ${cta}
             </div>`;
     }
 
@@ -586,6 +728,13 @@
                 if (a) openAssetModal(a);
             });
         });
+        document.querySelectorAll('.free-card[data-id]').forEach(card => {
+            card.addEventListener('click', function(e) {
+                if (e.target.closest('.fc-dl')) return;
+                const a = state.assets.find(x => x.id === card.dataset.id);
+                if (a) openAssetModal(a);
+            });
+        });
     }
 
     // ---- kind filters ----
@@ -608,6 +757,9 @@
 
     // ---- modal close handlers ----
     document.getElementById('mClose').addEventListener('click', closeModal);
+    document.getElementById('mBack').addEventListener('click', function() {
+        if (state.current) openAssetModal(state.current);
+    });
     document.getElementById('modalMask').addEventListener('click', (e) => {
         if (e.target === e.currentTarget) closeModal();
     });
