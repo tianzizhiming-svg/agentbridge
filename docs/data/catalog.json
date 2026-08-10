@@ -2271,7 +2271,7 @@
       "format": [
         "PDF"
       ],
-      "endpoint": null,
+      "endpoint": "/v1/assets/guide-144-hour-visa",
       "status": "available",
       "published": "2026-08-02",
       "listed_at": "2026-08-02",
@@ -2327,7 +2327,7 @@
         "JSON",
         "Markdown"
       ],
-      "endpoint": null,
+      "endpoint": "/v1/assets/guide-china-survival",
       "status": "available",
       "published": "2026-08-02",
       "listed_at": "2026-08-02",
@@ -2428,7 +2428,7 @@
       "format": [
         "Service"
       ],
-      "endpoint": null,
+      "endpoint": "/v1/assets/svc-china-guide",
       "status": "available",
       "published": "2026-08-02",
       "listed_at": "2026-08-02",
