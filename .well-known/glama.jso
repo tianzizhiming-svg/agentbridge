@@ -1,0 +1,21 @@
+{
+  "$schema": "https://glama.ai/mcp/schemas/server.json",
+  "name": "AgentBridge",
+  "description": "AI knowledge marketplace for China data via x402 payments. Access university reports, industry briefings, and web content through Base chain USDC payments.",
+  "maintainers": [
+    {
+      "name": "tianzizhiming-svg",
+      "email": "你的邮箱@example.com",
+      "github": "https://github.com/tianzizhiming-svg"
+    }
+  ],
+  "repository": {
+    "url": "https://github.com/tianzizhiming-svg/agentbridge"
+  },
+  "mcp": {
+    "type": "sse",
+    "url": "https://api.060504.shop/sse",
+    "discovery": "https://api.060504.shop/.well-known/mcp/server-card.json"
+  },
+  "tags": ["x402", "china", "data", "ai-agent", "reports", "base", "usdc"]
+}
