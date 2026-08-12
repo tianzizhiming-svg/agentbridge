@@ -108,8 +108,8 @@
         "technology",
         "china-data"
       ],
-      "description": "按次抓取任意中国网页，返回干净的 Markdown 或 HTML。静态页 $0.003，动态页 $0.008。",
-      "description_en": "Fetch any Chinese webpage and get clean markdown or HTML, per request. Static pages $0.003, dynamic pages $0.008.",
+      "description": "按次抓取任意中国网页，返回干净的 Markdown 或 HTML。x402 统一 $0.008 每次；API Key 计量：静态页 $0.003，动态页 $0.008。",
+      "description_en": "Fetch any Chinese webpage and get clean markdown or HTML, per request. x402 flat $0.008 per fetch; API-key metered: static $0.003, dynamic $0.008.",
       "tags": [
         "抓取",
         "网页"
@@ -118,7 +118,7 @@
         "web fetch",
         "scraping"
       ],
-      "price": 0.003,
+      "price": 0.008,
       "currency": "USDC",
       "payment": "x402",
       "payment_method": [
