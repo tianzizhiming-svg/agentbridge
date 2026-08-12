@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "agentbridge": {
+      "url": "https://api.060504.shop/sse",
+      "headers": {
+        "Accept": "text/event-stream"
+      }
+    }
+  }
+}
