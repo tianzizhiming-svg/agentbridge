@@ -354,6 +354,18 @@
             <div class="home-list" id="mainList"></div>
         </div>
 
+        <!-- China University Reports (archive section) -->
+        <div class="list-block" id="uniBlock" style="margin-top: 40px;">
+            <div class="sec-head">
+                <div>
+                    <h2>🎓 China University Reports</h2>
+                    <div class="meta">Employment & teaching quality reports · permanent collection, no longer updated · <strong id="uniCount">0</strong> items</div>
+                </div>
+            </div>
+            <div class="home-list" id="uniFreeList"></div>
+            <div class="home-list" id="uniList" style="margin-top: 10px;"></div>
+        </div>
+
     </div>
 </div>
 
@@ -699,24 +711,36 @@
 
         const filtered = state.assets.filter(matches);
 
-        // free block
-        const free = sortNewest(filtered.filter(isFree));
+        // free block (exclude university-reports, those show in their own section)
+        const free = sortNewest(filtered.filter(a => isFree(a) && a.shelf !== 'university-reports'));
         document.getElementById('freeGrid').innerHTML =
             free.map(freeCardHtml).join('') ||
             '<div class="free-card"><div class="fc-main"><div class="fc-name">No free samples match.</div></div></div>';
 
-        // promotions
-        const promo = sortNewest(filtered.filter(isPromo));
+        // promotions (exclude university-reports)
+        const promo = sortNewest(filtered.filter(a => isPromo(a) && a.shelf !== 'university-reports'));
         document.getElementById('promoList').innerHTML =
             promo.map(p => rowHtml(p, true)).join('') ||
             '<div class="home-row" style="cursor:default;"><div class="hr-main"><div class="hr-name">No promotions match.</div></div></div>';
 
-        // main list: everything else, newest first
-        const main = sortNewest(filtered.filter(a => !isFree(a) && !isPromo(a)));
+        // main list: everything else that's not university-reports, newest first
+        const main = sortNewest(filtered.filter(a => !isFree(a) && !isPromo(a) && a.shelf !== 'university-reports'));
         document.getElementById('listCount').textContent = main.length;
         document.getElementById('mainList').innerHTML =
             main.map(p => rowHtml(p, false)).join('') ||
             '<div class="home-row" style="cursor:default;"><div class="hr-main"><div class="hr-name">No items match.</div></div></div>';
+
+        // university reports section
+        const uniAssets = sortNewest(filtered.filter(a => a.shelf === 'university-reports'));
+        const uniFree = uniAssets.filter(isFree);
+        const uniPaid = uniAssets.filter(a => !isFree(a));
+        document.getElementById('uniCount').textContent = uniAssets.length;
+        document.getElementById('uniFreeList').innerHTML =
+            uniFree.map(p => rowHtml(p, false)).join('') || '';
+        document.getElementById('uniList').innerHTML =
+            uniPaid.map(p => rowHtml(p, false)).join('') || '';
+        // Hide section if empty
+        document.getElementById('uniBlock').style.display = uniAssets.length ? '' : 'none';
 
         bindRows();
     }

@@ -12,6 +12,277 @@
   },
   "assets": [
     {
+      "id": "guide-working-in-china-2026-08",
+      "name": "外国人在华工作完全指南（2026年版）",
+      "name_en": "Working in China Guide for Foreigners (2026-08 Edition)",
+      "kind": "guide",
+      "type": "guide",
+      "type_label_en": "🧭 Guides / Tutorials",
+      "domain": [
+        "employment",
+        "china-data",
+        "legal"
+      ],
+      "description": "外国人在华工作全流程操作手册：Z签证→工作许可→居留许可→就业权利→五险一金→个税→离职争议→数据隐私合规。引用2024年公司法、PIPL/DSL/CSL三法、2025年司法解释二等最新法规。",
+      "description_en": "Complete 2026 operational manual for foreigners working in China: Z-visa, work permit, residence permit, employment rights, social insurance, IIT, contract termination, dispute resolution, and data privacy compliance.",
+      "tags": [
+        "来华工作",
+        "就业",
+        "签证",
+        "工作许可",
+        "居留许可",
+        "法律指南"
+      ],
+      "tags_en": [
+        "working",
+        "employment",
+        "visa",
+        "work-permit",
+        "residence-permit",
+        "legal-guide"
+      ],
+      "price": 0.01,
+      "currency": "USDC",
+      "payment": "x402",
+      "payment_method": [
+        "x402"
+      ],
+      "format": [
+        "Markdown"
+      ],
+      "endpoint": "/v1/assets/guide-working-in-china-2026-08",
+      "status": "available",
+      "published": "2026-08-16",
+      "listed_at": "2026-08-16",
+      "shelf": "human",
+      "sample": "preview",
+      "preview": "30pct",
+      "files": [],
+      "source_file": "guides/guide-working-in-china-2026-08.md",
+      "version": 1,
+      "preview_files": [
+        "guides/guide-working-in-china-2026-08-preview.md"
+      ],
+      "delivery": "auto"
+    },
+    {
+      "id": "guide-hiring-china-2026-08",
+      "name": "在华招聘与管理团队完全指南（2026年版）",
+      "name_en": "Hiring Employees and Managing Teams in China (2026-08 Edition)",
+      "kind": "guide",
+      "type": "guide",
+      "type_label_en": "🧭 Guides / Tutorials",
+      "domain": [
+        "employment",
+        "china-data",
+        "legal",
+        "hr"
+      ],
+      "description": "在华招聘与管理团队合规与策略指南：招聘法律→合同必备条款→试用期→社保公积金→个税代扣→竞业限制（2025司法解释二）→解雇→遣散费（2N）→劳动仲裁全流程。",
+      "description_en": "Complete 2026 compliance and strategy guide for hiring and managing teams in China: recruitment law, mandatory contract terms, probation, social insurance, non-compete (2025 SPC Interpretation II), termination, severance (2N), labor arbitration.",
+      "tags": [
+        "招聘",
+        "人力资源管理",
+        "劳动法",
+        "竞业限制",
+        "遣散费",
+        "劳动仲裁"
+      ],
+      "tags_en": [
+        "hiring",
+        "hr",
+        "employment-law",
+        "non-compete",
+        "severance",
+        "labor-arbitration"
+      ],
+      "price": 0.01,
+      "currency": "USDC",
+      "payment": "x402",
+      "payment_method": [
+        "x402"
+      ],
+      "format": [
+        "Markdown"
+      ],
+      "endpoint": "/v1/assets/guide-hiring-china-2026-08",
+      "status": "available",
+      "published": "2026-08-16",
+      "listed_at": "2026-08-16",
+      "shelf": "human",
+      "sample": "preview",
+      "preview": "30pct",
+      "files": [],
+      "source_file": "guides/guide-hiring-china-2026-08.md",
+      "version": 1,
+      "preview_files": [
+        "guides/guide-hiring-china-2026-08-preview.md"
+      ],
+      "delivery": "auto"
+    },
+    {
+      "id": "guide-legal-rights-china-2026-08",
+      "name": "在华法律权利与消费者保护指南（2026年版）",
+      "name_en": "China Legal Rights & Consumer Protection Guide for Foreigners (2026-08 Edition)",
+      "kind": "guide",
+      "type": "guide",
+      "type_label_en": "🧭 Guides / Tutorials",
+      "domain": [
+        "legal",
+        "china-data",
+        "consumer-protection"
+      ],
+      "description": "在华法律权利与消费者保护完全指南：消费者九大权利→12315投诉系统→租房纠纷→合同争议→电商维权→民事诉讼程序→证据清单→英中术语对照表。含2026年真实案例。",
+      "description_en": "Complete 2026 guide to legal rights and consumer protection in China: 9 consumer rights, 12315 complaint system, rental disputes, contract disputes, e-commerce rights, civil litigation procedure, and evidence checklist.",
+      "tags": [
+        "法律权利",
+        "消费者保护",
+        "12315",
+        "租房纠纷",
+        "合同",
+        "诉讼"
+      ],
+      "tags_en": [
+        "legal-rights",
+        "consumer-protection",
+        "12315",
+        "rental-dispute",
+        "contract",
+        "litigation"
+      ],
+      "price": 0.01,
+      "currency": "USDC",
+      "payment": "x402",
+      "payment_method": [
+        "x402"
+      ],
+      "format": [
+        "Markdown"
+      ],
+      "endpoint": "/v1/assets/guide-legal-rights-china-2026-08",
+      "status": "available",
+      "published": "2026-08-16",
+      "listed_at": "2026-08-16",
+      "shelf": "human",
+      "sample": "preview",
+      "preview": "30pct",
+      "files": [],
+      "source_file": "guides/guide-legal-rights-china-2026-08.md",
+      "version": 1,
+      "preview_files": [
+        "guides/guide-legal-rights-china-2026-08-preview.md"
+      ],
+      "delivery": "auto"
+    },
+    {
+      "id": "guide-study-in-china-2026-08",
+      "name": "国际学生在华学习指南（2026年版）",
+      "name_en": "Study in China Guide for International Students (2026-08 Edition)",
+      "kind": "guide",
+      "type": "guide",
+      "type_label_en": "🧭 Guides / Tutorials",
+      "domain": [
+        "education",
+        "china-data",
+        "visa"
+      ],
+      "description": "国际学生在华学习完全指南：X1/X2签证→JW201/JW202表格→学习类居留许可→大学注册→奖学金类型（CSC/ISCC/省级）→实习政策→兼职规定→5个常见陷阱。",
+      "description_en": "Complete 2026 guide for international students in China: X1/X2 visa, JW201/JW202 forms, residence permit for study, university registration, scholarship types, internship policies, and common pitfalls.",
+      "tags": [
+        "留学",
+        "国际学生",
+        "X1签证",
+        "JW201",
+        "奖学金",
+        "居留许可"
+      ],
+      "tags_en": [
+        "study",
+        "international-students",
+        "x1-visa",
+        "jw201",
+        "scholarship",
+        "residence-permit"
+      ],
+      "price": 0.01,
+      "currency": "USDC",
+      "payment": "x402",
+      "payment_method": [
+        "x402"
+      ],
+      "format": [
+        "Markdown"
+      ],
+      "endpoint": "/v1/assets/guide-study-in-china-2026-08",
+      "status": "available",
+      "published": "2026-08-16",
+      "listed_at": "2026-08-16",
+      "shelf": "human",
+      "sample": "preview",
+      "preview": "30pct",
+      "files": [],
+      "source_file": "guides/guide-study-in-china-2026-08.md",
+      "version": 1,
+      "preview_files": [
+        "guides/guide-study-in-china-2026-08-preview.md"
+      ],
+      "delivery": "auto"
+    },
+    {
+      "id": "guide-business-compliance-china-2026-08",
+      "name": "外资企业在华合规指南（2026年版）",
+      "name_en": "China Business Compliance Guide for Foreign Companies (2026-08 Edition)",
+      "kind": "guide",
+      "type": "guide",
+      "type_label_en": "🧭 Guides / Tutorials",
+      "domain": [
+        "business",
+        "china-data",
+        "legal"
+      ],
+      "description": "外资企业WFOE在华合规操作手册：2024年公司法（5年实缴）→公司治理→CIT/VAT/预提税→PIPL/DSL数据合规→反不正当竞争→出口管制→年报公示→审计要求。含11个实操表格。",
+      "description_en": "Complete 2026 operational manual for WFOE compliance in China: 2024 Company Law (5-year paid-in capital), corporate governance, CIT/VAT/withholding tax, PIPL/DSL data compliance, anti-unfair competition, export control, and audit requirements.",
+      "tags": [
+        "企业合规",
+        "WFOE",
+        "公司法",
+        "税务",
+        "数据合规",
+        "审计"
+      ],
+      "tags_en": [
+        "business-compliance",
+        "wfoe",
+        "company-law",
+        "tax",
+        "data-compliance",
+        "audit"
+      ],
+      "price": 0.01,
+      "currency": "USDC",
+      "payment": "x402",
+      "payment_method": [
+        "x402"
+      ],
+      "format": [
+        "Markdown"
+      ],
+      "endpoint": "/v1/assets/guide-business-compliance-china-2026-08",
+      "status": "available",
+      "published": "2026-08-16",
+      "listed_at": "2026-08-16",
+      "shelf": "human",
+      "sample": "preview",
+      "preview": "30pct",
+      "files": [],
+      "source_file": "guides/guide-business-compliance-china-2026-08.md",
+      "version": 1,
+      "preview_files": [
+        "guides/guide-business-compliance-china-2026-08-preview.md"
+      ],
+      "delivery": "auto"
+    },
+    {
       "id": "api-policy",
       "name": "China Policy API",
       "name_en": "China Policy API",
@@ -168,12 +439,11 @@
       "currency": "USDC",
       "payment": "x402",
       "payment_method": [
-        "stripe",
-        "paypal",
-        "crypto"
+        "x402"
       ],
       "format": [
-        "PDF"
+        "PDF",
+        "Markdown"
       ],
       "endpoint": "/v1/assets/brief-ai",
       "status": "available",
@@ -188,7 +458,7 @@
       "preview_files": [
         "samples/preview-ai-30pct.pdf"
       ],
-      "delivery": "manual"
+      "delivery": "auto"
     },
     {
       "id": "brief-av",
@@ -220,12 +490,11 @@
       "currency": "USDC",
       "payment": "x402",
       "payment_method": [
-        "stripe",
-        "paypal",
-        "crypto"
+        "x402"
       ],
       "format": [
-        "PDF"
+        "PDF",
+        "Markdown"
       ],
       "endpoint": "/v1/assets/brief-av",
       "status": "available",
@@ -240,7 +509,7 @@
       "preview_files": [
         "samples/preview-av-30pct.pdf"
       ],
-      "delivery": "manual"
+      "delivery": "auto"
     },
     {
       "id": "brief-av-icv",
@@ -272,12 +541,11 @@
       "currency": "USDC",
       "payment": "x402",
       "payment_method": [
-        "stripe",
-        "paypal",
-        "crypto"
+        "x402"
       ],
       "format": [
-        "PDF"
+        "PDF",
+        "Markdown"
       ],
       "endpoint": "/v1/assets/brief-av-icv",
       "status": "available",
@@ -292,7 +560,7 @@
       "preview_files": [
         "samples/preview-av-icv-30pct.pdf"
       ],
-      "delivery": "manual"
+      "delivery": "auto"
     },
     {
       "id": "brief-battery",
@@ -324,12 +592,11 @@
       "currency": "USDC",
       "payment": "x402",
       "payment_method": [
-        "stripe",
-        "paypal",
-        "crypto"
+        "x402"
       ],
       "format": [
-        "PDF"
+        "PDF",
+        "Markdown"
       ],
       "endpoint": "/v1/assets/brief-battery",
       "status": "available",
@@ -344,7 +611,7 @@
       "preview_files": [
         "samples/preview-battery-30pct.pdf"
       ],
-      "delivery": "manual"
+      "delivery": "auto"
     },
     {
       "id": "brief-biopharma",
@@ -374,12 +641,11 @@
       "currency": "USDC",
       "payment": "x402",
       "payment_method": [
-        "stripe",
-        "paypal",
-        "crypto"
+        "x402"
       ],
       "format": [
-        "PDF"
+        "PDF",
+        "Markdown"
       ],
       "endpoint": "/v1/assets/brief-biopharma",
       "status": "available",
@@ -394,7 +660,7 @@
       "preview_files": [
         "samples/preview-biopharma-30pct.pdf"
       ],
-      "delivery": "manual"
+      "delivery": "auto"
     },
     {
       "id": "brief-compliance",
@@ -426,12 +692,11 @@
       "currency": "USDC",
       "payment": "x402",
       "payment_method": [
-        "stripe",
-        "paypal",
-        "crypto"
+        "x402"
       ],
       "format": [
-        "PDF"
+        "PDF",
+        "Markdown"
       ],
       "endpoint": "/v1/assets/brief-compliance",
       "status": "available",
@@ -446,7 +711,7 @@
       "preview_files": [
         "samples/preview-compliance-30pct.pdf"
       ],
-      "delivery": "manual"
+      "delivery": "auto"
     },
     {
       "id": "brief-consumer",
@@ -476,12 +741,11 @@
       "currency": "USDC",
       "payment": "x402",
       "payment_method": [
-        "stripe",
-        "paypal",
-        "crypto"
+        "x402"
       ],
       "format": [
-        "PDF"
+        "PDF",
+        "Markdown"
       ],
       "endpoint": "/v1/assets/brief-consumer",
       "status": "available",
@@ -496,7 +760,7 @@
       "preview_files": [
         "samples/preview-consumer-30pct.pdf"
       ],
-      "delivery": "manual"
+      "delivery": "auto"
     },
     {
       "id": "brief-humanoid",
@@ -526,12 +790,11 @@
       "currency": "USDC",
       "payment": "x402",
       "payment_method": [
-        "stripe",
-        "paypal",
-        "crypto"
+        "x402"
       ],
       "format": [
-        "PDF"
+        "PDF",
+        "Markdown"
       ],
       "endpoint": "/v1/assets/brief-humanoid",
       "status": "available",
@@ -546,7 +809,7 @@
       "preview_files": [
         "samples/preview-humanoid-30pct.pdf"
       ],
-      "delivery": "manual"
+      "delivery": "auto"
     },
     {
       "id": "brief-new-energy",
@@ -576,12 +839,11 @@
       "currency": "USDC",
       "payment": "x402",
       "payment_method": [
-        "stripe",
-        "paypal",
-        "crypto"
+        "x402"
       ],
       "format": [
-        "PDF"
+        "PDF",
+        "Markdown"
       ],
       "endpoint": "/v1/assets/brief-new-energy",
       "status": "available",
@@ -596,7 +858,7 @@
       "preview_files": [
         "samples/preview-new-energy-30pct.pdf"
       ],
-      "delivery": "manual"
+      "delivery": "auto"
     },
     {
       "id": "brief-semiconductor",
@@ -628,12 +890,11 @@
       "currency": "USDC",
       "payment": "x402",
       "payment_method": [
-        "stripe",
-        "paypal",
-        "crypto"
+        "x402"
       ],
       "format": [
-        "PDF"
+        "PDF",
+        "Markdown"
       ],
       "endpoint": "/v1/assets/brief-semiconductor",
       "status": "available",
@@ -648,7 +909,7 @@
       "preview_files": [
         "samples/preview-semiconductor-30pct.pdf"
       ],
-      "delivery": "manual"
+      "delivery": "auto"
     },
     {
       "id": "brief-solar",
@@ -680,12 +941,11 @@
       "currency": "USDC",
       "payment": "x402",
       "payment_method": [
-        "stripe",
-        "paypal",
-        "crypto"
+        "x402"
       ],
       "format": [
-        "PDF"
+        "PDF",
+        "Markdown"
       ],
       "endpoint": "/v1/assets/brief-solar",
       "status": "available",
@@ -700,7 +960,7 @@
       "preview_files": [
         "samples/preview-solar-30pct.pdf"
       ],
-      "delivery": "manual"
+      "delivery": "auto"
     },
     {
       "id": "brief-talent",
@@ -732,12 +992,11 @@
       "currency": "USDC",
       "payment": "x402",
       "payment_method": [
-        "stripe",
-        "paypal",
-        "crypto"
+        "x402"
       ],
       "format": [
-        "PDF"
+        "PDF",
+        "Markdown"
       ],
       "endpoint": "/v1/assets/brief-talent",
       "status": "available",
@@ -752,7 +1011,7 @@
       "preview_files": [
         "samples/preview-talent-30pct.pdf"
       ],
-      "delivery": "manual"
+      "delivery": "auto"
     },
     {
       "id": "employment-S001",
@@ -791,7 +1050,7 @@
       "status": "available",
       "published": "2026-07-15",
       "listed_at": "2026-07-15",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -837,7 +1096,7 @@
       "status": "available",
       "published": "2026-07-15",
       "listed_at": "2026-07-15",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -883,7 +1142,7 @@
       "status": "available",
       "published": "2026-07-15",
       "listed_at": "2026-07-15",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -929,7 +1188,7 @@
       "status": "available",
       "published": "2026-07-15",
       "listed_at": "2026-07-15",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -975,7 +1234,7 @@
       "status": "available",
       "published": "2026-07-15",
       "listed_at": "2026-07-15",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -1021,7 +1280,7 @@
       "status": "available",
       "published": "2026-07-15",
       "listed_at": "2026-07-15",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -1067,7 +1326,7 @@
       "status": "available",
       "published": "2026-07-15",
       "listed_at": "2026-07-15",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -1113,7 +1372,7 @@
       "status": "available",
       "published": "2026-07-15",
       "listed_at": "2026-07-15",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -1159,7 +1418,7 @@
       "status": "available",
       "published": "2026-07-15",
       "listed_at": "2026-07-15",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "free",
       "preview": "full",
       "files": [
@@ -1207,7 +1466,7 @@
       "status": "available",
       "published": "2026-07-15",
       "listed_at": "2026-07-15",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -1253,7 +1512,7 @@
       "status": "available",
       "published": "2026-07-15",
       "listed_at": "2026-07-15",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -1299,7 +1558,7 @@
       "status": "available",
       "published": "2026-07-15",
       "listed_at": "2026-07-15",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -1345,7 +1604,7 @@
       "status": "available",
       "published": "2026-07-15",
       "listed_at": "2026-07-15",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -1391,7 +1650,7 @@
       "status": "available",
       "published": "2026-07-15",
       "listed_at": "2026-07-15",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -1437,7 +1696,7 @@
       "status": "available",
       "published": "2026-07-15",
       "listed_at": "2026-07-15",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -1483,7 +1742,7 @@
       "status": "available",
       "published": "2026-07-15",
       "listed_at": "2026-07-15",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -1529,7 +1788,7 @@
       "status": "available",
       "published": "2026-07-15",
       "listed_at": "2026-07-15",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -1575,7 +1834,7 @@
       "status": "available",
       "published": "2026-07-15",
       "listed_at": "2026-07-15",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -1621,7 +1880,7 @@
       "status": "available",
       "published": "2026-07-15",
       "listed_at": "2026-07-15",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -1667,7 +1926,7 @@
       "status": "available",
       "published": "2026-07-15",
       "listed_at": "2026-07-15",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -1713,7 +1972,7 @@
       "status": "available",
       "published": "2026-07-15",
       "listed_at": "2026-07-15",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -1759,7 +2018,7 @@
       "status": "available",
       "published": "2026-07-15",
       "listed_at": "2026-07-15",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -1805,7 +2064,7 @@
       "status": "available",
       "published": "2026-07-15",
       "listed_at": "2026-07-15",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -1851,7 +2110,7 @@
       "status": "available",
       "published": "2026-07-15",
       "listed_at": "2026-07-15",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "free",
       "preview": "full",
       "files": [
@@ -1899,7 +2158,7 @@
       "status": "available",
       "published": "2026-07-15",
       "listed_at": "2026-07-15",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -1945,7 +2204,7 @@
       "status": "available",
       "published": "2026-07-15",
       "listed_at": "2026-07-15",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -1991,7 +2250,7 @@
       "status": "available",
       "published": "2026-07-15",
       "listed_at": "2026-07-15",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -2037,7 +2296,7 @@
       "status": "available",
       "published": "2026-07-15",
       "listed_at": "2026-07-15",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -2083,7 +2342,7 @@
       "status": "available",
       "published": "2026-07-15",
       "listed_at": "2026-07-15",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -2129,7 +2388,7 @@
       "status": "available",
       "published": "2026-07-15",
       "listed_at": "2026-07-15",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -2175,7 +2434,7 @@
       "status": "available",
       "published": "2026-07-15",
       "listed_at": "2026-07-15",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -2221,7 +2480,7 @@
       "status": "available",
       "published": "2026-07-15",
       "listed_at": "2026-07-15",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -2264,12 +2523,11 @@
       "currency": "USDC",
       "payment": "x402",
       "payment_method": [
-        "stripe",
-        "paypal",
-        "crypto"
+        "x402"
       ],
       "format": [
-        "PDF"
+        "PDF",
+        "Markdown"
       ],
       "endpoint": null,
       "status": "available",
@@ -2284,7 +2542,7 @@
       "preview_files": [
         "samples/preview-144hour-visa-30pct.pdf"
       ],
-      "delivery": "manual"
+      "delivery": "auto"
     },
     {
       "id": "guide-china-survival",
@@ -2318,9 +2576,7 @@
       "currency": "USDC",
       "payment": "x402",
       "payment_method": [
-        "stripe",
-        "paypal",
-        "crypto"
+        "x402"
       ],
       "format": [
         "PDF",
@@ -2340,7 +2596,7 @@
       "preview_files": [
         "samples/preview-survival-guide-30pct.pdf"
       ],
-      "delivery": "manual"
+      "delivery": "auto"
     },
     {
       "id": "guide-social-media-registration",
@@ -2374,12 +2630,11 @@
       "currency": "USDC",
       "payment": "x402",
       "payment_method": [
-        "stripe",
-        "paypal",
-        "crypto"
+        "x402"
       ],
       "format": [
-        "PDF"
+        "PDF",
+        "Markdown"
       ],
       "endpoint": "/v1/assets/guide-social-media-registration",
       "status": "available",
@@ -2394,7 +2649,7 @@
       "preview_files": [
         "samples/preview-social-media-guide-30pct.pdf"
       ],
-      "delivery": "manual"
+      "delivery": "auto"
     },
     {
       "id": "svc-china-guide",
@@ -2421,12 +2676,11 @@
       "currency": "USD",
       "payment": "x402",
       "payment_method": [
-        "stripe",
-        "paypal",
-        "crypto"
+        "x402"
       ],
       "format": [
-        "Service"
+        "Service",
+        "Markdown"
       ],
       "endpoint": null,
       "status": "available",
@@ -2439,7 +2693,7 @@
       "source_file": null,
       "version": 1,
       "preview_files": [],
-      "delivery": "manual"
+      "delivery": "auto"
     },
     {
       "id": "teaching-C001",
@@ -2478,7 +2732,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "free",
       "preview": "full",
       "files": [
@@ -2592,7 +2846,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -2697,7 +2951,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -2802,7 +3056,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -2907,7 +3161,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -3012,7 +3266,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -3117,7 +3371,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -3222,7 +3476,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -3327,7 +3581,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -3432,7 +3686,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -3537,7 +3791,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -3642,7 +3896,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -3747,7 +4001,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -3845,7 +4099,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -3943,7 +4197,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -4048,7 +4302,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -4153,7 +4407,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -4258,7 +4512,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -4356,7 +4610,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -4461,7 +4715,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -4566,7 +4820,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -4671,7 +4925,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -4776,7 +5030,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -4881,7 +5135,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -4986,7 +5240,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -5091,7 +5345,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -5196,7 +5450,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -5301,7 +5555,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -5406,7 +5660,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -5511,7 +5765,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -5616,7 +5870,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -5721,7 +5975,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -5826,7 +6080,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -5931,7 +6185,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -6036,7 +6290,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -6141,7 +6395,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -6246,7 +6500,7 @@
       "status": "available",
       "published": "2026-07-20",
       "listed_at": "2026-07-20",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
@@ -6353,7 +6607,7 @@
       "status": "available",
       "published": "2026-07-01",
       "listed_at": "2026-07-01",
-      "shelf": "human",
+      "shelf": "university-reports",
       "sample": "preview",
       "preview": "30pct",
       "files": [],
