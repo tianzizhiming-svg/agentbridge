@@ -18,7 +18,7 @@ from collections import defaultdict
 from datetime import datetime, timedelta
 
 import httpx
-from fastapi import Request, HTTPException
+from fastapi import Request, HTTPException, Depends
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
@@ -454,52 +454,81 @@ async def query_company(name: str, credit_code: str) -> dict:
 # Route Registration
 # ============================================================
 
-def _simple_402(resource: str, description: str, amount: str, schema: dict):
-    """Return a simple 402 JSON response with x402-style metadata."""
-    return JSONResponse(
-        status_code=402,
-        content={
-            "error": "Payment Required",
-            "x402_version": 1,
-            "max_amount_required": {
-                "resource": resource,
-                "description": description,
-                "amount": amount,
-                "currency": "USDC",
-                "network": "base",
-                "input": schema,
-            },
-        },
-        headers={
-            "WWW-Authenticate": f'x402 amount={amount}, resource="{resource}"',
-        },
-    )
-
-
-def register_china_data_routes(app, x402_auth=None, _make_402=None):
+def register_china_data_routes(app, x402_auth=None, _make_402=None, _build_payment_required=None):
     """
     Register all China Data API routes on the FastAPI app.
 
     Args:
         app: FastAPI application instance
-        x402_auth: x402 authentication dependency (optional)
-        _make_402: function to create 402 payment required response (optional)
+        x402_auth: x402 authentication dependency function
+        _make_402: function to create 402 payment required response
+        _build_payment_required: function to build PaymentRequired objects
     """
+
+    # Build PaymentRequired objects for each API (prices in micro-USDC)
+    # 5000 = $0.005, 3000 = $0.003
+
+    industry_payment = None
+    policy_payment = None
+    company_payment = None
+
+    if _build_payment_required:
+        industry_payment = _build_payment_required(
+            resource="https://api.060504.shop/v1/api/industry",
+            description="China Industry Statistics API - query NBS data by keyword (e.g. GDP, CPI)",
+            amount="5000",
+            extensions={
+                "input": INDUSTRY_INPUT_SCHEMA,
+                "output": {
+                    "type": "object",
+                    "description": "Structured statistical data from National Bureau of Statistics",
+                },
+            },
+        )
+
+        policy_payment = _build_payment_required(
+            resource="https://api.060504.shop/v1/api/policy",
+            description="China Policy Search API - search government policies by keyword",
+            amount="5000",
+            extensions={
+                "input": POLICY_INPUT_SCHEMA,
+                "output": {
+                    "type": "object",
+                    "description": "Structured policy search results with source URLs",
+                },
+            },
+        )
+
+        company_payment = _build_payment_required(
+            resource="https://api.060504.shop/v1/api/company",
+            description="China Enterprise Credit API - query company registration info from official system",
+            amount="3000",
+            extensions={
+                "input": COMPANY_INPUT_SCHEMA,
+                "output": {
+                    "type": "object",
+                    "description": "Enterprise credit information with official source links",
+                },
+            },
+        )
 
     # --- Industry API ---
 
     @app.get("/v1/api/industry")
     async def industry_info():
         """GET returns 402 with payment info for x402 discovery."""
-        return _simple_402(
-            resource="https://api.060504.shop/v1/api/industry",
-            description="China Industry Statistics API - query NBS data by keyword",
-            amount="2000",
-            schema=INDUSTRY_INPUT_SCHEMA,
+        if industry_payment and _make_402:
+            return _make_402(industry_payment, INDUSTRY_INPUT_SCHEMA)
+        return JSONResponse(
+            status_code=402,
+            content={"error": "Payment required", "amount": "5000", "currency": "USDC"},
         )
 
     @app.post("/v1/api/industry")
-    async def industry_query(req: IndustryRequest, request: Request):
+    async def industry_query(
+        req: IndustryRequest,
+        key_info=Depends(x402_auth(industry_payment.accepts[0])) if x402_auth and industry_payment else None,
+    ):
         """POST: query industry statistics after x402 payment."""
         result = await query_nbs(req.keyword, req.period, req.limit)
         return JSONResponse(content=result)
@@ -509,15 +538,18 @@ def register_china_data_routes(app, x402_auth=None, _make_402=None):
     @app.get("/v1/api/policy")
     async def policy_info():
         """GET returns 402 with payment info for x402 discovery."""
-        return _simple_402(
-            resource="https://api.060504.shop/v1/api/policy",
-            description="China Policy Search API - search government policies by keyword",
-            amount="2000",
-            schema=POLICY_INPUT_SCHEMA,
+        if policy_payment and _make_402:
+            return _make_402(policy_payment, POLICY_INPUT_SCHEMA)
+        return JSONResponse(
+            status_code=402,
+            content={"error": "Payment required", "amount": "5000", "currency": "USDC"},
         )
 
     @app.post("/v1/api/policy")
-    async def policy_query(req: PolicyRequest, request: Request):
+    async def policy_query(
+        req: PolicyRequest,
+        key_info=Depends(x402_auth(policy_payment.accepts[0])) if x402_auth and policy_payment else None,
+    ):
         """POST: search government policies after x402 payment."""
         result = await search_policies(req.keyword, req.date_from, req.limit)
         return JSONResponse(content=result)
@@ -527,15 +559,18 @@ def register_china_data_routes(app, x402_auth=None, _make_402=None):
     @app.get("/v1/api/company")
     async def company_info():
         """GET returns 402 with payment info for x402 discovery."""
-        return _simple_402(
-            resource="https://api.060504.shop/v1/api/company",
-            description="China Enterprise Credit API - query company registration info",
-            amount="1000",
-            schema=COMPANY_INPUT_SCHEMA,
+        if company_payment and _make_402:
+            return _make_402(company_payment, COMPANY_INPUT_SCHEMA)
+        return JSONResponse(
+            status_code=402,
+            content={"error": "Payment required", "amount": "3000", "currency": "USDC"},
         )
 
     @app.post("/v1/api/company")
-    async def company_query(req: CompanyRequest, request: Request):
+    async def company_query(
+        req: CompanyRequest,
+        key_info=Depends(x402_auth(company_payment.accepts[0])) if x402_auth and company_payment else None,
+    ):
         """POST: query enterprise credit info after x402 payment."""
         result = await query_company(req.name, req.credit_code)
         return JSONResponse(content=result)
