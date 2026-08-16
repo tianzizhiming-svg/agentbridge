@@ -1,6 +1,7 @@
 # AgentBridge API Server Deploy Script
-# Run this on your Windows server where AgentBridge-API is running
-# Usage: Right-click → Run with PowerShell, or: powershell -ExecutionPolicy Bypass -File deploy-api.ps1
+# Usage: powershell -ExecutionPolicy Bypass -File deploy-api.ps1
+# Or download-and-run: 
+#   irm "https://raw.githubusercontent.com/tianzizhiming-svg/agentbridge/master/api-server-files/deploy-api.ps1" -OutFile deploy-api.ps1; powershell -ExecutionPolicy Bypass -File deploy-api.ps1
 
 param([string]$ApiPath = "F:\afie_proxy")
 
@@ -23,9 +24,10 @@ foreach ($f in $files) {
     $dest = "$tmpDir\$f"
     try {
         Invoke-WebRequest -Uri $url -OutFile $dest -UseBasicParsing
-        Write-Host "  ✓ Downloaded $f" -ForegroundColor Green
+        Write-Host "  Downloaded $f OK" -ForegroundColor Green
     } catch {
-        Write-Host "  ✗ Failed to download $f: $_" -ForegroundColor Red
+        $errMsg = $_.Exception.Message
+        Write-Host "  Failed to download $f : $errMsg" -ForegroundColor Red
         exit 1
     }
 }
@@ -41,9 +43,9 @@ foreach ($f in $files) {
     $src = "$ApiPath\$f"
     if (Test-Path $src) {
         Copy-Item $src "$backupDir\$f"
-        Write-Host "  ✓ Backed up $f" -ForegroundColor Green
+        Write-Host "  Backed up $f OK" -ForegroundColor Green
     } else {
-        Write-Host "  ! $f not found at $src (skipping backup)" -ForegroundColor DarkYellow
+        Write-Host "  $f not found at $src (skipping backup)" -ForegroundColor DarkYellow
     }
 }
 
@@ -55,7 +57,7 @@ foreach ($f in $files) {
     $src = "$tmpDir\$f"
     $dest = "$ApiPath\$f"
     Copy-Item $src $dest -Force
-    Write-Host "  ✓ Replaced $f" -ForegroundColor Green
+    Write-Host "  Replaced $f OK" -ForegroundColor Green
 }
 
 # --- Step 4: Add 5 new assets to main.py ---
@@ -64,13 +66,12 @@ Write-Host "[4/4] Adding 5 new asset IDs to main.py..." -ForegroundColor Yellow
 
 $mainPy = "$ApiPath\main.py"
 if (-not (Test-Path $mainPy)) {
-    # Try to find main.py
     $found = Get-ChildItem -Path $ApiPath -Filter "main.py" -Recurse | Select-Object -First 1
     if ($found) {
         $mainPy = $found.FullName
         Write-Host "  Found main.py at: $mainPy" -ForegroundColor DarkYellow
     } else {
-        Write-Host "  ✗ main.py not found in $ApiPath" -ForegroundColor Red
+        Write-Host "  main.py not found in $ApiPath" -ForegroundColor Red
         Write-Host "  Please manually add these 5 lines to your ASSETS dictionary:" -ForegroundColor Yellow
         Write-Host ""
         Write-Host '    "guide-working-in-china-2026-08": 10000,' -ForegroundColor White
@@ -95,26 +96,22 @@ if (Test-Path $mainPy) {
     $alreadyAdded = $content -match "guide-working-in-china-2026-08"
     
     if ($alreadyAdded) {
-        Write-Host "  ✓ Assets already registered in main.py (skipping)" -ForegroundColor Green
+        Write-Host "  Assets already registered in main.py (skipping)" -ForegroundColor Green
     } else {
-        # Backup main.py
         Copy-Item $mainPy "$backupDir\main.py"
         
-        # Find the ASSETS dict and add entries
-        # Look for a line like "topic-15th-five-year": 90000000, or similar pattern
         $lines = Get-Content $mainPy
         $insertLine = -1
         for ($i = 0; $i -lt $lines.Count; $i++) {
-            if ($lines[$i] -match '"svc-china-guide"\s*:') {
+            if ($lines[$i] -match '"svc-china-guide"') {
                 $insertLine = $i + 1
                 break
             }
         }
         
         if ($insertLine -eq -1) {
-            # Try to find any ASSETS dict entry as anchor
             for ($i = 0; $i -lt $lines.Count; $i++) {
-                if ($lines[$i] -match '"topic-15th-five-year"\s*:') {
+                if ($lines[$i] -match '"topic-15th-five-year"') {
                     $insertLine = $i + 1
                     break
                 }
@@ -124,9 +121,9 @@ if (Test-Path $mainPy) {
         if ($insertLine -gt 0) {
             $newLines = $lines[0..($insertLine-1)] + $newAssets + $lines[$insertLine..($lines.Count-1)]
             $newLines | Set-Content $mainPy
-            Write-Host "  ✓ Added 5 new assets to main.py at line $insertLine" -ForegroundColor Green
+            Write-Host "  Added 5 new assets to main.py at line $insertLine OK" -ForegroundColor Green
         } else {
-            Write-Host "  ! Could not find insertion point in main.py" -ForegroundColor DarkYellow
+            Write-Host "  Could not find insertion point in main.py" -ForegroundColor DarkYellow
             Write-Host "  Please manually add these 5 lines to your ASSETS dictionary:" -ForegroundColor Yellow
             Write-Host ""
             foreach ($line in $newAssets) {
@@ -142,9 +139,10 @@ Write-Host "Restarting AgentBridge-API service..." -ForegroundColor Yellow
 
 try {
     nssm restart AgentBridge-API
-    Write-Host "  ✓ Service restarted" -ForegroundColor Green
+    Write-Host "  Service restarted OK" -ForegroundColor Green
 } catch {
-    Write-Host "  ✗ Failed to restart service: $_" -ForegroundColor Red
+    $errMsg2 = $_.Exception.Message
+    Write-Host "  Failed to restart service: $errMsg2" -ForegroundColor Red
     Write-Host "  Try manually: nssm restart AgentBridge-API" -ForegroundColor Yellow
 }
 
