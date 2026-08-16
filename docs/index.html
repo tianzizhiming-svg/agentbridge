@@ -743,17 +743,28 @@
             main.map(p => rowHtml(p, false)).join('') ||
             '<div class="home-row" style="cursor:default;"><div class="hr-main"><div class="hr-name">No items match.</div></div></div>';
 
-        // university reports section - split into employment and teaching
+        // university reports section - split into employment and teaching, free items pinned first
         const uniAssets = sortNewest(filtered.filter(a => a.shelf === 'university-reports'));
         const uniEmployment = uniAssets.filter(a => (a.id || '').startsWith('employment-'));
         const uniTeaching = uniAssets.filter(a => (a.id || '').startsWith('teaching-'));
+        // Sort: free first, then by newest
+        const sortFreeFirst = function(list) {
+            return list.slice().sort(function(a, b) {
+                var af = isFree(a) ? 0 : 1;
+                var bf = isFree(b) ? 0 : 1;
+                if (af !== bf) return af - bf;
+                return (b.listed_at || b.published || '').localeCompare(a.listed_at || a.published || '');
+            });
+        };
+        var uniEmpSorted = sortFreeFirst(uniEmployment);
+        var uniTeachSorted = sortFreeFirst(uniTeaching);
         document.getElementById('uniCount').textContent = uniAssets.length;
         document.getElementById('uniEmpCount').textContent = uniEmployment.length;
         document.getElementById('uniTeachCount').textContent = uniTeaching.length;
         document.getElementById('uniEmpList').innerHTML =
-            uniEmployment.map(p => rowHtml(p, false)).join('') || '';
+            uniEmpSorted.map(p => rowHtml(p, false)).join('') || '';
         document.getElementById('uniTeachList').innerHTML =
-            uniTeaching.map(p => rowHtml(p, false)).join('') || '';
+            uniTeachSorted.map(p => rowHtml(p, false)).join('') || '';
         // Hide section if empty
         document.getElementById('uniBlock').style.display = uniAssets.length ? '' : 'none';
         document.getElementById('uniEmploymentBlock').style.display = uniEmployment.length ? '' : 'none';
@@ -836,7 +847,7 @@
     });
 
     function load() {
-        fetch('./data/catalog.json')
+        fetch('./data/catalog.json?v=' + Date.now())
             .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
             .then(catalog => {
                 state.assets = (catalog.assets || []).filter(a => a.status !== 'coming-soon');
