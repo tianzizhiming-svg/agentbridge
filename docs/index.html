@@ -322,16 +322,6 @@
     <div class="container">
 
         <!-- Free samples -->
-        <div class="free-block">
-            <div class="sec-head">
-                <div>
-                    <h2>🎁 Free Samples</h2>
-                    <div class="meta">Full-length samples, free to download — no account needed.</div>
-                </div>
-            </div>
-            <div class="free-grid" id="freeGrid"></div>
-        </div>
-
         <!-- Promotions -->
         <div class="promo-block">
             <div class="sec-head">
@@ -711,20 +701,25 @@
 
         const filtered = state.assets.filter(matches);
 
-        // free block (exclude university-reports, those show in their own section)
-        const free = sortNewest(filtered.filter(a => isFree(a) && a.shelf !== 'university-reports'));
-        document.getElementById('freeGrid').innerHTML =
-            free.map(freeCardHtml).join('') ||
-            '<div class="free-card"><div class="fc-main"><div class="fc-name">No free samples match.</div></div></div>';
+        // free items now go into main list (no separate free section)
+        const freeIds = filtered.filter(a => isFree(a) && a.shelf !== 'university-reports').map(a => a.id);
 
-        // promotions (exclude university-reports)
+        // promotions (exclude university-reports), China Web Fetch API pinned first
         const promo = sortNewest(filtered.filter(a => isPromo(a) && a.shelf !== 'university-reports'));
+        const webFetchIdx = promo.findIndex(a => a.id === 'api-web-fetch');
+        let promoOrdered = promo;
+        if (webFetchIdx > 0) {
+            const [wf] = promo.splice(webFetchIdx, 1);
+            promoOrdered = [wf, ...promo];
+        } else if (webFetchIdx === 0) {
+            promoOrdered = promo;
+        }
         document.getElementById('promoList').innerHTML =
-            promo.map(p => rowHtml(p, true)).join('') ||
+            promoOrdered.map(p => rowHtml(p, true)).join('') ||
             '<div class="home-row" style="cursor:default;"><div class="hr-main"><div class="hr-name">No promotions match.</div></div></div>';
 
-        // main list: everything else that's not university-reports, newest first
-        const main = sortNewest(filtered.filter(a => !isFree(a) && !isPromo(a) && a.shelf !== 'university-reports'));
+        // main list: everything else that's not university-reports (includes free items now), newest first
+        const main = sortNewest(filtered.filter(a => !isPromo(a) && a.shelf !== 'university-reports'));
         document.getElementById('listCount').textContent = main.length;
         document.getElementById('mainList').innerHTML =
             main.map(p => rowHtml(p, false)).join('') ||
