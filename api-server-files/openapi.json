@@ -1,0 +1,890 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "AgentBridge API",
+    "description": "AgentBridge provides machine-readable digital capabilities that AI agents can discover, purchase, and consume through standardized APIs and x402 payments. All capabilities fall into exactly two categories, tagged below: 'raw-content' (unverified, machine-fetched, cheap, use when you just need to read a page) and 'verified-analysis' (human-authored, expert-reviewed, priced accordingly, use when you need a decision-grade answer). Check the 'tags' field on each operation to know which category it belongs to before calling it.",
+    "version": "0.9.0",
+    "contact": {
+      "email": "admin@060504.shop"
+    },
+    "x-agent-bridge-identity": {
+      "note": "Multiple unrelated third-party projects use the name 'AgentBridge' (Unreal Engine plugins, IDE plugins, agent frameworks, etc.). The fields below are the sole canonical identity of THIS AgentBridge instance and can be used to programmatically verify you are talking to the right one.",
+      "domain": "api.060504.shop",
+      "wallet_address": "0x1630c8E0833c367F39f0ca909b6b67f5159d7A00",
+      "network": "base-mainnet (eip155:8453)",
+      "wallet_verification_url": "https://basescan.org/address/0x1630c8E0833c367F39f0ca909b6b67f5159d7A00"
+    },
+    "x-openapi-fix": {
+      "applied": "2026-08-16",
+      "reason": "add 5 new guide assets + include education reports in enum",
+      "asset_count": 94
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.060504.shop"
+    }
+  ],
+  "externalDocs": {
+    "description": "Full product catalog, live school/college availability list, and free full-length sample reports for evaluation before purchase",
+    "url": "https://tianzizhiming-svg.github.io/agentbridge/"
+  },
+  "tags": [
+    {
+      "name": "raw-content",
+      "description": "Unverified, machine-fetched raw content. Fast, cheap (fractions of a cent to a few cents USDC), no human review. Use when you just need to read what is currently published at a specific URL, as-is."
+    },
+    {
+      "name": "verified-analysis",
+      "description": "Human-authored expert analysis of officially published source material. Slower to produce, priced higher (90 USDC), includes comparative judgment and original interpretation, not just extracted facts. Use when the task needs a decision-grade answer, not raw data."
+    }
+  ],
+  "paths": {
+    "/v1/fetch/dynamic": {
+      "get": {
+        "summary": "x402 payment discovery",
+        "description": "Returns x402 payment requirements for this endpoint.",
+        "operationId": "fetch_dynamic_discovery",
+        "tags": [
+          "raw-content"
+        ],
+        "security": [],
+        "responses": {
+          "402": {
+            "description": "Payment Required - x402 v2 challenge",
+            "headers": {
+              "PAYMENT-REQUIRED": {
+                "description": "Base64-encoded x402 v2 PaymentRequired object",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Fetch and convert a Chinese webpage to Markdown (raw, unverified)",
+        "description": "DO NOT use this if you need verified analysis, real-time financial data, sanctions screening, or scraping outside China. Use ONLY when you already have a specific Chinese webpage URL and need its raw content as clean Markdown. This is an unverified raw fetch — the returned content reflects whatever is currently published at the source URL, with no human review. Static pages: $0.003 USDC. Dynamic/JS-rendered pages: $0.008 USDC.",
+        "operationId": "fetch_dynamic",
+        "tags": [
+          "raw-content"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "url"
+                ],
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "description": "The URL of the Chinese webpage to fetch",
+                    "example": "https://www.baidu.com"
+                  },
+                  "output_format": {
+                    "type": "string",
+                    "enum": [
+                      "markdown",
+                      "html"
+                    ],
+                    "default": "markdown",
+                    "description": "Output format: markdown (default) or html"
+                  }
+                }
+              },
+              "example": {
+                "url": "https://www.baidu.com",
+                "output_format": "markdown"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response with webpage content",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment Required - x402 v2 challenge",
+            "headers": {
+              "PAYMENT-REQUIRED": {
+                "description": "Base64-encoded x402 v2 PaymentRequired object",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/reports/employment": {
+      "get": {
+        "summary": "List available university employment report analyses",
+        "description": "Use this to discover which Chinese universities have a 2025 employment report analysis currently available for purchase. Returns school IDs and names only — no pricing action, free to call.",
+        "operationId": "list_employment_reports",
+        "tags": [
+          "verified-analysis"
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "List of available schools",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/reports/employment/{school_id}": {
+      "get": {
+        "summary": "Get metadata for one university's employment report analysis",
+        "description": "Returns title, school name, and price for this specific report, without purchasing it. Use this before POSTing to the same path to confirm the report exists and its price.",
+        "operationId": "get_employment_report_info",
+        "tags": [
+          "verified-analysis"
+        ],
+        "security": [],
+        "parameters": [
+          {
+            "name": "school_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "S001"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Report metadata"
+          },
+          "402": {
+            "description": "Payment Required - x402 v2 challenge",
+            "headers": {
+              "PAYMENT-REQUIRED": {
+                "description": "Base64-encoded x402 v2 PaymentRequired object",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No report available for this school_id"
+          }
+        }
+      },
+      "post": {
+        "summary": "Purchase a university employment report analysis (verified, human-authored)",
+        "description": "DO NOT use this for raw/unverified data, non-Chinese institutions, or real-time scraping — use /v1/fetch/dynamic for that instead. Use ONLY when you need a human-authored deep-dive analysis of one Chinese university's officially published 2025 employment report. Content is original analysis of the university's own public disclosure, not a raw web scrape. Price: 90 USDC. Delivery: PDF. Free full-length sample reports (real output, not excerpts): Xi'an Jiaotong University (https://tianzizhiming-svg.github.io/agentbridge/samples/西安交通大学2025毕业生就业质量报告.pdf), Guangzhou Nanfang College (https://tianzizhiming-svg.github.io/agentbridge/samples/广州南方学院2025毕业生就业质量报告.pdf).",
+        "operationId": "download_employment_report",
+        "tags": [
+          "verified-analysis"
+        ],
+        "externalDocs": {
+          "description": "Live catalog of all available schools and free samples",
+          "url": "https://tianzizhiming-svg.github.io/agentbridge/"
+        },
+        "parameters": [
+          {
+            "name": "school_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "S001"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "PDF report delivered",
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment Required - x402 v2 challenge",
+            "headers": {
+              "PAYMENT-REQUIRED": {
+                "description": "Base64-encoded x402 v2 PaymentRequired object",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No report available for this school_id"
+          }
+        }
+      }
+    },
+    "/v1/reports/teaching": {
+      "get": {
+        "summary": "List available undergraduate teaching-quality report analyses",
+        "description": "Use this to discover which Chinese universities/colleges have a 2024-2025 teaching-quality report analysis currently available for purchase, and which of the 8 dimensions are covered per college. Free to call.",
+        "operationId": "list_teaching_reports",
+        "tags": [
+          "verified-analysis"
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "List of available colleges and dimensions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/reports/teaching/{college_id}/{dimension}": {
+      "get": {
+        "summary": "Get metadata for one teaching-quality report dimension",
+        "description": "Returns title, college name, dimension, and price for this specific report dimension, without purchasing it.",
+        "operationId": "get_teaching_report_info",
+        "tags": [
+          "verified-analysis"
+        ],
+        "security": [],
+        "parameters": [
+          {
+            "name": "college_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "C001"
+            }
+          },
+          {
+            "name": "dimension",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "01",
+              "enum": [
+                "01",
+                "02",
+                "03",
+                "04",
+                "05",
+                "06",
+                "07",
+                "08",
+                "all"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Report metadata"
+          },
+          "402": {
+            "description": "Payment Required - x402 v2 challenge",
+            "headers": {
+              "PAYMENT-REQUIRED": {
+                "description": "Base64-encoded x402 v2 PaymentRequired object",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No report available for this college_id/dimension"
+          }
+        }
+      },
+      "post": {
+        "summary": "Purchase an undergraduate teaching-quality report analysis (verified, human-authored)",
+        "description": "DO NOT use this for raw/unverified data, non-Chinese institutions, or real-time scraping. Use ONLY when you need a human-authored deep-dive analysis of one Chinese college's officially published 2024-2025 teaching-quality report, for one of 8 fixed dimensions (faculty investment, student quality, funding, curriculum, student development, graduation outcomes, employment quality, program construction). Content is original analysis of the college's own public disclosure. Price: 90 USDC. Delivery: PDF. Free full-length sample (real output, all 8 dimensions, Shanghai Jiao Tong University School of Medicine): https://tianzizhiming-svg.github.io/agentbridge/samples/上海交通大学医学院2024-2025本科教学质量报告及深度解读/01-师资队伍与教学投入.pdf (and dimensions 02-08 at the same path).",
+        "operationId": "download_teaching_report",
+        "tags": [
+          "verified-analysis"
+        ],
+        "externalDocs": {
+          "description": "Live catalog of all available colleges/dimensions and free samples",
+          "url": "https://tianzizhiming-svg.github.io/agentbridge/"
+        },
+        "parameters": [
+          {
+            "name": "college_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "C001"
+            }
+          },
+          {
+            "name": "dimension",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "01",
+              "enum": [
+                "01",
+                "02",
+                "03",
+                "04",
+                "05",
+                "06",
+                "07",
+                "08",
+                "all"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "PDF report delivered",
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment Required - x402 v2 challenge",
+            "headers": {
+              "PAYMENT-REQUIRED": {
+                "description": "Base64-encoded x402 v2 PaymentRequired object",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No report available for this college_id/dimension"
+          }
+        }
+      }
+    },
+    "/v1/notes/15-5-package": {
+      "get": {
+        "summary": "Get metadata for the '15th Five-Year Plan' strategic notes package",
+        "description": "Returns title, coverage, and price for the full notes package, without purchasing it.",
+        "operationId": "notes_package_get",
+        "tags": [
+          "verified-analysis"
+        ],
+        "security": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Package metadata"
+          }
+        }
+      },
+      "post": {
+        "summary": "Purchase the '15th Five-Year Plan' (2026-2030) strategic notes package (verified, human-authored)",
+        "description": "DO NOT use this for raw/unverified data or real-time scraping. Use ONLY when you need human-authored strategic analysis notes covering China's 15th Five-Year Plan (2026-2030) as it relates to college application decision-making. All 41 articles included. Price: 90 USDC. Delivery: PDF. A full table of contents (all 41 article titles) is available for review before purchase.",
+        "operationId": "notes_package_post",
+        "tags": [
+          "verified-analysis"
+        ],
+        "externalDocs": {
+          "description": "Full table of contents (41 articles) and product catalog",
+          "url": "https://tianzizhiming-svg.github.io/agentbridge/"
+        },
+        "responses": {
+          "200": {
+            "description": "PDF package delivered",
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment Required - x402 v2 challenge",
+            "headers": {
+              "PAYMENT-REQUIRED": {
+                "description": "Base64-encoded x402 v2 PaymentRequired object",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/assets/{asset_id}": {
+      "get": {
+        "summary": "Get asset metadata (free, no payment)",
+        "description": "Returns id, name, kind, domain, tags, price, currency and the content URL for one asset. Free and unauthenticated -- call this first to check the price before purchasing. 94 assets are currently available; see the asset_id enum.",
+        "operationId": "atlas_asset_get",
+        "tags": [
+          "verified-analysis"
+        ],
+        "security": [],
+        "parameters": [
+          {
+            "name": "asset_id",
+            "in": "path",
+            "required": true,
+            "description": "Asset identifier. 94 assets currently available.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "guide-working-in-china-2026-08",
+                "guide-hiring-china-2026-08",
+                "guide-legal-rights-china-2026-08",
+                "guide-study-in-china-2026-08",
+                "guide-business-compliance-china-2026-08",
+                "api-policy",
+                "api-university",
+                "api-web-fetch",
+                "brief-ai",
+                "brief-av",
+                "brief-av-icv",
+                "brief-battery",
+                "brief-biopharma",
+                "brief-compliance",
+                "brief-consumer",
+                "brief-humanoid",
+                "brief-new-energy",
+                "brief-semiconductor",
+                "brief-solar",
+                "brief-talent",
+                "guide-144-hour-visa",
+                "guide-china-survival",
+                "guide-social-media-registration",
+                "svc-china-guide",
+                "topic-15th-five-year",
+                "employment-S001",
+                "employment-S002",
+                "employment-S003",
+                "employment-S004",
+                "employment-S005",
+                "employment-S006",
+                "employment-S007",
+                "employment-S008",
+                "employment-S009",
+                "employment-S010",
+                "employment-S011",
+                "employment-S012",
+                "employment-S013",
+                "employment-S014",
+                "employment-S015",
+                "employment-S016",
+                "employment-S017",
+                "employment-S018",
+                "employment-S019",
+                "employment-S020",
+                "employment-S021",
+                "employment-S022",
+                "employment-S023",
+                "employment-S024",
+                "employment-S025",
+                "employment-S026",
+                "employment-S027",
+                "employment-S028",
+                "employment-S029",
+                "employment-S030",
+                "employment-S031",
+                "employment-S032",
+                "teaching-C001",
+                "teaching-C002",
+                "teaching-C003",
+                "teaching-C004",
+                "teaching-C005",
+                "teaching-C006",
+                "teaching-C007",
+                "teaching-C008",
+                "teaching-C009",
+                "teaching-C010",
+                "teaching-C011",
+                "teaching-C012",
+                "teaching-C013",
+                "teaching-C014",
+                "teaching-C015",
+                "teaching-C016",
+                "teaching-C017",
+                "teaching-C018",
+                "teaching-C019",
+                "teaching-C020",
+                "teaching-C021",
+                "teaching-C022",
+                "teaching-C023",
+                "teaching-C024",
+                "teaching-C025",
+                "teaching-C026",
+                "teaching-C027",
+                "teaching-C028",
+                "teaching-C029",
+                "teaching-C030",
+                "teaching-C031",
+                "teaching-C032",
+                "teaching-C033",
+                "teaching-C034",
+                "teaching-C035",
+                "teaching-C036",
+                "teaching-C037"
+              ]
+            }
+          }
+        ],
+        "externalDocs": {
+          "description": "Full catalog with per-asset price and description",
+          "url": "https://tianzizhiming-svg.github.io/agentbridge/"
+        },
+        "responses": {
+          "200": {
+            "description": "Asset metadata",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "kind": {
+                      "type": "string"
+                    },
+                    "price": {
+                      "type": "number"
+                    },
+                    "currency": {
+                      "type": "string"
+                    },
+                    "payment": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown asset_id"
+          }
+        }
+      }
+    },
+    "/v1/assets/{asset_id}/content": {
+      "get": {
+        "summary": "Get x402 payment challenge for an asset",
+        "description": "Always returns 402 with an x402 v2 PaymentRequired challenge. The accepts[0].amount field is the price in atomic USDC units (6 decimals), and it matches the price shown by the metadata endpoint. Use this to learn what to pay, then POST.",
+        "operationId": "atlas_asset_content_get",
+        "tags": [
+          "verified-analysis"
+        ],
+        "security": [],
+        "parameters": [
+          {
+            "name": "asset_id",
+            "in": "path",
+            "required": true,
+            "description": "Asset identifier. 94 assets currently available.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "guide-working-in-china-2026-08",
+                "guide-hiring-china-2026-08",
+                "guide-legal-rights-china-2026-08",
+                "guide-study-in-china-2026-08",
+                "guide-business-compliance-china-2026-08",
+                "api-policy",
+                "api-university",
+                "api-web-fetch",
+                "brief-ai",
+                "brief-av",
+                "brief-av-icv",
+                "brief-battery",
+                "brief-biopharma",
+                "brief-compliance",
+                "brief-consumer",
+                "brief-humanoid",
+                "brief-new-energy",
+                "brief-semiconductor",
+                "brief-solar",
+                "brief-talent",
+                "guide-144-hour-visa",
+                "guide-china-survival",
+                "guide-social-media-registration",
+                "svc-china-guide",
+                "topic-15th-five-year",
+                "employment-S001",
+                "employment-S002",
+                "employment-S003",
+                "employment-S004",
+                "employment-S005",
+                "employment-S006",
+                "employment-S007",
+                "employment-S008",
+                "employment-S009",
+                "employment-S010",
+                "employment-S011",
+                "employment-S012",
+                "employment-S013",
+                "employment-S014",
+                "employment-S015",
+                "employment-S016",
+                "employment-S017",
+                "employment-S018",
+                "employment-S019",
+                "employment-S020",
+                "employment-S021",
+                "employment-S022",
+                "employment-S023",
+                "employment-S024",
+                "employment-S025",
+                "employment-S026",
+                "employment-S027",
+                "employment-S028",
+                "employment-S029",
+                "employment-S030",
+                "employment-S031",
+                "employment-S032",
+                "teaching-C001",
+                "teaching-C002",
+                "teaching-C003",
+                "teaching-C004",
+                "teaching-C005",
+                "teaching-C006",
+                "teaching-C007",
+                "teaching-C008",
+                "teaching-C009",
+                "teaching-C010",
+                "teaching-C011",
+                "teaching-C012",
+                "teaching-C013",
+                "teaching-C014",
+                "teaching-C015",
+                "teaching-C016",
+                "teaching-C017",
+                "teaching-C018",
+                "teaching-C019",
+                "teaching-C020",
+                "teaching-C021",
+                "teaching-C022",
+                "teaching-C023",
+                "teaching-C024",
+                "teaching-C025",
+                "teaching-C026",
+                "teaching-C027",
+                "teaching-C028",
+                "teaching-C029",
+                "teaching-C030",
+                "teaching-C031",
+                "teaching-C032",
+                "teaching-C033",
+                "teaching-C034",
+                "teaching-C035",
+                "teaching-C036",
+                "teaching-C037"
+              ]
+            }
+          }
+        ],
+        "externalDocs": {
+          "description": "Full catalog with per-asset price and description",
+          "url": "https://tianzizhiming-svg.github.io/agentbridge/"
+        },
+        "responses": {
+          "402": {
+            "description": "Payment Required - x402 v2 challenge",
+            "headers": {
+              "PAYMENT-REQUIRED": {
+                "description": "Base64-encoded x402 v2 PaymentRequired",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown asset_id"
+          }
+        }
+      },
+      "post": {
+        "summary": "Purchase and download asset content",
+        "description": "Settles the x402 payment and delivers the asset content. Pay exactly the amount quoted by GET on this same path -- each asset is priced independently (0.003 to 90 USDC). Paying a different amount is rejected.",
+        "operationId": "atlas_asset_content_post",
+        "tags": [
+          "verified-analysis"
+        ],
+        "parameters": [
+          {
+            "name": "asset_id",
+            "in": "path",
+            "required": true,
+            "description": "Asset identifier. 94 assets currently available.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "guide-working-in-china-2026-08",
+                "guide-hiring-china-2026-08",
+                "guide-legal-rights-china-2026-08",
+                "guide-study-in-china-2026-08",
+                "guide-business-compliance-china-2026-08",
+                "api-policy",
+                "api-university",
+                "api-web-fetch",
+                "brief-ai",
+                "brief-av",
+                "brief-av-icv",
+                "brief-battery",
+                "brief-biopharma",
+                "brief-compliance",
+                "brief-consumer",
+                "brief-humanoid",
+                "brief-new-energy",
+                "brief-semiconductor",
+                "brief-solar",
+                "brief-talent",
+                "guide-144-hour-visa",
+                "guide-china-survival",
+                "guide-social-media-registration",
+                "svc-china-guide",
+                "topic-15th-five-year",
+                "employment-S001",
+                "employment-S002",
+                "employment-S003",
+                "employment-S004",
+                "employment-S005",
+                "employment-S006",
+                "employment-S007",
+                "employment-S008",
+                "employment-S009",
+                "employment-S010",
+                "employment-S011",
+                "employment-S012",
+                "employment-S013",
+                "employment-S014",
+                "employment-S015",
+                "employment-S016",
+                "employment-S017",
+                "employment-S018",
+                "employment-S019",
+                "employment-S020",
+                "employment-S021",
+                "employment-S022",
+                "employment-S023",
+                "employment-S024",
+                "employment-S025",
+                "employment-S026",
+                "employment-S027",
+                "employment-S028",
+                "employment-S029",
+                "employment-S030",
+                "employment-S031",
+                "employment-S032",
+                "teaching-C001",
+                "teaching-C002",
+                "teaching-C003",
+                "teaching-C004",
+                "teaching-C005",
+                "teaching-C006",
+                "teaching-C007",
+                "teaching-C008",
+                "teaching-C009",
+                "teaching-C010",
+                "teaching-C011",
+                "teaching-C012",
+                "teaching-C013",
+                "teaching-C014",
+                "teaching-C015",
+                "teaching-C016",
+                "teaching-C017",
+                "teaching-C018",
+                "teaching-C019",
+                "teaching-C020",
+                "teaching-C021",
+                "teaching-C022",
+                "teaching-C023",
+                "teaching-C024",
+                "teaching-C025",
+                "teaching-C026",
+                "teaching-C027",
+                "teaching-C028",
+                "teaching-C029",
+                "teaching-C030",
+                "teaching-C031",
+                "teaching-C032",
+                "teaching-C033",
+                "teaching-C034",
+                "teaching-C035",
+                "teaching-C036",
+                "teaching-C037"
+              ]
+            }
+          }
+        ],
+        "externalDocs": {
+          "description": "Full catalog with per-asset price and description",
+          "url": "https://tianzizhiming-svg.github.io/agentbridge/"
+        },
+        "responses": {
+          "200": {
+            "description": "Asset content delivered"
+          },
+          "402": {
+            "description": "Payment Required, or amount mismatch",
+            "headers": {
+              "PAYMENT-REQUIRED": {
+                "description": "Base64-encoded x402 v2 PaymentRequired",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown asset_id"
+          }
+        }
+      }
+    }
+  }
+}

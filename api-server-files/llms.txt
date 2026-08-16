@@ -1,0 +1,104 @@
+# AgentBridge Atlas API
+
+> China data & services, bought by machines or people.
+> No accounts. No subscriptions. No API keys. Pay per item in USDC on Base via x402.
+
+Base URL: https://api.060504.shop
+Wallet: 0x1630c8E0833c367F39f0ca909b6b67f5159d7A00 (Base mainnet)
+Payment: x402 v2, USDC on Base (EIP-3009, no gas for payer)
+
+## Discovery Endpoints (free, no payment)
+
+GET / — Service homepage (HTML)
+GET /health — Health check (200 OK)
+GET /openapi.json — Full OpenAPI 3.0 spec (JSON)
+GET /.well-known/x402 — x402 payment configuration (JSON)
+GET /.well-known/mcp/server-card.json — MCP server identity card (JSON)
+GET /robots.txt — Crawling rules
+GET /llms.txt — This file
+
+## API Endpoints (x402 paid)
+
+### Web Fetch — raw content
+POST /v1/fetch/dynamic
+  Fetch any Chinese webpage, return clean Markdown or HTML.
+  Price: x402 flat $0.008 per fetch
+  Input: {url: string, output_format: "markdown"|"html"}
+  Output: text/plain
+  Tags: raw-content
+
+### China Industry Briefings (Q2 2026) — verified data
+GET /v1/assets/brief-ai — China AI Industry Quarterly Briefing — $4.99
+GET /v1/assets/brief-av — China Autonomous Driving Industry Briefing — $4.99
+GET /v1/assets/brief-av-icv — China Intelligent Connected Vehicle Briefing — $4.99
+GET /v1/assets/brief-battery — China Solid-State Battery Industry Briefing — $4.99
+GET /v1/assets/brief-biopharma — China Biopharma Industry Briefing — $4.99
+GET /v1/assets/brief-compliance — China Digital Compliance Briefing — $4.99
+GET /v1/assets/brief-consumer — China Consumer Market Briefing — $4.99
+GET /v1/assets/brief-humanoid — China Humanoid Robot Industry Briefing — $4.99
+GET /v1/assets/brief-new-energy — China New Energy Industry Briefing — $4.99
+GET /v1/assets/brief-semiconductor — China Semiconductor Industry Briefing — $4.99
+GET /v1/assets/brief-solar — China Solar PV Industry Briefing — $4.99
+GET /v1/assets/brief-talent — China Talent Introduction Policy Briefing — $4.99
+  Each briefing returns structured Markdown with market data, key players, policy updates, and quarterly statistics.
+  Tags: verified-analysis, china-data
+
+### China Guides & Tutorials (2026-08) — verified, human-authored
+GET /v1/assets/guide-working-in-china-2026-08 — Working in China Guide for Foreigners — $0.01
+  Visa (Z/R), work permit, residence permit, employment rights, social insurance, IIT, termination, dispute resolution.
+GET /v1/assets/guide-hiring-china-2026-08 — Hiring Employees and Managing Teams in China — $0.01
+  Recruitment law, contract terms, probation, non-compete (2025 SPC Interpretation II), severance (2N), labor arbitration.
+GET /v1/assets/guide-legal-rights-china-2026-08 — Legal Rights & Consumer Protection Guide — $0.01
+  9 consumer rights, 12315 complaint system, rental disputes, contract disputes, civil litigation, evidence checklist.
+GET /v1/assets/guide-study-in-china-2026-08 — Study in China Guide for International Students — $0.01
+  X1/X2 visa, JW201/JW202 forms, residence permit, university registration, scholarships, internship policies.
+GET /v1/assets/guide-business-compliance-china-2026-08 — Business Compliance Guide for Foreign Companies — $0.01
+  WFOE compliance: 2024 Company Law (5-year paid-in capital), CIT/VAT, PIPL/DSL data compliance, audit requirements.
+  Each guide: 30% free preview available, full content after x402 payment. Format: Markdown.
+  Tags: verified-analysis, china-data, legal
+
+### Other Guides
+GET /v1/assets/guide-144-hour-visa — 144-Hour Transit Visa Express Guide — $0.01
+GET /v1/assets/guide-china-survival — 2026 Digital Survival Handbook for China — $0.01
+GET /v1/assets/guide-social-media-registration — Chinese Social Media Registration Guide — $0.01
+
+### Services
+GET /v1/assets/svc-china-guide — Foreigners Coming to China Guide (one-stop) — $9.99
+
+### Developer APIs
+GET /v1/assets/api-policy — China Policy API (15th Five-Year Plan, 41 essays) — $90
+GET /v1/assets/api-university — China University Reports API — $90
+GET /v1/assets/api-web-fetch — China Web Fetch API (per-request) — $0.008
+
+### University Reports (archive, still available for purchase)
+GET /v1/reports/employment — List all available employment reports (free)
+GET /v1/reports/employment/{school_id} — Get employment report metadata (free) / Purchase (POST, $90)
+  Example: school_id=S001
+GET /v1/reports/teaching — List all available teaching reports (free)
+GET /v1/reports/teaching/{college_id}/{dimension} — Get teaching report metadata (free) / Purchase (POST, $90)
+  Example: college_id=C001, dimension=01
+
+### Topic Packages
+GET /v1/notes/15-5-package — 15th Five-Year Plan Strategic Notes (41 articles) — $90
+
+## How x402 Payment Works
+
+1. Call any paid endpoint with GET → receive 402 with PAYMENT-REQUIRED header
+2. Decode the header (base64 x402 v2 PaymentRequired)
+3. Sign an EIP-3009 transfer for the exact amount in USDC on Base
+4. Retry the request with PAYMENT-SIGNATURE header
+5. Server verifies on-chain → returns 200 with content
+
+All prices are in USDC (6 decimals). Examples:
+  $0.01 = 10000 units
+  $0.008 = 8000 units
+  $4.99 = 4990000 units
+  $90 = 90000000 units
+
+## Asset Metadata (free)
+
+GET /v1/assets/{asset_id} — Returns id, name, kind, price, currency, payment method, content URL
+GET /v1/assets/{asset_id}/content — Returns 402 challenge (GET) / delivers content after payment (POST)
+
+Full catalog: https://tianzizhiming-svg.github.io/agentbridge/data/catalog.json
+Frontend store: https://tianzizhiming-svg.github.io/agentbridge/
