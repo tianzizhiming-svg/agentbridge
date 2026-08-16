@@ -8,34 +8,130 @@ Three x402-gated API endpoints:
 
 All data sourced from government public platforms.
 Compliance: robots.txt respected, rate-limited, no anti-crawl bypass.
+
+v2.0: Added cache + degradation layer (three-level fault tolerance).
+      Ensures Agent always gets a valid response after payment.
 """
 
 import asyncio
 import time
 import json
-import re
+import os
+import hashlib
+import logging
 from collections import defaultdict
 from datetime import datetime, timedelta
+from pathlib import Path
 
 import httpx
 from fastapi import Request, HTTPException, Depends
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
+logger = logging.getLogger(__name__)
+
+# ============================================================
+# Cache Manager - JSON file-based cache with TTL
+# ============================================================
+
+CACHE_TTL = 86400  # 24 hours in seconds
+
+# Resolve cache directory relative to this file (works under NSSM)
+_MODULE_DIR = Path(__file__).resolve().parent
+CACHE_DIR = _MODULE_DIR / "cache"
+CACHE_DIR.mkdir(parents=True, exist_ok=True)
+
+
+def _cache_key(prefix: str, *args) -> str:
+    """Generate a safe cache key from prefix and arguments."""
+    raw = f"{prefix}_{'_'.join(str(a) for a in args)}"
+    # Hash to keep filename safe and short
+    h = hashlib.md5(raw.encode("utf-8")).hexdigest()[:12]
+    return f"{prefix}_{h}"
+
+
+def _cache_path(key: str) -> Path:
+    return CACHE_DIR / f"{key}.json"
+
+
+def get_cached_data(key: str, ttl: int = CACHE_TTL) -> dict | None:
+    """Read cache if not expired. Returns None if missing or expired."""
+    p = _cache_path(key)
+    if not p.exists():
+        return None
+    try:
+        with open(p, "r", encoding="utf-8") as f:
+            wrapper = json.load(f)
+        cached_at = wrapper.get("_cached_at", 0)
+        if time.time() - cached_at > ttl:
+            return None  # Expired
+        # Return the data without the wrapper
+        data = wrapper.get("data")
+        if data is None:
+            return None
+        # Add cache metadata for transparency
+        if isinstance(data, dict):
+            data["_cache"] = {
+                "hit": True,
+                "cached_at": datetime.fromtimestamp(cached_at).isoformat(),
+                "age_seconds": int(time.time() - cached_at),
+            }
+        return data
+    except Exception:
+        return None
+
+
+def get_stale_cache(key: str) -> dict | None:
+    """Read cache ignoring TTL - for degradation fallback."""
+    p = _cache_path(key)
+    if not p.exists():
+        return None
+    try:
+        with open(p, "r", encoding="utf-8") as f:
+            wrapper = json.load(f)
+        cached_at = wrapper.get("_cached_at", 0)
+        data = wrapper.get("data")
+        if data is None:
+            return None
+        if isinstance(data, dict):
+            data["_cache"] = {
+                "hit": True,
+                "stale": True,
+                "cached_at": datetime.fromtimestamp(cached_at).isoformat(),
+                "age_seconds": int(time.time() - cached_at),
+            }
+        return data
+    except Exception:
+        return None
+
+
+def save_to_cache(key: str, data: dict) -> None:
+    """Save data to cache file with timestamp wrapper."""
+    p = _cache_path(key)
+    try:
+        wrapper = {
+            "_cached_at": time.time(),
+            "data": data,
+        }
+        with open(p, "w", encoding="utf-8") as f:
+            json.dump(wrapper, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        logger.warning(f"Failed to write cache {key}: {e}")
+
+
 # ============================================================
 # Compliance Layer
 # ============================================================
 
-# Rate limiting: max 1 request per 3 seconds per domain
 _last_request_time = defaultdict(float)
 RATE_LIMIT_SECONDS = 3.0
 
-# Domains that require extra caution (government sites)
 SENSITIVE_DOMAINS = {
     "gsxt.gov.cn",
     "data.stats.gov.cn",
     "sousuo.www.gov.cn",
 }
+
 
 async def compliance_check(url: str):
     """Rate limit + basic compliance checks before fetching."""
@@ -50,9 +146,6 @@ async def compliance_check(url: str):
         await asyncio.sleep(wait)
 
     _last_request_time[domain] = time.time()
-
-    # Do not bypass anti-crawl measures
-    # If a site returns 403/captcha, we respect it
     return True
 
 
@@ -68,7 +161,7 @@ async def fetch_with_compliance(
     await compliance_check(url)
 
     default_headers = {
-        "User-Agent": "AgentBridge-DataAPI/1.0 (compliant crawler; respects robots.txt)",
+        "User-Agent": "AgentBridge-DataAPI/2.0 (compliant crawler; respects robots.txt)",
         "Accept": "application/json, text/html, */*",
         "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
     }
@@ -87,7 +180,6 @@ async def fetch_with_compliance(
         else:
             resp = await client.get(url, headers=default_headers, params=params)
 
-    # Respect 403 - do not retry or bypass
     if resp.status_code == 403:
         raise HTTPException(
             status_code=502,
@@ -98,11 +190,82 @@ async def fetch_with_compliance(
 
 
 # ============================================================
+# Three-level fault tolerance wrapper
+# ============================================================
+
+async def fetch_with_cache(
+    cache_key: str,
+    live_fetch_fn,
+    *args,
+    **kwargs,
+) -> dict:
+    """
+    Three-level fault tolerance:
+      Level 1: Return fresh cache if not expired (10ms, no network)
+      Level 2: Cache expired -> fetch live -> save cache -> return
+      Level 3: Live fetch failed -> return stale cache with warning,
+               or 503 error if no cache exists at all
+
+    Args:
+        cache_key: Unique key for this query
+        live_fetch_fn: Async function that fetches fresh data
+        *args, **kwargs: Passed to live_fetch_fn
+
+    Returns:
+        dict: Always returns a structured dict, never raises 500
+    """
+    # Level 1: Check fresh cache
+    cached = get_cached_data(cache_key)
+    if cached is not None:
+        logger.info(f"Cache HIT (fresh): {cache_key}")
+        return cached
+
+    # Level 2: Cache miss or expired -> fetch live
+    try:
+        live_data = await live_fetch_fn(*args, **kwargs)
+
+        # Only cache successful results with actual data
+        if live_data and isinstance(live_data, dict):
+            if live_data.get("status") not in ("error", "api_error"):
+                save_to_cache(cache_key, live_data)
+                logger.info(f"Cache MISS -> live fetch OK, cached: {cache_key}")
+            else:
+                logger.warning(f"Live fetch returned error status: {cache_key}")
+
+        return live_data
+
+    except HTTPException as e:
+        # Re-raise HTTP exceptions (like 502 from 403)
+        logger.warning(f"Live fetch HTTP error for {cache_key}: {e.detail}")
+
+    except Exception as e:
+        logger.warning(f"Live fetch failed for {cache_key}: {e}")
+
+    # Level 3: Degradation - try stale cache
+    stale = get_stale_cache(cache_key)
+    if stale is not None:
+        logger.warning(f"Cache STALE fallback: {cache_key}")
+        stale["warning"] = (
+            "Real-time data source unreachable. Returning cached snapshot. "
+            "Data may be outdated."
+        )
+        stale["_degraded"] = True
+        return stale
+
+    # No cache at all - return graceful error
+    return {
+        "status": "service_unavailable",
+        "error": "Data source temporarily unavailable. Please retry later.",
+        "cache_available": False,
+        "source": "AgentBridge Data Layer",
+    }
+
+
+# ============================================================
 # 1. Industry API - National Bureau of Statistics
 # ============================================================
 
 NBS_BASE = "https://data.stats.gov.cn/dg/website/publicrelease/web/external"
-NBS_ROOT_ID = "fc982599aa684be7969d7b90b1bd0e84"  # Monthly data root
 
 INDUSTRY_INPUT_SCHEMA = {
     "type": "object",
@@ -133,18 +296,13 @@ class IndustryRequest(BaseModel):
     limit: int = 12
 
 
-async def query_nbs(keyword: str, period: str, limit: int) -> dict:
+async def _fetch_industry_live(keyword: str, period: str, limit: int) -> dict:
     """
-    Query National Bureau of Statistics data.
-    Uses the public search API which returns data values directly.
-
-    The NBS search endpoint (data.stats.gov.cn) returns structured results
-    including indicator name, value, time period, and data type for each
-    matching statistical indicator. No multi-step fetching needed.
+    Live fetch from NBS search API.
+    Returns structured data. Raises on failure (caught by fetch_with_cache).
     """
     now = datetime.now()
 
-    # Search for matching indicators - request more results for richer data
     search_url = f"{NBS_BASE}/query"
     search_params = {
         "search": keyword,
@@ -152,19 +310,9 @@ async def query_nbs(keyword: str, period: str, limit: int) -> dict:
         "pageSize": str(min(limit * 2, 20)),
     }
 
-    try:
-        resp = await fetch_with_compliance(search_url, params=search_params, timeout=20.0)
-        search_data = resp.json()
-    except Exception as e:
-        return {
-            "keyword": keyword,
-            "status": "error",
-            "message": f"Failed to query NBS: {str(e)}",
-            "source": "National Bureau of Statistics (data.stats.gov.cn)",
-            "query_time": now.isoformat(),
-        }
+    resp = await fetch_with_compliance(search_url, params=search_params, timeout=10.0)
+    search_data = resp.json()
 
-    # Check API response
     if not search_data.get("success", True):
         return {
             "keyword": keyword,
@@ -174,7 +322,6 @@ async def query_nbs(keyword: str, period: str, limit: int) -> dict:
             "query_time": now.isoformat(),
         }
 
-    # Parse search results - the API returns data values directly
     raw_items = []
     if search_data.get("data") and search_data["data"].get("data"):
         raw_items = search_data["data"]["data"]
@@ -191,8 +338,6 @@ async def query_nbs(keyword: str, period: str, limit: int) -> dict:
 
     total_count = search_data.get("data", {}).get("count", len(raw_items))
 
-    # Group results by indicator name for structured output
-    # Each search item has: show_name, value, dt, dt_name, type_text, da_name, i_name, cid
     data_points = []
     seen_indicators = set()
 
@@ -204,10 +349,8 @@ async def query_nbs(keyword: str, period: str, limit: int) -> dict:
         dt_name = item.get("dt_name", dt)
         type_text = item.get("type_text", "")
         da_name = item.get("da_name", "")
-        cid = item.get("cid", "")
         explain = item.get("explain", "")
 
-        # Deduplicate by (show_name, dt) - avoid duplicate entries
         dedup_key = f"{show_name}|{dt}"
         if dedup_key in seen_indicators:
             continue
@@ -224,7 +367,6 @@ async def query_nbs(keyword: str, period: str, limit: int) -> dict:
             "explanation": explain if explain else None,
         })
 
-    # Get the primary indicator info from the first result
     primary = raw_items[0] if raw_items else {}
 
     return {
@@ -246,6 +388,15 @@ async def query_nbs(keyword: str, period: str, limit: int) -> dict:
             "usage": "Free to use with source attribution",
         },
     }
+
+
+async def query_nbs(keyword: str, period: str, limit: int) -> dict:
+    """
+    Query NBS data with three-level cache + degradation.
+    Never raises 500. Always returns structured JSON.
+    """
+    cache_key = _cache_key("industry", keyword, period, limit)
+    return await fetch_with_cache(cache_key, _fetch_industry_live, keyword, period, limit)
 
 
 # ============================================================
@@ -281,12 +432,11 @@ class PolicyRequest(BaseModel):
     limit: int = 10
 
 
-async def search_policies(keyword: str, date_from: str, limit: int) -> dict:
+async def _fetch_policy_live(keyword: str, date_from: str, limit: int) -> dict:
     """
-    Search Chinese government policies from gov.cn.
-    Uses the public search interface at sousuo.www.gov.cn.
+    Live fetch from gov.cn search API.
+    Raises on failure (caught by fetch_with_cache).
     """
-    # Calculate date range
     now = datetime.now()
     if date_from:
         try:
@@ -296,7 +446,6 @@ async def search_policies(keyword: str, date_from: str, limit: int) -> dict:
     else:
         start_dt = now - timedelta(days=90)
 
-    # Use the gov.cn search API
     search_url = "https://sousuo.www.gov.cn/sousuo/api/search"
     search_params = {
         "q": keyword,
@@ -309,26 +458,19 @@ async def search_policies(keyword: str, date_from: str, limit: int) -> dict:
     }
 
     try:
-        resp = await fetch_with_compliance(search_url, params=search_params, timeout=20.0)
+        resp = await fetch_with_compliance(search_url, params=search_params, timeout=10.0)
         result = resp.json()
     except Exception:
-        # Fallback: use the HTML search page
-        html_url = f"https://sousuo.www.gov.cn/sousuo/search.shtml"
-        html_params = {
-            "code": "17da70961a7",
-            "searchWord": keyword,
-        }
-        resp = await fetch_with_compliance(html_url, params=html_params, timeout=20.0)
-        # Parse HTML would require BeautifulSoup, return structured error
+        # API unavailable - return structured fallback
         return {
             "keyword": keyword,
-            "status": "html_fallback",
-            "message": "API unavailable, please use the search URL directly",
+            "status": "api_unavailable",
+            "message": "Policy search API is temporarily unavailable.",
             "search_url": f"https://sousuo.www.gov.cn/sousuo/search.shtml?code=17da70961a7&searchWord={keyword}",
             "source": "China Government Search (sousuo.www.gov.cn)",
+            "query_time": now.isoformat(),
         }
 
-    # Parse policy results
     policies = []
     items = []
     if result.get("result"):
@@ -337,12 +479,13 @@ async def search_policies(keyword: str, date_from: str, limit: int) -> dict:
         items = result["data"].get("list", []) or result["data"].get("data", [])
 
     for item in items[:limit]:
+        content_text = item.get("content", "") or ""
         policies.append({
             "title": item.get("title", "") or item.get("name", ""),
             "url": item.get("url", "") or item.get("link", ""),
             "publish_date": item.get("pubtime", "") or item.get("publishTime", ""),
             "source": item.get("source", "") or item.get("porg", ""),
-            "summary": item.get("summary", "") or item.get("content", "")[:200] if item.get("content") else "",
+            "summary": item.get("summary", "") or (content_text[:200] if content_text else ""),
         })
 
     return {
@@ -362,6 +505,15 @@ async def search_policies(keyword: str, date_from: str, limit: int) -> dict:
             "usage": "Free to use with source attribution",
         },
     }
+
+
+async def search_policies(keyword: str, date_from: str, limit: int) -> dict:
+    """
+    Search policies with three-level cache + degradation.
+    Never raises 500. Always returns structured JSON.
+    """
+    cache_key = _cache_key("policy", keyword, date_from or "default", limit)
+    return await fetch_with_cache(cache_key, _fetch_policy_live, keyword, date_from, limit)
 
 
 # ============================================================
@@ -393,18 +545,14 @@ class CompanyRequest(BaseModel):
 
 async def query_company(name: str, credit_code: str) -> dict:
     """
-    Query enterprise credit information from gsxt.gov.cn.
-    Note: gsxt.gov.cn has no public API and uses captcha verification.
-    We provide structured guidance and direct links instead of scraping.
+    Query enterprise credit info from gsxt.gov.cn.
+    This endpoint provides structured guidance + direct links (no scraping).
+    Response is deterministic, no cache needed but included for consistency.
     """
     now = datetime.now()
 
-    # Build direct search URL for the user/agent to access
-    search_url = f"https://www.gsxt.gov.cn/corp-query-geetest-validate-corp-search-1.html"
-    search_params = {
-        "searchword": name,
-        "searchwordType": "1" if credit_code else "0",
-    }
+    # gsxt.gov.cn requires CAPTCHA - we provide direct links (compliance-first)
+    # This response is always available, no external dependency
 
     return {
         "company_name": name,
@@ -415,8 +563,8 @@ async def query_company(name: str, credit_code: str) -> dict:
             "Use the provided URL to access the official enterprise credit system directly. "
             "This is a compliance-first approach - we do not bypass anti-bot measures."
         ),
-        "official_search_url": f"https://www.gsxt.gov.cn/corp-query-homepage.html",
-        "search_url": f"{search_url}?searchword={name}",
+        "official_search_url": "https://www.gsxt.gov.cn/corp-query-homepage.html",
+        "search_url": f"https://www.gsxt.gov.cn/corp-query-geetest-validate-corp-search-1.html?searchword={name}",
         "source": "National Enterprise Credit Information Publicity System (gsxt.gov.cn)",
         "query_time": now.isoformat(),
         "compliance": {
@@ -511,9 +659,25 @@ def register_china_data_routes(app, x402_auth=None, _make_402=None, _build_payme
         req: IndustryRequest,
         key_info=Depends(x402_auth(industry_payment.accepts[0])) if x402_auth and industry_payment else None,
     ):
-        """POST: query industry statistics after x402 payment."""
-        result = await query_nbs(req.keyword, req.period, req.limit)
-        return JSONResponse(content=result)
+        """POST: query industry statistics after x402 payment.
+        Three-level fault tolerance: cache -> live -> stale fallback.
+        Never returns 500."""
+        try:
+            result = await query_nbs(req.keyword, req.period, req.limit)
+            # Determine status code based on result
+            if result.get("status") == "service_unavailable":
+                return JSONResponse(content=result, status_code=503)
+            return JSONResponse(content=result)
+        except Exception as e:
+            logger.error(f"Industry query unexpected error: {e}", exc_info=True)
+            return JSONResponse(
+                status_code=503,
+                content={
+                    "status": "service_unavailable",
+                    "error": "An unexpected error occurred. Please retry later.",
+                    "keyword": req.keyword,
+                },
+            )
 
     # --- Policy API ---
 
@@ -532,9 +696,24 @@ def register_china_data_routes(app, x402_auth=None, _make_402=None, _build_payme
         req: PolicyRequest,
         key_info=Depends(x402_auth(policy_payment.accepts[0])) if x402_auth and policy_payment else None,
     ):
-        """POST: search government policies after x402 payment."""
-        result = await search_policies(req.keyword, req.date_from, req.limit)
-        return JSONResponse(content=result)
+        """POST: search government policies after x402 payment.
+        Three-level fault tolerance: cache -> live -> stale fallback.
+        Never returns 500."""
+        try:
+            result = await search_policies(req.keyword, req.date_from, req.limit)
+            if result.get("status") == "service_unavailable":
+                return JSONResponse(content=result, status_code=503)
+            return JSONResponse(content=result)
+        except Exception as e:
+            logger.error(f"Policy query unexpected error: {e}", exc_info=True)
+            return JSONResponse(
+                status_code=503,
+                content={
+                    "status": "service_unavailable",
+                    "error": "An unexpected error occurred. Please retry later.",
+                    "keyword": req.keyword,
+                },
+            )
 
     # --- Company API ---
 
@@ -553,6 +732,19 @@ def register_china_data_routes(app, x402_auth=None, _make_402=None, _build_payme
         req: CompanyRequest,
         key_info=Depends(x402_auth(company_payment.accepts[0])) if x402_auth and company_payment else None,
     ):
-        """POST: query enterprise credit info after x402 payment."""
-        result = await query_company(req.name, req.credit_code)
-        return JSONResponse(content=result)
+        """POST: query enterprise credit info after x402 payment.
+        This endpoint has no external dependency (provides direct links only).
+        Never returns 500."""
+        try:
+            result = await query_company(req.name, req.credit_code)
+            return JSONResponse(content=result)
+        except Exception as e:
+            logger.error(f"Company query unexpected error: {e}", exc_info=True)
+            return JSONResponse(
+                status_code=503,
+                content={
+                    "status": "service_unavailable",
+                    "error": "An unexpected error occurred. Please retry later.",
+                    "company_name": req.name,
+                },
+            )
