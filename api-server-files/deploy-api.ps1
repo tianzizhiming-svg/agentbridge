@@ -2,7 +2,7 @@
 # Run this on your Windows server where AgentBridge-API is running
 # Usage: Right-click → Run with PowerShell, or: powershell -ExecutionPolicy Bypass -File deploy-api.ps1
 
-param([string]$ApiPath = "C:\agentbridge")
+param([string]$ApiPath = "F:\afie_proxy")
 
 Write-Host "=== AgentBridge API Server Deploy ===" -ForegroundColor Cyan
 Write-Host "API path: $ApiPath"
