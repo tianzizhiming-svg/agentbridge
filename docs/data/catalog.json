@@ -283,27 +283,31 @@
       "delivery": "auto"
     },
     {
-      "id": "api-policy",
-      "name": "China Policy API",
-      "name_en": "China Policy API",
+      "id": "api-industry",
+      "name": "China Industry Statistics API",
+      "name_en": "China Industry Statistics API",
       "kind": "api",
       "type": "api",
       "type_label_en": "🛠️ API",
       "domain": [
-        "policy",
+        "industry",
         "china-data"
       ],
-      "description": "中国政策与规划数据 API，如\"十五五\"规划战略笔记（41 篇合集）。",
-      "description_en": "China policy and planning data API, e.g. the 15th Five-Year Plan strategic notes (41-essay collection).",
+      "description": "查询国家统计局经济数据，如GDP、CPI、PPI等。按关键词搜索，返回结构化时间序列数据。",
+      "description_en": "Query China National Bureau of Statistics data (GDP, CPI, PPI, etc.) by keyword. Returns structured time-series data with source attribution.",
       "tags": [
-        "政策",
-        "十五五"
+        "统计局",
+        "GDP",
+        "CPI",
+        "经济数据"
       ],
       "tags_en": [
-        "policy",
-        "15th five-year plan"
+        "NBS",
+        "GDP",
+        "CPI",
+        "economic-data"
       ],
-      "price": 90,
+      "price": 0.005,
       "currency": "USDC",
       "payment": "x402",
       "payment_method": [
@@ -312,13 +316,103 @@
       "format": [
         "API"
       ],
-      "endpoint": "/v1/assets/api-policy",
+      "endpoint": "/v1/api/industry",
       "status": "available",
-      "published": "2026-08-02",
-      "listed_at": "2026-08-02",
+      "published": "2026-08-16",
+      "listed_at": "2026-08-16",
       "shelf": "developer",
       "sample": "preview",
-      "preview": "30pct",
+      "preview": "402-discovery",
+      "files": [],
+      "source_file": null,
+      "version": 1,
+      "preview_files": [],
+      "delivery": "auto"
+    },
+    {
+      "id": "api-policy",
+      "name": "China Policy Search API",
+      "name_en": "China Policy Search API",
+      "kind": "api",
+      "type": "api",
+      "type_label_en": "🛠️ API",
+      "domain": [
+        "policy",
+        "china-data"
+      ],
+      "description": "搜索中国政府政策文件，返回标题、发文单位、文号、日期、摘要和原文链接。支持关键词和日期范围过滤。",
+      "description_en": "Search Chinese government policy documents by keyword. Returns title, issuing authority, document number, date, summary, and source URL.",
+      "tags": [
+        "政策",
+        "政府文件",
+        "搜索"
+      ],
+      "tags_en": [
+        "policy",
+        "government-documents",
+        "search"
+      ],
+      "price": 0.005,
+      "currency": "USDC",
+      "payment": "x402",
+      "payment_method": [
+        "x402"
+      ],
+      "format": [
+        "API"
+      ],
+      "endpoint": "/v1/api/policy",
+      "status": "available",
+      "published": "2026-08-16",
+      "listed_at": "2026-08-16",
+      "shelf": "developer",
+      "sample": "preview",
+      "preview": "402-discovery",
+      "files": [],
+      "source_file": null,
+      "version": 1,
+      "preview_files": [],
+      "delivery": "auto"
+    },
+    {
+      "id": "api-company",
+      "name": "China Enterprise Credit API",
+      "name_en": "China Enterprise Credit API",
+      "kind": "api",
+      "type": "api",
+      "type_label_en": "🛠️ API",
+      "domain": [
+        "business",
+        "china-data"
+      ],
+      "description": "查询中国企业工商信息，返回企业名称、统一社会信用代码、法定代表人、注册资本等。",
+      "description_en": "Query Chinese enterprise credit information from official system. Returns company name, credit code, legal representative, registered capital.",
+      "tags": [
+        "企业",
+        "工商信息",
+        "信用查询"
+      ],
+      "tags_en": [
+        "company",
+        "business-registration",
+        "credit-check"
+      ],
+      "price": 0.003,
+      "currency": "USDC",
+      "payment": "x402",
+      "payment_method": [
+        "x402"
+      ],
+      "format": [
+        "API"
+      ],
+      "endpoint": "/v1/api/company",
+      "status": "available",
+      "published": "2026-08-16",
+      "listed_at": "2026-08-16",
+      "shelf": "developer",
+      "sample": "preview",
+      "preview": "402-discovery",
       "files": [],
       "source_file": null,
       "version": 1,

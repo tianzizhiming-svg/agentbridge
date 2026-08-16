@@ -19,12 +19,38 @@ GET /llms.txt — This file
 
 ## API Endpoints (x402 paid)
 
-### Web Fetch — raw content
+### Developer APIs — China Data Bridge
 POST /v1/fetch/dynamic
   Fetch any Chinese webpage, return clean Markdown or HTML.
   Price: x402 flat $0.008 per fetch
   Input: {url: string, output_format: "markdown"|"html"}
   Output: text/plain
+  Tags: raw-content
+
+POST /v1/api/industry
+  Query China National Bureau of Statistics data (GDP, CPI, PPI, etc.) by keyword.
+  Price: $0.005 USDC per query
+  Input: {keyword: string, period?: string, limit?: int}
+  Output: JSON with indicator name, data points, source attribution
+  Tags: raw-content, china-data
+
+POST /v1/api/policy
+  Search Chinese government policy documents by keyword.
+  Price: $0.005 USDC per query
+  Input: {keyword: string, date_from?: string, limit?: int}
+  Output: JSON with policy title, issuing authority, document number, date, source URL
+  Tags: raw-content, china-data
+
+POST /v1/api/company
+  Query Chinese enterprise credit information from official system.
+  Price: $0.003 USDC per query
+  Input: {name: string, credit_code?: string}
+  Output: JSON with company name, credit code, legal representative, registered capital
+  Tags: raw-content, china-data
+
+GET /.well-known/mcp/server-card.json
+  MCP server identity card with tool list and pricing.
+  Price: Free
   Tags: raw-content
 
 ### China Industry Briefings (Q2 2026) — verified data

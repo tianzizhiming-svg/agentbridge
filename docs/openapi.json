@@ -16,8 +16,8 @@
     },
     "x-openapi-fix": {
       "applied": "2026-08-16",
-      "reason": "add 5 new guide assets + include education reports in enum",
-      "asset_count": 94
+      "reason": "add 3 China Data API endpoints + server-card",
+      "asset_count": 96
     }
   },
   "servers": [
@@ -472,7 +472,9 @@
                 "guide-legal-rights-china-2026-08",
                 "guide-study-in-china-2026-08",
                 "guide-business-compliance-china-2026-08",
+                "api-industry",
                 "api-policy",
+                "api-company",
                 "api-university",
                 "api-web-fetch",
                 "brief-ai",
@@ -633,7 +635,9 @@
                 "guide-legal-rights-china-2026-08",
                 "guide-study-in-china-2026-08",
                 "guide-business-compliance-china-2026-08",
+                "api-industry",
                 "api-policy",
+                "api-company",
                 "api-university",
                 "api-web-fetch",
                 "brief-ai",
@@ -768,7 +772,9 @@
                 "guide-legal-rights-china-2026-08",
                 "guide-study-in-china-2026-08",
                 "guide-business-compliance-china-2026-08",
+                "api-industry",
                 "api-policy",
+                "api-company",
                 "api-university",
                 "api-web-fetch",
                 "brief-ai",
@@ -882,6 +888,244 @@
           },
           "404": {
             "description": "Unknown asset_id"
+          }
+        }
+      }
+    },
+    "/v1/api/industry": {
+      "get": {
+        "summary": "x402 payment discovery - China Industry Statistics",
+        "description": "Returns x402 payment requirements for querying China National Bureau of Statistics data.",
+        "operationId": "api_industry_discovery",
+        "tags": [
+          "raw-content"
+        ],
+        "security": [],
+        "responses": {
+          "402": {
+            "description": "Payment Required - x402 v2 challenge",
+            "headers": {
+              "PAYMENT-REQUIRED": {
+                "description": "Base64-encoded x402 v2 PaymentRequired object",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Query China industry statistics (GDP, CPI, PPI, etc.)",
+        "description": "Search National Bureau of Statistics data by keyword. Returns structured time-series data with source attribution. Price: $0.005 USDC per query.",
+        "operationId": "api_industry_query",
+        "tags": [
+          "raw-content"
+        ],
+        "security": [
+          {
+            "x402": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "keyword"
+                ],
+                "properties": {
+                  "keyword": {
+                    "type": "string",
+                    "description": "Search keyword, e.g. GDP, CPI, PPI"
+                  },
+                  "period": {
+                    "type": "string",
+                    "description": "Time period filter",
+                    "default": "latest"
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "description": "Max data points",
+                    "default": 12
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Structured statistical data"
+          },
+          "402": {
+            "description": "Payment required"
+          }
+        }
+      }
+    },
+    "/v1/api/policy": {
+      "get": {
+        "summary": "x402 payment discovery - China Policy Search",
+        "description": "Returns x402 payment requirements for searching Chinese government policies.",
+        "operationId": "api_policy_discovery",
+        "tags": [
+          "raw-content"
+        ],
+        "security": [],
+        "responses": {
+          "402": {
+            "description": "Payment Required - x402 v2 challenge",
+            "headers": {
+              "PAYMENT-REQUIRED": {
+                "description": "Base64-encoded x402 v2 PaymentRequired object",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Search Chinese government policy documents",
+        "description": "Search policies by keyword. Returns title, issuing authority, document number, date, summary, and source URL. Price: $0.005 USDC per query.",
+        "operationId": "api_policy_query",
+        "tags": [
+          "raw-content"
+        ],
+        "security": [
+          {
+            "x402": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "keyword"
+                ],
+                "properties": {
+                  "keyword": {
+                    "type": "string",
+                    "description": "Search keyword"
+                  },
+                  "date_from": {
+                    "type": "string",
+                    "description": "Date filter (YYYY-MM-DD)"
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "description": "Max results",
+                    "default": 10
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Policy search results"
+          },
+          "402": {
+            "description": "Payment required"
+          }
+        }
+      }
+    },
+    "/v1/api/company": {
+      "get": {
+        "summary": "x402 payment discovery - China Enterprise Credit",
+        "description": "Returns x402 payment requirements for querying enterprise credit information.",
+        "operationId": "api_company_discovery",
+        "tags": [
+          "raw-content"
+        ],
+        "security": [],
+        "responses": {
+          "402": {
+            "description": "Payment Required - x402 v2 challenge",
+            "headers": {
+              "PAYMENT-REQUIRED": {
+                "description": "Base64-encoded x402 v2 PaymentRequired object",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Query Chinese enterprise credit information",
+        "description": "Query company registration info from official system. Returns company name, credit code, legal representative, registered capital. Price: $0.003 USDC per query.",
+        "operationId": "api_company_query",
+        "tags": [
+          "raw-content"
+        ],
+        "security": [
+          {
+            "x402": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Company name"
+                  },
+                  "credit_code": {
+                    "type": "string",
+                    "description": "Unified social credit code (optional)"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Enterprise credit information"
+          },
+          "402": {
+            "description": "Payment required"
+          }
+        }
+      }
+    },
+    "/.well-known/mcp/server-card.json": {
+      "get": {
+        "summary": "MCP Server Card",
+        "description": "Returns the MCP server identity card with tool list and pricing information.",
+        "operationId": "mcp_server_card",
+        "tags": [
+          "raw-content"
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "MCP server card JSON",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
           }
         }
       }

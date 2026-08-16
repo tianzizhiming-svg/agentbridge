@@ -283,9 +283,29 @@
       "delivery": "auto"
     },
     {
+      "id": "api-industry",
+      "name": "China Industry Statistics API",
+      "name_en": "China Industry Statistics API",
+      "kind": "api",
+      "type": "api",
+      "type_label_en": "🛠️ API",
+      "domain": [
+        "industry",
+        "china-data"
+      ],
+      "description": "查询国家统计局经济数据，如GDP、CPI、PPI等。按关键词搜索，返回结构化时间序列数据。",
+      "description_en": "Query China National Bureau of Statistics data (GDP, CPI, PPI, etc.) by keyword.",
+      "price": 0.005,
+      "currency": "USDC",
+      "payment": "x402",
+      "endpoint": "/v1/api/industry",
+      "status": "available",
+      "published": "2026-08-16"
+    },
+    {
       "id": "api-policy",
-      "name": "China Policy API",
-      "name_en": "China Policy API",
+      "name": "China Policy Search API",
+      "name_en": "China Policy Search API",
       "kind": "api",
       "type": "api",
       "type_label_en": "🛠️ API",
@@ -293,37 +313,34 @@
         "policy",
         "china-data"
       ],
-      "description": "中国政策与规划数据 API，如\"十五五\"规划战略笔记（41 篇合集）。",
-      "description_en": "China policy and planning data API, e.g. the 15th Five-Year Plan strategic notes (41-essay collection).",
-      "tags": [
-        "政策",
-        "十五五"
-      ],
-      "tags_en": [
-        "policy",
-        "15th five-year plan"
-      ],
-      "price": 90,
+      "description": "搜索中国政府政策文件，返回标题、发文单位、文号、日期、摘要和原文链接。",
+      "description_en": "Search Chinese government policy documents by keyword.",
+      "price": 0.005,
       "currency": "USDC",
       "payment": "x402",
-      "payment_method": [
-        "x402"
-      ],
-      "format": [
-        "API"
-      ],
-      "endpoint": "/v1/assets/api-policy",
+      "endpoint": "/v1/api/policy",
       "status": "available",
-      "published": "2026-08-02",
-      "listed_at": "2026-08-02",
-      "shelf": "developer",
-      "sample": "preview",
-      "preview": "30pct",
-      "files": [],
-      "source_file": null,
-      "version": 1,
-      "preview_files": [],
-      "delivery": "auto"
+      "published": "2026-08-16"
+    },
+    {
+      "id": "api-company",
+      "name": "China Enterprise Credit API",
+      "name_en": "China Enterprise Credit API",
+      "kind": "api",
+      "type": "api",
+      "type_label_en": "🛠️ API",
+      "domain": [
+        "business",
+        "china-data"
+      ],
+      "description": "查询中国企业工商信息，返回企业名称、统一社会信用代码、法定代表人、注册资本等。",
+      "description_en": "Query Chinese enterprise credit information from official system.",
+      "price": 0.003,
+      "currency": "USDC",
+      "payment": "x402",
+      "endpoint": "/v1/api/company",
+      "status": "available",
+      "published": "2026-08-16"
     },
     {
       "id": "api-university",

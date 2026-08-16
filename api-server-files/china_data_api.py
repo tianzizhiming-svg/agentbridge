@@ -136,125 +136,107 @@ class IndustryRequest(BaseModel):
 async def query_nbs(keyword: str, period: str, limit: int) -> dict:
     """
     Query National Bureau of Statistics data.
-    Three steps: search -> get indicators -> get data.
+    Uses the public search API which returns data values directly.
+
+    The NBS search endpoint (data.stats.gov.cn) returns structured results
+    including indicator name, value, time period, and data type for each
+    matching statistical indicator. No multi-step fetching needed.
     """
-    # Step 1: Search for matching indicators
+    now = datetime.now()
+
+    # Search for matching indicators - request more results for richer data
     search_url = f"{NBS_BASE}/query"
     search_params = {
         "search": keyword,
         "pagenum": "1",
-        "pageSize": "5",
+        "pageSize": str(min(limit * 2, 20)),
     }
 
-    resp = await fetch_with_compliance(search_url, params=search_params)
-    search_data = resp.json()
+    try:
+        resp = await fetch_with_compliance(search_url, params=search_params, timeout=20.0)
+        search_data = resp.json()
+    except Exception as e:
+        return {
+            "keyword": keyword,
+            "status": "error",
+            "message": f"Failed to query NBS: {str(e)}",
+            "source": "National Bureau of Statistics (data.stats.gov.cn)",
+            "query_time": now.isoformat(),
+        }
 
-    # Parse search results to find cid
-    results = []
+    # Check API response
+    if not search_data.get("success", True):
+        return {
+            "keyword": keyword,
+            "status": "api_error",
+            "message": search_data.get("message", "NBS API returned error"),
+            "source": "National Bureau of Statistics (data.stats.gov.cn)",
+            "query_time": now.isoformat(),
+        }
+
+    # Parse search results - the API returns data values directly
+    raw_items = []
     if search_data.get("data") and search_data["data"].get("data"):
-        for item in search_data["data"]["data"]:
-            if item.get("type_text") and "月度" in item.get("type_text", ""):
-                results.append(item)
+        raw_items = search_data["data"]["data"]
 
-    if not results and search_data.get("data") and search_data["data"].get("data"):
-        results = search_data["data"]["data"]
-
-    if not results:
+    if not raw_items:
         return {
             "keyword": keyword,
             "status": "no_results",
             "message": f"No statistical indicators found for '{keyword}'",
             "source": "National Bureau of Statistics (data.stats.gov.cn)",
+            "source_url": "https://data.stats.gov.cn/",
+            "query_time": now.isoformat(),
         }
 
-    # Pick the first matching result
-    target = results[0]
-    cid = target.get("cid") or target.get("_id", "")
+    total_count = search_data.get("data", {}).get("count", len(raw_items))
 
-    if not cid:
-        # Try to extract from treeinfo_globalid
-        global_id = target.get("treeinfo_globalid", "")
-        if global_id:
-            cid = global_id.split(".")[-1]
-
-    if not cid:
-        return {
-            "keyword": keyword,
-            "status": "parse_error",
-            "message": "Could not extract catalog ID from search results",
-            "raw_search": target,
-        }
-
-    # Step 2: Get indicator IDs for this catalog
-    ind_url = f"{NBS_BASE}/new/queryIndicatorsByCid"
-    ind_params = {"cid": cid}
-
-    resp = await fetch_with_compliance(ind_url, params=ind_params)
-    ind_data = resp.json()
-
-    indicators = []
-    if ind_data.get("data") and ind_data["data"].get("list"):
-        indicators = ind_data["data"]["list"]
-
-    if not indicators:
-        return {
-            "keyword": keyword,
-            "cid": cid,
-            "status": "no_indicators",
-            "message": "Catalog found but no indicators available",
-        }
-
-    # Pick the first indicator (usually the main one)
-    indicator = indicators[0]
-    indicator_id = indicator.get("_id", "")
-    indicator_name = indicator.get("i_showname", keyword)
-    indicator_mark = indicator.get("i_mark", "")
-
-    # Step 3: Query actual data
-    # Determine time range
-    now = datetime.now()
-    if period == "latest":
-        # Last 12 months
-        end = now.strftime("%Y%m") + "MM"
-        start = (now - timedelta(days=365)).strftime("%Y%m") + "MM"
-    else:
-        # Try to parse period like "2026Q1" or "202601"
-        end = now.strftime("%Y%m") + "MM"
-        start = (now - timedelta(days=365)).strftime("%Y%m") + "MM"
-
-    data_url = f"{NBS_BASE}/getEsDataByCidAndDt"
-    data_body = {
-        "cid": cid,
-        "indicatorIds": [indicator_id],
-        "das": [{"text": "全国", "value": "000000000000"}],
-        "dts": [f"{start}-{end}"],
-        "showType": "1",
-        "rootId": NBS_ROOT_ID,
-    }
-
-    resp = await fetch_with_compliance(data_url, method="POST", json_body=data_body)
-    data_result = resp.json()
-
-    # Parse data points
+    # Group results by indicator name for structured output
+    # Each search item has: show_name, value, dt, dt_name, type_text, da_name, i_name, cid
     data_points = []
-    if data_result.get("data"):
-        for dp in data_result["data"][:limit]:
-            values = dp.get("values", [])
-            value = values[0].get("value", "") if values else ""
-            data_points.append({
-                "period": dp.get("name", ""),
-                "code": dp.get("code", ""),
-                "value": value,
-                "unit": values[0].get("du_name", "") if values else "",
-            })
+    seen_indicators = set()
+
+    for item in raw_items[:limit]:
+        show_name = item.get("show_name", "")
+        i_name = item.get("i_name", show_name)
+        value = item.get("value", "")
+        dt = item.get("dt", "")
+        dt_name = item.get("dt_name", dt)
+        type_text = item.get("type_text", "")
+        da_name = item.get("da_name", "")
+        cid = item.get("cid", "")
+        explain = item.get("explain", "")
+
+        # Deduplicate by (show_name, dt) - avoid duplicate entries
+        dedup_key = f"{show_name}|{dt}"
+        if dedup_key in seen_indicators:
+            continue
+        seen_indicators.add(dedup_key)
+
+        data_points.append({
+            "indicator": show_name,
+            "indicator_short": i_name,
+            "value": value,
+            "period_code": dt,
+            "period_name": dt_name,
+            "data_type": type_text,
+            "region": da_name,
+            "explanation": explain if explain else None,
+        })
+
+    # Get the primary indicator info from the first result
+    primary = raw_items[0] if raw_items else {}
 
     return {
         "keyword": keyword,
-        "indicator_name": indicator_name,
-        "indicator_note": indicator_mark,
-        "cid": cid,
+        "primary_indicator": primary.get("show_name", keyword),
+        "primary_value": primary.get("value", ""),
+        "primary_period": primary.get("dt_name", ""),
+        "data_type": primary.get("type_text", ""),
+        "cid": primary.get("cid", ""),
         "data_points": data_points,
-        "total_points": len(data_points),
+        "total_returned": len(data_points),
+        "total_available": total_count,
         "source": "National Bureau of Statistics (data.stats.gov.cn)",
         "source_url": "https://data.stats.gov.cn/",
         "query_time": now.isoformat(),

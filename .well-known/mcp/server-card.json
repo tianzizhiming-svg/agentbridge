@@ -1,0 +1,103 @@
+{
+  "$schema": "https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/main/schema/server-card.json",
+  "name": "AgentBridge Atlas",
+  "description": "China data marketplace for AI agents. Query government statistics, search policy documents, and look up enterprise credit information through x402 micropayments in USDC on Base.",
+  "version": "2.0.0",
+  "website": "https://tianzizhiming-svg.github.io/agentbridge/",
+  "api_base_url": "https://api.060504.shop",
+  "wallet": "0x1630c8E0833c367F39f0ca909b6b67f5159d7A00",
+  "payment": {
+    "protocol": "x402 v2",
+    "network": "base-mainnet",
+    "chain_id": "eip155:8453",
+    "currency": "USDC",
+    "usdc_contract": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+    "pay_to": "0x1630c8E0833c367F39f0ca909b6b67f5159d7A00"
+  },
+  "tools": [
+    {
+      "name": "discover_capabilities",
+      "description": "List all available API capabilities from AgentBridge Atlas.",
+      "category": "discovery",
+      "paid": false
+    },
+    {
+      "name": "discover_china_data_apis",
+      "description": "List China Data APIs with pricing, input schemas, and examples.",
+      "category": "discovery",
+      "paid": false
+    },
+    {
+      "name": "get_capability_info",
+      "description": "Get detailed info for a specific capability by name.",
+      "category": "discovery",
+      "paid": false
+    },
+    {
+      "name": "get_payment_instructions",
+      "description": "Step-by-step x402 payment guide with code examples.",
+      "category": "discovery",
+      "paid": false
+    },
+    {
+      "name": "query_industry_statistics",
+      "description": "Query China National Bureau of Statistics data (GDP, CPI, PPI, etc.) by keyword.",
+      "category": "china-data",
+      "paid": true,
+      "price_usd": 0.005,
+      "price_usdc": "5000",
+      "endpoint": "/v1/api/industry",
+      "input": {
+        "keyword": "string (required)",
+        "period": "string (optional, default: latest)",
+        "limit": "int (optional, default: 12)"
+      },
+      "data_source": "data.stats.gov.cn"
+    },
+    {
+      "name": "search_china_policies",
+      "description": "Search Chinese government policy documents by keyword.",
+      "category": "china-data",
+      "paid": true,
+      "price_usd": 0.005,
+      "price_usdc": "5000",
+      "endpoint": "/v1/api/policy",
+      "input": {
+        "keyword": "string (required)",
+        "date_from": "string (optional, YYYY-MM-DD)",
+        "limit": "int (optional, default: 10)"
+      },
+      "data_source": "sousuo.www.gov.cn"
+    },
+    {
+      "name": "query_company_credit",
+      "description": "Query Chinese enterprise credit information from official system.",
+      "category": "china-data",
+      "paid": true,
+      "price_usd": 0.003,
+      "price_usdc": "3000",
+      "endpoint": "/v1/api/company",
+      "input": {
+        "name": "string (required)",
+        "credit_code": "string (optional, 18-digit code)"
+      },
+      "data_source": "gsxt.gov.cn"
+    },
+    {
+      "name": "purchase_capability",
+      "description": "Initiate x402 payment flow for any capability by name.",
+      "category": "payment",
+      "paid": false
+    }
+  ],
+  "price_reference": {
+    "industry_api": "$0.005 (5000 USDC units)",
+    "policy_api": "$0.005 (5000 USDC units)",
+    "company_api": "$0.003 (3000 USDC units)",
+    "web_fetch": "$0.008 (8000 USDC units)",
+    "guides": "$0.01 (10000 USDC units)",
+    "briefings": "$4.99 (4990000 USDC units)"
+  },
+  "protocols": ["mcp", "x402"],
+  "tags": ["china", "data", "statistics", "policy", "enterprise", "x402", "usdc", "base"]
+}
