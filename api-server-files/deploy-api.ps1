@@ -1,7 +1,7 @@
-# AgentBridge API Server Deploy Script
-# Usage: powershell -ExecutionPolicy Bypass -File deploy-api.ps1
-# Or download-and-run: 
-#   irm "https://raw.githubusercontent.com/tianzizhiming-svg/agentbridge/master/api-server-files/deploy-api.ps1" -OutFile deploy-api.ps1; powershell -ExecutionPolicy Bypass -File deploy-api.ps1
+# AgentBridge API Server Deploy Script (ASCII-only version)
+# Usage: 
+#   irm "https://raw.githubusercontent.com/tianzizhiming-svg/agentbridge/master/api-server-files/deploy-api.ps1?v=$(Get-Random)" -OutFile deploy-api.ps1
+#   powershell -ExecutionPolicy Bypass -File deploy-api.ps1
 
 param([string]$ApiPath = "F:\afie_proxy")
 
@@ -21,13 +21,13 @@ New-Item -ItemType Directory -Path $tmpDir -Force | Out-Null
 $files = @("llms.txt", "openapi.json", "catalog.json")
 foreach ($f in $files) {
     $url = "$baseUrl/$f"
-    $dest = "$tmpDir\$f"
+    $dest = Join-Path $tmpDir $f
     try {
         Invoke-WebRequest -Uri $url -OutFile $dest -UseBasicParsing
-        Write-Host "  Downloaded $f OK" -ForegroundColor Green
+        Write-Host "  [OK] Downloaded $f" -ForegroundColor Green
     } catch {
         $errMsg = $_.Exception.Message
-        Write-Host "  Failed to download $f : $errMsg" -ForegroundColor Red
+        Write-Host "  [FAIL] Download $f failed - $errMsg" -ForegroundColor Red
         exit 1
     }
 }
@@ -36,16 +36,16 @@ foreach ($f in $files) {
 Write-Host ""
 Write-Host "[2/4] Backing up existing files..." -ForegroundColor Yellow
 
-$backupDir = "$ApiPath\backup-$(Get-Date -Format 'yyyy-MM-dd-HHmmss')"
+$backupDir = Join-Path $ApiPath ("backup-" + (Get-Date -Format 'yyyy-MM-dd-HHmmss'))
 New-Item -ItemType Directory -Path $backupDir -Force | Out-Null
 
 foreach ($f in $files) {
-    $src = "$ApiPath\$f"
+    $src = Join-Path $ApiPath $f
     if (Test-Path $src) {
-        Copy-Item $src "$backupDir\$f"
-        Write-Host "  Backed up $f OK" -ForegroundColor Green
+        Copy-Item $src (Join-Path $backupDir $f)
+        Write-Host "  [OK] Backed up $f" -ForegroundColor Green
     } else {
-        Write-Host "  $f not found at $src (skipping backup)" -ForegroundColor DarkYellow
+        Write-Host "  [SKIP] $f not found at $src" -ForegroundColor DarkYellow
     }
 }
 
@@ -54,32 +54,30 @@ Write-Host ""
 Write-Host "[3/4] Replacing files..." -ForegroundColor Yellow
 
 foreach ($f in $files) {
-    $src = "$tmpDir\$f"
-    $dest = "$ApiPath\$f"
+    $src = Join-Path $tmpDir $f
+    $dest = Join-Path $ApiPath $f
     Copy-Item $src $dest -Force
-    Write-Host "  Replaced $f OK" -ForegroundColor Green
+    Write-Host "  [OK] Replaced $f" -ForegroundColor Green
 }
 
 # --- Step 4: Add 5 new assets to main.py ---
 Write-Host ""
 Write-Host "[4/4] Adding 5 new asset IDs to main.py..." -ForegroundColor Yellow
 
-$mainPy = "$ApiPath\main.py"
+$mainPy = Join-Path $ApiPath "main.py"
 if (-not (Test-Path $mainPy)) {
     $found = Get-ChildItem -Path $ApiPath -Filter "main.py" -Recurse | Select-Object -First 1
     if ($found) {
         $mainPy = $found.FullName
         Write-Host "  Found main.py at: $mainPy" -ForegroundColor DarkYellow
     } else {
-        Write-Host "  main.py not found in $ApiPath" -ForegroundColor Red
-        Write-Host "  Please manually add these 5 lines to your ASSETS dictionary:" -ForegroundColor Yellow
-        Write-Host ""
-        Write-Host '    "guide-working-in-china-2026-08": 10000,' -ForegroundColor White
-        Write-Host '    "guide-hiring-china-2026-08": 10000,' -ForegroundColor White
-        Write-Host '    "guide-legal-rights-china-2026-08": 10000,' -ForegroundColor White
-        Write-Host '    "guide-study-in-china-2026-08": 10000,' -ForegroundColor White
-        Write-Host '    "guide-business-compliance-china-2026-08": 10000,' -ForegroundColor White
-        Write-Host ""
+        Write-Host "  [FAIL] main.py not found in $ApiPath" -ForegroundColor Red
+        Write-Host "  Please manually add these 5 lines to your ASSETS dict:" -ForegroundColor Yellow
+        Write-Host '    "guide-working-in-china-2026-08": 10000,'
+        Write-Host '    "guide-hiring-china-2026-08": 10000,'
+        Write-Host '    "guide-legal-rights-china-2026-08": 10000,'
+        Write-Host '    "guide-study-in-china-2026-08": 10000,'
+        Write-Host '    "guide-business-compliance-china-2026-08": 10000,'
     }
 }
 
@@ -96,9 +94,9 @@ if (Test-Path $mainPy) {
     $alreadyAdded = $content -match "guide-working-in-china-2026-08"
     
     if ($alreadyAdded) {
-        Write-Host "  Assets already registered in main.py (skipping)" -ForegroundColor Green
+        Write-Host "  [OK] Assets already registered in main.py (skipping)" -ForegroundColor Green
     } else {
-        Copy-Item $mainPy "$backupDir\main.py"
+        Copy-Item $mainPy (Join-Path $backupDir "main.py")
         
         $lines = Get-Content $mainPy
         $insertLine = -1
@@ -121,13 +119,12 @@ if (Test-Path $mainPy) {
         if ($insertLine -gt 0) {
             $newLines = $lines[0..($insertLine-1)] + $newAssets + $lines[$insertLine..($lines.Count-1)]
             $newLines | Set-Content $mainPy
-            Write-Host "  Added 5 new assets to main.py at line $insertLine OK" -ForegroundColor Green
+            Write-Host "  [OK] Added 5 new assets to main.py at line $insertLine" -ForegroundColor Green
         } else {
-            Write-Host "  Could not find insertion point in main.py" -ForegroundColor DarkYellow
-            Write-Host "  Please manually add these 5 lines to your ASSETS dictionary:" -ForegroundColor Yellow
-            Write-Host ""
+            Write-Host "  [WARN] Could not find insertion point in main.py" -ForegroundColor DarkYellow
+            Write-Host "  Please manually add these 5 lines to your ASSETS dict:" -ForegroundColor Yellow
             foreach ($line in $newAssets) {
-                Write-Host $line -ForegroundColor White
+                Write-Host $line
             }
         }
     }
@@ -139,10 +136,10 @@ Write-Host "Restarting AgentBridge-API service..." -ForegroundColor Yellow
 
 try {
     nssm restart AgentBridge-API
-    Write-Host "  Service restarted OK" -ForegroundColor Green
+    Write-Host "  [OK] Service restarted" -ForegroundColor Green
 } catch {
     $errMsg2 = $_.Exception.Message
-    Write-Host "  Failed to restart service: $errMsg2" -ForegroundColor Red
+    Write-Host "  [FAIL] Restart failed - $errMsg2" -ForegroundColor Red
     Write-Host "  Try manually: nssm restart AgentBridge-API" -ForegroundColor Yellow
 }
 
@@ -153,33 +150,33 @@ Start-Sleep -Seconds 3
 
 try {
     $health = Invoke-WebRequest -Uri "http://localhost:8000/health" -UseBasicParsing -TimeoutSec 10
-    Write-Host "  Health check: $($health.StatusCode) OK" -ForegroundColor Green
+    Write-Host "  [OK] Health check: $($health.StatusCode)" -ForegroundColor Green
 } catch {
-    Write-Host "  Health check failed (service may still be starting)" -ForegroundColor DarkYellow
+    Write-Host "  [WARN] Health check failed (service may still be starting)" -ForegroundColor DarkYellow
 }
 
 try {
     $llms = Invoke-WebRequest -Uri "http://localhost:8000/llms.txt" -UseBasicParsing -TimeoutSec 10
     $lineCount = ($llms.Content -split "`n").Count
-    Write-Host "  llms.txt: $lineCount lines" -ForegroundColor Green
+    Write-Host "  [OK] llms.txt: $lineCount lines" -ForegroundColor Green
 } catch {
-    Write-Host "  llms.txt check failed" -ForegroundColor DarkYellow
+    Write-Host "  [WARN] llms.txt check failed" -ForegroundColor DarkYellow
 }
 
 try {
     $api = Invoke-WebRequest -Uri "http://localhost:8000/openapi.json" -UseBasicParsing -TimeoutSec 10
     $spec = $api.Content | ConvertFrom-Json
     $enumCount = $spec.paths."/v1/assets/{asset_id}".get.parameters[0].schema.enum.Count
-    Write-Host "  openapi.json enum: $enumCount items" -ForegroundColor Green
+    Write-Host "  [OK] openapi.json enum: $enumCount items" -ForegroundColor Green
 } catch {
-    Write-Host "  openapi.json check failed" -ForegroundColor DarkYellow
+    Write-Host "  [WARN] openapi.json check failed" -ForegroundColor DarkYellow
 }
 
 try {
     $asset = Invoke-WebRequest -Uri "http://localhost:8000/v1/assets/guide-working-in-china-2026-08" -UseBasicParsing -TimeoutSec 10
-    Write-Host "  New asset guide-working-in-china-2026-08: $($asset.StatusCode) OK" -ForegroundColor Green
+    Write-Host "  [OK] New asset accessible: $($asset.StatusCode)" -ForegroundColor Green
 } catch {
-    Write-Host "  New asset check failed (may need manual verification)" -ForegroundColor DarkYellow
+    Write-Host "  [WARN] New asset check failed (may need manual verification)" -ForegroundColor DarkYellow
 }
 
 Write-Host ""
