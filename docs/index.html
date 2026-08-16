@@ -301,7 +301,7 @@
             then settle the payment and get the full report, guide, or API result instantly.
         </div>
         <div class="badge-row">
-            <span class="badge green" id="totalBadge">89 live assets</span>
+            <span class="badge green" id="totalBadge">94 live assets</span>
             <span class="badge">APIs · Reports · Guides · Services</span>
             <span class="badge">eip155:8453 (Base)</span>
         </div>
@@ -352,8 +352,26 @@
                     <div class="meta">Employment & teaching quality reports · permanent collection, no longer updated · <strong id="uniCount">0</strong> items</div>
                 </div>
             </div>
-            <div class="home-list" id="uniFreeList"></div>
-            <div class="home-list" id="uniList" style="margin-top: 10px;"></div>
+            <!-- Sub-category: Employment -->
+            <div id="uniEmploymentBlock" style="margin-bottom: 24px;">
+                <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+                    <span style="font-size:16px;">💼</span>
+                    <span style="font-size:15px;font-weight:600;color:#1a2433;">Employment Quality Reports</span>
+                    <span style="font-size:12px;color:#8a9bb0;">· 2025 graduates</span>
+                    <span style="font-size:12px;color:#8a9bb0;margin-left:auto;"><strong id="uniEmpCount">0</strong> items</span>
+                </div>
+                <div class="home-list" id="uniEmpList"></div>
+            </div>
+            <!-- Sub-category: Teaching -->
+            <div id="uniTeachingBlock">
+                <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+                    <span style="font-size:16px;">📚</span>
+                    <span style="font-size:15px;font-weight:600;color:#1a2433;">Teaching Quality Reports</span>
+                    <span style="font-size:12px;color:#8a9bb0;">· 2024-2025 academic year</span>
+                    <span style="font-size:12px;color:#8a9bb0;margin-left:auto;"><strong id="uniTeachCount">0</strong> items</span>
+                </div>
+                <div class="home-list" id="uniTeachList"></div>
+            </div>
         </div>
 
     </div>
@@ -725,17 +743,21 @@
             main.map(p => rowHtml(p, false)).join('') ||
             '<div class="home-row" style="cursor:default;"><div class="hr-main"><div class="hr-name">No items match.</div></div></div>';
 
-        // university reports section
+        // university reports section - split into employment and teaching
         const uniAssets = sortNewest(filtered.filter(a => a.shelf === 'university-reports'));
-        const uniFree = uniAssets.filter(isFree);
-        const uniPaid = uniAssets.filter(a => !isFree(a));
+        const uniEmployment = uniAssets.filter(a => (a.id || '').startsWith('employment-'));
+        const uniTeaching = uniAssets.filter(a => (a.id || '').startsWith('teaching-'));
         document.getElementById('uniCount').textContent = uniAssets.length;
-        document.getElementById('uniFreeList').innerHTML =
-            uniFree.map(p => rowHtml(p, false)).join('') || '';
-        document.getElementById('uniList').innerHTML =
-            uniPaid.map(p => rowHtml(p, false)).join('') || '';
+        document.getElementById('uniEmpCount').textContent = uniEmployment.length;
+        document.getElementById('uniTeachCount').textContent = uniTeaching.length;
+        document.getElementById('uniEmpList').innerHTML =
+            uniEmployment.map(p => rowHtml(p, false)).join('') || '';
+        document.getElementById('uniTeachList').innerHTML =
+            uniTeaching.map(p => rowHtml(p, false)).join('') || '';
         // Hide section if empty
         document.getElementById('uniBlock').style.display = uniAssets.length ? '' : 'none';
+        document.getElementById('uniEmploymentBlock').style.display = uniEmployment.length ? '' : 'none';
+        document.getElementById('uniTeachingBlock').style.display = uniTeaching.length ? '' : 'none';
 
         bindRows();
     }
