@@ -1,153 +1,152 @@
-# AgentBridge — Machine Commerce for China-Facing AI Agents
+# AgentBridge Atlas - x402 M2M Micro-Payment Market
 
-![x402 Protocol](...)
-![Network](...)
-![Status](...)
+> **AI Agent 链上签名支付 0.005 USDC，后端验证结算，国家统计局 GDP 数据交付完成。**
+> M2M (Machine to Machine) 微支付商业闭环已落地跑通。
 
-> The internet was built for humans. APIs were built for software.
-> But AI agents need something different: a way to discover, pay for, and consume digital capabilities autonomously.
->
-> AgentBridge is an experiment toward that future — building machine commerce infrastructure where AI agents can access specialized digital capabilities without accounts, subscriptions, or human intervention.
+## Quick Facts
 
----
+| Item | Value |
+|------|-------|
+| API Base | `https://api.060504.shop` |
+| Payment Protocol | x402 v2 (EIP-3009, USDC on Base) |
+| Wallet | `0x1630c8E0833c367F39f0ca909b6b67f5159d7A00` |
+| Chain | Base (Chain ID 8453) |
+| Settled TX | Block #50092176, 0.005 USDC |
+| Assets | 96 |
+| MCP Tools | 8 (4 free + 3 paid + 1 payment) |
+| API Paths | 12 |
 
-> Not affiliated with other projects named "AgentBridge" ...
+## Live Endpoints
 
-AgentBridge lets AI agents discover, purchase, and consume machine-readable digital capabilities related to China — through standardized APIs and x402 payments settled in USDC on Base. No API keys, no subscriptions, no account setup: an agent pays per call and gets a result.
+| Endpoint | Method | Price | Description |
+|----------|--------|-------|-------------|
+| `/health` | GET | Free | Health check |
+| `/openapi.json` | GET | Free | OpenAPI spec (12 paths) |
+| `/catalog.json` | GET | Free | 96 assets catalog |
+| `/llms.txt` | GET | Free | LLM-readable API docs |
+| `/.well-known/mcp/server-card.json` | GET | Free | MCP server identity card |
+| `/v1/api/industry` | POST | $0.005 USDC | China NBS statistics (GDP, CPI, PPI) |
+| `/v1/api/policy` | POST | $0.005 USDC | China government policy search |
+| `/v1/api/company` | POST | $0.003 USDC | China enterprise credit info |
+| `/v1/fetch/dynamic` | POST | $0.008 USDC | Dynamic web content fetch |
+| `/v1/assets/{id}` | GET | $0.01-$9.99 USDC | Asset delivery |
 
-Built on the x402 protocol, now stewarded by the Linux Foundation's x402 Foundation (members include AWS, Google, Visa, and Coinbase).
+## How x402 Payment Works
 
----
+```
+1. Agent calls POST /v1/api/industry (no payment header)
+2. Server returns 402 Payment Required (x402 v2 challenge)
+   - x402Version: 2
+   - paymentRequirements: {scheme, network, asset, payTo, maxAmountRequired, ...}
+3. Agent signs EIP-3009 TransferWithAuthorization (no gas needed)
+4. Agent retries with X-Payment header
+5. Server verifies signature → settles on-chain → returns 200 + data
+6. On-chain: 0.005 USDC transferred to wallet
+```
 
-## What It Provides
+## On-Chain Proof
 
-Capabilities are organized into two categories. Check which one you need before calling — they differ in speed, cost, and what kind of answer you get.
+- **Transaction**: 0.005 USDC settled on Base
+- **Block**: #50092176
+- **Token**: USDC (`0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`)
+- **Recipient**: `0x1630c8E0833c367F39f0ca909b6b67f5159d7A00`
+- **Scheme**: EIP-3009 (gasless transfer authorization)
 
-### 🔹 `raw-content` — unverified, machine-fetched, cheap
+Verify on Basescan:
+```
+https://sepolia.basescan.org/address/0x1630c8E0833c367F39f0ca909b6b67f5159d7A00
+```
 
-Fast, unreviewed raw content, priced in fractions of a cent. Use this when you just need to read what's currently published at a specific URL, as-is.
+## MCP Server
 
-> **Reliability note**: this returns the raw content as currently published at the source, at the moment of the fetch — unverified and not human-reviewed. If the source changes or is wrong, the result reflects that.
+MCP Server provides 8 tools for AI agents:
 
-| Capability | Endpoint | What it does | Price |
-|---|---|---|---|
-| **Web Fetch** | `POST /v1/fetch/dynamic` | Converts a Chinese webpage (Xiaohongshu, Zhihu, etc.) into clean Markdown/HTML. Handles JS rendering, anti-bot pages, and messy HTML that's normally hard for an agent to parse directly. | $0.003 (static) / $0.008 (dynamic) |
+### Free Discovery Tools
+- `discover_capabilities` - List all API endpoints
+- `discover_china_data_apis` - List China Data APIs with pricing
+- `get_capability_info` - Get details for specific capability
+- `get_payment_instructions` - Step-by-step x402 payment guide
 
-### 🔸 `verified-analysis` — human-authored, decision-grade
+### Paid Data Tools (x402)
+- `query_industry_statistics` ($0.005) - NBS statistics
+- `search_china_policies` ($0.005) - Government policy search
+- `query_company_credit` ($0.003) - Enterprise credit info
 
-Slower to produce, priced higher, includes original comparative judgment — not just extracted facts. Use this when the task needs an answer you can act on, not just raw data.
+### Payment Tool
+- `purchase_capability` - Initiate x402 payment for any endpoint
 
-| Capability | Endpoint | What it does | Price |
-|---|---|---|---|
-| **University Employment Reports** | `POST /v1/reports/employment/{school_id}` | Human-authored deep-dive analysis of a Chinese university's officially published 2025 graduate employment report. | 90 USDC/report |
-| **University Teaching-Quality Reports** | `POST /v1/reports/teaching/{college_id}/{dimension}` | Same, for officially published teaching-quality reports, across 8 fixed analytical dimensions per institution. | 90 USDC/dimension |
-| **"15th Five-Year Plan" Strategic Notes** | `POST /v1/notes/15-5-package` | Human-authored analysis of China's 2026–2030 national plan as it relates to college application decisions. 41 articles. | 90 USDC/package |
+## Quick Start
 
-Free full-length samples (not excerpts) for all `verified-analysis` products, plus the live, continuously updated catalog of available schools/colleges, are at the [storefront](https://tianzizhiming-svg.github.io/agentbridge/).
-
-More capabilities in both categories are added over time. The category a capability belongs to tells you what to expect from it — the list of specific products will keep growing.
-
----
-
-## How It Works
-
-1. Agent discovers the service via `/openapi.json`, `/llms.txt`, or an x402 registry (see Status below).
-2. Agent calls an endpoint without payment → gets `402 Payment Required` with an x402 payment challenge.
-3. Agent pays in USDC on Base, retries with the payment header.
-4. Server verifies the payment against Coinbase's CDP facilitator, executes the request, and returns the result.
-
-No API keys. No subscriptions. No account registration required for x402 payments.
-
----
-
-## When to Use Which
-
-| If the task is... | Use | Why |
-|---|---|---|
-| "Get the current Zhihu Hot List / trending topics" | `raw-content` | You just need what's on the page right now, no judgment needed on it. |
-| "Summarize what's currently on this Xiaohongshu post" | `raw-content` | Raw extraction of existing published content. |
-| "Analyze the employment quality of a specific Chinese university" | `verified-analysis` | Requires comparative judgment, benchmarking against peer institutions, and interpretation — not just numbers off a page. |
-| "Should a student choose College A over College B based on teaching quality?" | `verified-analysis` | A decision-grade answer, not a data dump. |
-
----
-
-## Quickstart for Agent Developers
+### Test with curl
 
 ```bash
-# Calling the raw-content fetch endpoint (returns 402 if unpaid)
-curl -i -X POST https://api.060504.shop/v1/fetch/dynamic \
+# 1. Discover the API (free)
+curl https://api.060504.shop/health
+curl https://api.060504.shop/openapi.json
+curl https://api.060504.shop/llms.txt
+
+# 2. Trigger 402 payment challenge
+curl -X POST https://api.060504.shop/v1/api/industry \
   -H "Content-Type: application/json" \
-  -d '{"url": "https://www.zhihu.com/question/xxx"}'
+  -d '{"keyword":"GDP"}'
+# Returns 402 with x402 payment requirements
+
+# 3. Sign EIP-3009 and retry with payment
+# See examples/agent_client.py for full implementation
 ```
 
-An unpaid call returns `402 Payment Required` with the payment challenge in the `PAYMENT-REQUIRED` response header (base64-encoded x402 v2 object). Decode it, pay the required amount in USDC on Base, and retry the request with your `X-Payment` header set to the signed payment payload — see the [x402 specification](https://www.x402.org/) for the full handshake, or the [full OpenAPI spec](https://api.060504.shop/openapi.json) for this service's exact schemas.
+### Python Example
 
 ```python
-import requests
-
-url = "https://api.060504.shop/v1/fetch/dynamic"
-payload = {"url": "https://www.zhihu.com/question/xxx"}
-
-res = requests.post(url, json=payload)
-if res.status_code == 402:
-    payment_required = res.headers.get("PAYMENT-REQUIRED")  # base64-encoded x402 v2 challenge
-    # decode it, sign and settle payment with your Base/USDC wallet per the x402 spec,
-    # then retry the POST with an X-Payment header carrying the signed payload
+# See examples/agent_client.py for complete x402 payment client
+python examples/agent_client.py
 ```
 
----
+## Data Sources & Compliance
 
-## Agent Integration
+| API | Source | Compliance |
+|-----|--------|------------|
+| Industry | data.stats.gov.cn | Rate limited 3s/req, respects robots.txt |
+| Policy | sousuo.www.gov.cn | Rate limited 3s/req, HTML fallback |
+| Company | gsxt.gov.cn | No captcha bypass, provides official links only |
 
-AgentBridge Atlas is designed for the emerging agent economy.
+## Architecture
 
-AI agents can discover and consume Atlas capabilities through machine-readable interfaces.
+```
+AI Agent / User
+    │
+    ├── GitHub Pages (frontend catalog)
+    │
+    └── API Server (api.060504.shop)
+            │
+            ├── China Data APIs (3 endpoints)
+            ├── x402 Payment (USDC on Base, EIP-3009)
+            └── MCP Server (8 tools)
+```
 
-Supported integration layers:
+## Tech Stack
 
-- OpenAPI — standard API access
-- x402 — machine-native payments with USDC on Base
-- MCP — agent tool integration
-- Agent discovery metadata — machine-readable identity
+- **Backend**: FastAPI + Uvicorn (Python)
+- **Service**: Windows NSSM (NETWORK SERVICE account)
+- **Payment**: x402 v2 protocol, USDC on Base
+- **MCP**: Model Context Protocol (stdio)
+- **Frontend**: GitHub Pages
+- **Data**: Chinese government public platforms
 
-Resources:
+## Version History
 
-- Agent discovery:
-  `.well-known/agent.json`
+- v1.0 (2026-08-07): Initial deployment, 76 assets
+- v2.0 (2026-08-16): 5 new guides, cleanup, 94 assets
+- v3.0 (2026-08-16): China Data APIs + MCP Server, 96 assets
+- v3.1 (2026-08-17): x402 end-to-end payment verified, 0.005 USDC settled
 
-- MCP adapter:
-  `/mcp`
+## License
 
-- Claude Desktop example:
-  `/examples/claude_desktop_config.json`
+Commercial. All data sourced from public government platforms.
 
-The goal is to make AgentBridge Atlas discoverable and usable by autonomous AI agents and agent frameworks.
+## Links
 
-## Status
-
-- ✅ Live API: `https://api.060504.shop`
-- ✅ Listed on [402 Index](https://402index.io/directory?search=AgentBridge)
-- ✅ Discoverable via `/.well-known/agent.json` (ReqCast-compatible)
-- ✅ On-chain payment history is fully public and verifiable: [view on BaseScan](https://basescan.org/address/0x1630c8E0833c367F39f0ca909b6b67f5159d7A00)
-
----
-
-## Quick Links
-
-- [API Documentation (openapi.json)](https://api.060504.shop/openapi.json)
-- [Storefront & Free Samples](https://tianzizhiming-svg.github.io/agentbridge/)
-- [402 Index Listing](https://402index.io/directory?search=AgentBridge)
-- [Legal Disclaimer](https://github.com/tianzizhiming-svg/agentbridge/blob/master/DISCLAIMER.md) — by using this service, you agree to its terms
-- [AgentBridge Atlas Vision](docs/atlas.md)
-
-## Writing / Background
-
-- [AgentBridge: Building a Pay-Per-Fetch Gateway for AI Agents on Base](https://medium.com/@leizhenbing/agentbridge-building-a-pay-per-fetch-gateway-for-ai-agents-on-base)
-- [How AI Agents Can Legally Access Chinese Public Data](https://medium.com/p/6e956b24e4c1)
-- [AgentBridge: The Missing Data Layer for AI Agents Targeting China](https://medium.com/@leizhenbing/agentbridge-the-missing-data-layer-for-ai-agents-targeting-china-8ba58f8ef795)
-- [How We Built a Pay-Per-Report Data Service for 72 Chinese Universities Using x402](https://medium.com/p/6e9a6cfd5c65)
-- [More on Medium](https://medium.com/@leizhenbing)
-
----
-
-*Two categories, one platform: raw web content and human-authored analysis, both discoverable and payable the same way.*
+- **API**: https://api.060504.shop
+- **Frontend**: https://tianzizhiming-svg.github.io/agentbridge/
+- **GitHub**: https://github.com/tianzizhiming-svg/agentbridge
+- **MCP Card**: https://api.060504.shop/.well-known/mcp/server-card.json
