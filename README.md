@@ -11,7 +11,7 @@
 | Payment Protocol | x402 v2 (EIP-3009, USDC on Base) |
 | Wallet | `0x1630c8E0833c367F39f0ca909b6b67f5159d7A00` |
 | Chain | Base (Chain ID 8453) |
-| Settled TX | Block #50092176, 0.005 USDC |
+| Settled TX | Block #49848412, 0.005 USDC |
 | Assets | 96 |
 | MCP Tools | 8 (4 free + 3 paid + 1 payment) |
 | API Paths | 12 |
@@ -46,15 +46,19 @@
 
 ## On-Chain Proof
 
-- **Transaction**: 0.005 USDC settled on Base
-- **Block**: #50092176
+- **Transaction Hash**: `0xef8d49e88cb58651e9bf30465597b50863dcc363f6e1f227779292149818ae28`
+- **Method**: Transfer With Authorization (EIP-3009, gasless)
+- **Amount**: 0.005 USDC
+- **Block**: #49848412
 - **Token**: USDC (`0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`)
+- **From**: `0xc4217BD72b4dea480ed4879fcec530d92637C800`
 - **Recipient**: `0x1630c8E0833c367F39f0ca909b6b67f5159d7A00`
 - **Scheme**: EIP-3009 (gasless transfer authorization)
 
-Verify on Basescan:
+Verify on Basescan (Base Mainnet):
 ```
-https://sepolia.basescan.org/address/0x1630c8E0833c367F39f0ca909b6b67f5159d7A00
+Transaction: https://basescan.org/tx/0xef8d49e88cb58651e9bf30465597b50863dcc363f6e1f227779292149818ae28
+Wallet: https://basescan.org/address/0x1630c8E0833c367F39f0ca909b6b67f5159d7A00
 ```
 
 ## MCP Server
@@ -129,7 +133,7 @@ AI Agent / User
 - **Backend**: FastAPI + Uvicorn (Python)
 - **Service**: Windows NSSM (NETWORK SERVICE account)
 - **Payment**: x402 v2 protocol, USDC on Base
-- **MCP**: Model Context Protocol (stdio)
+- **MCP**: Model Context Protocol (SSE & stdio)
 - **Frontend**: GitHub Pages
 - **Data**: Chinese government public platforms
 
