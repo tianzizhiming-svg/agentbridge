@@ -664,19 +664,34 @@ def register_china_data_routes(app, x402_auth=None, _make_402=None, _build_payme
         Never returns 500."""
         try:
             result = await query_nbs(req.keyword, req.period, req.limit)
-            # Determine status code based on result
-            if result.get("status") == "service_unavailable":
-                return JSONResponse(content=result, status_code=503)
-            return JSONResponse(content=result)
+            
+            # 1. 如果是 x402 支付，先去链上结算扣款 (实打实扣钱)
+            if key_info and key_info.get("auth_mode") == "x402":  # 12个空格
+                try:  # 16个空格
+                    from auth import settle_x402_payment  # 20个空格
+                    await settle_x402_payment(key_info["_x402_payload"], key_info["_x402_requirements"])  # 20个空格
+                except Exception as settle_err:  # 16个空格
+                    logger.error(f"x402 settle error: {settle_err}")  # 20个空格
+                    raise HTTPException(status_code=502, detail="Payment settlement failed, please retry.")  # 20个空格
+            
+            # 2. 如果数据源不可用，抛出 503 异常
+            if result.get("status") == "service_unavailable":  # 12个空格
+                raise HTTPException(status_code=503, detail=result)  # 12个空格 (注意，这里有缩进错误，应该是16个空格)
+                
+            # 3. 扣款成功且数据正常，直接返回 dict (绝不使用 JSONResponse，否则触发中间件冲突崩溃)
+            return result
+            
+        except HTTPException:
+            raise  # 直接抛出 HTTPException，交给 FastAPI 处理
         except Exception as e:
             logger.error(f"Industry query unexpected error: {e}", exc_info=True)
-            return JSONResponse(
+            raise HTTPException(
                 status_code=503,
-                content={
+                detail={
                     "status": "service_unavailable",
                     "error": "An unexpected error occurred. Please retry later.",
                     "keyword": req.keyword,
-                },
+                }
             )
 
     # --- Policy API ---
