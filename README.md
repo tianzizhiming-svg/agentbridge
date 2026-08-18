@@ -137,6 +137,21 @@ AI Agent / User
 - **Frontend**: GitHub Pages
 - **Data**: Chinese government public platforms
 
+## Technical Blog & Dev Log
+
+We document the engineering journey of building AgentBridge, exploring x402, MCP, and autonomous M2M commerce.
+
+Read the deep dives on Medium:
+
+- https://medium.com/me/stories?tab=posts-published
+
+[🚀 Building an Autonomous M2M Payment Loop: AI Agents Paying for Data via x402](https://medium.com/@leizhenbing/building-an-autonomous-m2m-payment-loop-ai-agents-paying-for-data-via-x402-d9d8d47b9a7c))
+[🌉 AgentBridge: The Data Bridge Between China’s Public Information and Global AI Agents](https://medium.com/@leizhenbing/agentbridge-atlas-building-the-machine-commerce-layer-for-ai-agents-40a83192d809)
+[🛡️ How AI Agents Can Legally Access Chinese Public Data: A Technical Deep Dive](https://medium.com/@leizhenbing/how-ai-agents-can-legally-access-chinese-public-data-a-technical-deep-dive-6e956b24e4c1)
+
+Follow the full dev log on Medium：
+- https://medium.com/@leizhenbing
+
 ## Version History
 
 - v1.0 (2026-08-07): Initial deployment, 76 assets
