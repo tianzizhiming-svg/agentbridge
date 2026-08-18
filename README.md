@@ -154,3 +154,7 @@ Commercial. All data sourced from public government platforms.
 - **Frontend**: https://tianzizhiming-svg.github.io/agentbridge/
 - **GitHub**: https://github.com/tianzizhiming-svg/agentbridge
 - **MCP Card**: https://api.060504.shop/.well-known/mcp/server-card.json
+
+## Disclaimer
+
+The data provided by this API is sourced from public macroeconomic and educational statistics. We do not host or own the data. Users are responsible for complying with their local data usage regulations.
