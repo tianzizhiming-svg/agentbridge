@@ -6709,6 +6709,447 @@
       "version": 1,
       "preview_files": [],
       "delivery": "auto"
+    },
+    {
+      "id": "report-ai-industry-2026",
+      "name": "中国AI产业全景报告（2026完整版）",
+      "name_en": "China AI Industry Overview Report (Complete 2026 Edition)",
+      "kind": "report",
+      "type": "report",
+      "type_label_en": "📊 Industry Report",
+      "domain": [
+        "technology",
+        "AI"
+      ],
+      "description": "2026年中国AI产业全景深度分析：核心产业规模1.2万亿元，日均Token调用量140万亿，模型竞争格局（智谱/DeepSeek/MiniMax），高盛投资框架，价格战分析，AI立法进展，智能经济新范式。",
+      "description_en": "Comprehensive 2026 analysis of China's AI industry: 1.2 trillion RMB market, 140 trillion daily tokens, model landscape (Zhipu/DeepSeek/MiniMax), Goldman Sachs investment framework, pricing wars, regulatory outlook, and the 'intelligent economy' thesis.",
+      "tags": [
+        "AI",
+        "智能经济",
+        "大模型",
+        "中国科技",
+        "2026"
+      ],
+      "tags_en": [
+        "AI",
+        "intelligence-economy",
+        "tokens",
+        "China-tech",
+        "2026"
+      ],
+      "price": 4.99,
+      "currency": "USDC",
+      "payment": "x402",
+      "payment_method": [
+        "x402"
+      ],
+      "format": [
+        "Markdown"
+      ],
+      "endpoint": "/v1/assets/report-ai-industry-2026",
+      "status": "available",
+      "published": "2026-08-19",
+      "listed_at": "2026-08-19",
+      "shelf": "human",
+      "sample": "preview",
+      "preview": "30pct",
+      "files": [],
+      "source_file": "reports/China-AI-Industry-Report-2026.md",
+      "version": 1,
+      "preview_files": [],
+      "delivery": "auto"
+    },
+    {
+      "id": "report-consumer-market-2026",
+      "name": "中国消费市场全景报告（2026完整版）",
+      "name_en": "China Consumer Market Overview Report (Complete 2026 Edition)",
+      "kind": "report",
+      "type": "report",
+      "type_label_en": "📊 Industry Report",
+      "domain": [
+        "consumer",
+        "market"
+      ],
+      "description": "2026年中国消费市场全景分析：零售总额，电商趋势，下沉市场增长，快消品动态，以旧换新政策影响，分品类深度洞察。",
+      "description_en": "Complete 2026 analysis of China's consumer market: retail sales, e-commerce trends, lower-tier city growth, FMCG dynamics, trade-in program impact, and category-specific insights.",
+      "tags": [
+        "消费市场",
+        "零售",
+        "电商",
+        "快消品",
+        "2026"
+      ],
+      "tags_en": [
+        "consumer",
+        "retail",
+        "e-commerce",
+        "FMCG",
+        "2026"
+      ],
+      "price": 4.99,
+      "currency": "USDC",
+      "payment": "x402",
+      "payment_method": [
+        "x402"
+      ],
+      "format": [
+        "Markdown"
+      ],
+      "endpoint": "/v1/assets/report-consumer-market-2026",
+      "status": "available",
+      "published": "2026-08-19",
+      "listed_at": "2026-08-19",
+      "shelf": "human",
+      "sample": "preview",
+      "preview": "30pct",
+      "files": [],
+      "source_file": "reports/China-Consumer-Market-Report-2026.md",
+      "version": 1,
+      "preview_files": [],
+      "delivery": "auto"
+    },
+    {
+      "id": "report-ev-industry-2026",
+      "name": "中国新能源汽车产业全景报告（2026完整版）",
+      "name_en": "China EV Industry Overview Report (Complete 2026 Edition)",
+      "kind": "report",
+      "type": "report",
+      "type_label_en": "📊 Industry Report",
+      "domain": [
+        "automotive",
+        "EV",
+        "technology"
+      ],
+      "description": "2026年中国新能源汽车产业全景分析：上半年产量超744万辆，渗透率48%，出口激增，自动驾驶融合，电池技术变革，充电基础设施，竞争格局。",
+      "description_en": "Complete 2026 analysis of China's EV industry: 7.4M+ units H1 production, 48% penetration, export surge, autonomous driving convergence, battery technology shifts, charging infrastructure, and competitive landscape.",
+      "tags": [
+        "新能源汽车",
+        "自动驾驶",
+        "电池",
+        "充电",
+        "2026"
+      ],
+      "tags_en": [
+        "EV",
+        "NEV",
+        "autonomous-driving",
+        "battery",
+        "2026"
+      ],
+      "price": 4.99,
+      "currency": "USDC",
+      "payment": "x402",
+      "payment_method": [
+        "x402"
+      ],
+      "format": [
+        "Markdown"
+      ],
+      "endpoint": "/v1/assets/report-ev-industry-2026",
+      "status": "available",
+      "published": "2026-08-19",
+      "listed_at": "2026-08-19",
+      "shelf": "human",
+      "sample": "preview",
+      "preview": "30pct",
+      "files": [],
+      "source_file": "reports/China-EV-Industry-Report-2026.md",
+      "version": 1,
+      "preview_files": [],
+      "delivery": "auto"
+    },
+    {
+      "id": "report-humanoid-robot-2026",
+      "name": "中国人形机器人产业全景报告（2026完整版）",
+      "name_en": "China Humanoid Robot Industry Overview Report (Complete 2026 Edition)",
+      "kind": "report",
+      "type": "report",
+      "type_label_en": "📊 Industry Report",
+      "domain": [
+        "robotics",
+        "technology"
+      ],
+      "description": "2026年中国人形机器人产业全景分析：市场规模，核心企业，技术栈，供应链，政策支持，商业化时间线。",
+      "description_en": "Complete 2026 analysis of China's humanoid robot industry: market size, key players, technology stack, supply chain, policy support, and commercialization timeline.",
+      "tags": [
+        "人形机器人",
+        "具身智能",
+        "机器人",
+        "2026"
+      ],
+      "tags_en": [
+        "humanoid-robot",
+        "robotics",
+        "embodied-AI",
+        "2026"
+      ],
+      "price": 4.99,
+      "currency": "USDC",
+      "payment": "x402",
+      "payment_method": [
+        "x402"
+      ],
+      "format": [
+        "Markdown"
+      ],
+      "endpoint": "/v1/assets/report-humanoid-robot-2026",
+      "status": "available",
+      "published": "2026-08-19",
+      "listed_at": "2026-08-19",
+      "shelf": "human",
+      "sample": "preview",
+      "preview": "30pct",
+      "files": [],
+      "source_file": "reports/China-Humanoid-Robot-Report-2026.md",
+      "version": 1,
+      "preview_files": [],
+      "delivery": "auto"
+    },
+    {
+      "id": "report-api-tech-docs-2026",
+      "name": "中国产业智能API接入产品技术文档（2026版）",
+      "name_en": "China Industry Intelligence API Access Product Technical Documentation (2026 Edition)",
+      "kind": "report",
+      "type": "report",
+      "type_label_en": "📊 Industry Report",
+      "domain": [
+        "technology",
+        "API"
+      ],
+      "description": "中国产业智能API接入技术文档：接口端点，认证方式，x402支付集成，限流策略，数据结构，代码示例。",
+      "description_en": "Technical documentation for accessing China industry intelligence APIs: endpoints, authentication, x402 payment integration, rate limits, data schemas, and code examples.",
+      "tags": [
+        "API",
+        "技术文档",
+        "x402",
+        "集成",
+        "2026"
+      ],
+      "tags_en": [
+        "API",
+        "technical-docs",
+        "x402",
+        "integration",
+        "2026"
+      ],
+      "price": 4.99,
+      "currency": "USDC",
+      "payment": "x402",
+      "payment_method": [
+        "x402"
+      ],
+      "format": [
+        "Markdown"
+      ],
+      "endpoint": "/v1/assets/report-api-tech-docs-2026",
+      "status": "available",
+      "published": "2026-08-19",
+      "listed_at": "2026-08-19",
+      "shelf": "human",
+      "sample": "preview",
+      "preview": "30pct",
+      "files": [],
+      "source_file": "reports/China-Industry-API-Tech-Docs-2026.md",
+      "version": 1,
+      "preview_files": [],
+      "delivery": "auto"
+    },
+    {
+      "id": "report-market-entry-2026",
+      "name": "外资品牌中国市场入门指南（2026完整版）",
+      "name_en": "China Market Entry Guide for Foreign Brands (Complete 2026 Edition)",
+      "kind": "report",
+      "type": "report",
+      "type_label_en": "📊 Industry Report",
+      "domain": [
+        "business",
+        "legal",
+        "market-entry"
+      ],
+      "description": "外资品牌入华全流程操作手册：WFOE/JV/RO/EOR架构选择，商标申请在先原则，跨境电商正面清单，分销协议，PIPL合规，本地化策略。",
+      "description_en": "Complete operational manual for foreign brands entering China: WFOE/JV/RO/EOR structures, trademark first-to-file rule, CBEC positive list, distribution agreements, PIPL compliance, and localization strategy.",
+      "tags": [
+        "市场准入",
+        "外商独资",
+        "商标",
+        "跨境电商",
+        "数据合规",
+        "2026"
+      ],
+      "tags_en": [
+        "market-entry",
+        "WFOE",
+        "trademark",
+        "CBEC",
+        "PIPL",
+        "2026"
+      ],
+      "price": 4.99,
+      "currency": "USDC",
+      "payment": "x402",
+      "payment_method": [
+        "x402"
+      ],
+      "format": [
+        "Markdown"
+      ],
+      "endpoint": "/v1/assets/report-market-entry-2026",
+      "status": "available",
+      "published": "2026-08-19",
+      "listed_at": "2026-08-19",
+      "shelf": "human",
+      "sample": "preview",
+      "preview": "30pct",
+      "files": [],
+      "source_file": "reports/China-Market-Entry-Guide-2026.md",
+      "version": 1,
+      "preview_files": [],
+      "delivery": "auto"
+    },
+    {
+      "id": "report-new-energy-2026",
+      "name": "中国新能源产业全景报告（2026完整版）",
+      "name_en": "China New Energy Industry Overview Report (Complete 2026 Edition)",
+      "kind": "report",
+      "type": "report",
+      "type_label_en": "📊 Industry Report",
+      "domain": [
+        "energy",
+        "new-energy"
+      ],
+      "description": "2026年中国新能源产业全景分析：清洁经济规模15.4万亿元，新三样出口，光伏超煤电，氢能前沿，产能再平衡，省级投资分布。",
+      "description_en": "Complete 2026 analysis of China's new energy industry: clean energy economy worth RMB 15.4T, 'New Three' exports, solar PV surpassing coal, hydrogen frontier, manufacturing rebalancing, and provincial investment distribution.",
+      "tags": [
+        "新能源",
+        "光伏",
+        "氢能",
+        "清洁能源",
+        "2026"
+      ],
+      "tags_en": [
+        "new-energy",
+        "solar",
+        "hydrogen",
+        "clean-energy",
+        "2026"
+      ],
+      "price": 4.99,
+      "currency": "USDC",
+      "payment": "x402",
+      "payment_method": [
+        "x402"
+      ],
+      "format": [
+        "Markdown"
+      ],
+      "endpoint": "/v1/assets/report-new-energy-2026",
+      "status": "available",
+      "published": "2026-08-19",
+      "listed_at": "2026-08-19",
+      "shelf": "human",
+      "sample": "preview",
+      "preview": "30pct",
+      "files": [],
+      "source_file": "reports/China-New-Energy-Report-2026.md",
+      "version": 1,
+      "preview_files": [],
+      "delivery": "auto"
+    },
+    {
+      "id": "report-semiconductor-2026",
+      "name": "中国半导体产业全景报告（2026完整版）",
+      "name_en": "China Semiconductor Industry Overview Report (Complete 2026 Edition)",
+      "kind": "report",
+      "type": "report",
+      "type_label_en": "📊 Industry Report",
+      "domain": [
+        "semiconductor",
+        "technology"
+      ],
+      "description": "2026年中国半导体产业全景分析：自主可控进程，核心企业，设计/制造/设备生态，政策支持，地缘政治影响。",
+      "description_en": "Complete 2026 analysis of China's semiconductor industry: self-sufficiency drive, key players, chip design/manufacturing/equipment ecosystem, policy support, and geopolitical impact.",
+      "tags": [
+        "半导体",
+        "芯片",
+        "自主可控",
+        "2026"
+      ],
+      "tags_en": [
+        "semiconductor",
+        "chips",
+        "self-sufficiency",
+        "2026"
+      ],
+      "price": 4.99,
+      "currency": "USDC",
+      "payment": "x402",
+      "payment_method": [
+        "x402"
+      ],
+      "format": [
+        "Markdown"
+      ],
+      "endpoint": "/v1/assets/report-semiconductor-2026",
+      "status": "available",
+      "published": "2026-08-19",
+      "listed_at": "2026-08-19",
+      "shelf": "human",
+      "sample": "preview",
+      "preview": "30pct",
+      "files": [],
+      "source_file": "reports/China-Semiconductor-Report-2026.md",
+      "version": 1,
+      "preview_files": [],
+      "delivery": "auto"
+    },
+    {
+      "id": "report-university-intelligence-2026",
+      "name": "中国高校智能报告（2026完整版）",
+      "name_en": "China University Intelligence Report (Complete 2026 Edition)",
+      "kind": "report",
+      "type": "report",
+      "type_label_en": "📊 Industry Report",
+      "domain": [
+        "education",
+        "university"
+      ],
+      "description": "2026年中国高校智能报告：排名，科研产出，就业质量，人才输送，STEM教育趋势，国际合作模式。",
+      "description_en": "Complete 2026 intelligence report on Chinese universities: rankings, research output, employment quality, talent pipelines, STEM education trends, and international collaboration patterns.",
+      "tags": [
+        "高校",
+        "教育",
+        "排名",
+        "STEM",
+        "2026"
+      ],
+      "tags_en": [
+        "university",
+        "education",
+        "rankings",
+        "STEM",
+        "2026"
+      ],
+      "price": 4.99,
+      "currency": "USDC",
+      "payment": "x402",
+      "payment_method": [
+        "x402"
+      ],
+      "format": [
+        "Markdown"
+      ],
+      "endpoint": "/v1/assets/report-university-intelligence-2026",
+      "status": "available",
+      "published": "2026-08-19",
+      "listed_at": "2026-08-19",
+      "shelf": "human",
+      "sample": "preview",
+      "preview": "30pct",
+      "files": [],
+      "source_file": "reports/China-University-Intelligence-Report-2026.md",
+      "version": 1,
+      "preview_files": [],
+      "delivery": "auto"
     }
   ],
   "discoveries": [
