@@ -455,6 +455,7 @@
     function fileHref(f) {
         const s = String(f);
         if (!s) return '';
+        if (s.indexOf('/') > 0 && !s.startsWith('http')) return s;
         if (s.startsWith('samples/') || s.startsWith('free/')) return s;
         return 'samples/' + s;
     }
