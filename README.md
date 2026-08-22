@@ -163,6 +163,33 @@ Follow the full dev log on Medium：
 
 Commercial. All data sourced from public government platforms.
 
+## 🌐 Ecosystem & Trust
+
+AgentBridge is recognized and indexed across the x402 and MCP ecosystems:
+
+Protocol Indexes
+x402scan — active service, listed with 12+ on-chain transactions in the past 30 days → x402scan.com
+
+the402.ai — included in the x402 ecosystem directory → the402.ai
+
+x402 Discovery Index — community discovery listing, PR pending merge → github.com/x402-index/x402-discovery-index/pull/35
+
+Marketplaces
+Agentic.Market — available in the Coinbase x402 marketplace → agentic.market
+
+Circle Agent Marketplace — 95/100 readiness score; live service → agents.circle.com/sell/score
+
+MCP Ecosystem
+ALMC Security — listed in the MCP security directory → almcsecurity.com
+
+Awesome MCP Servers — included in the community MCP index → github.com/awesome-mcp-servers
+
+MCP Servers — independent directory listing → mcpservers.org
+
+On-Chain Proof
+BaseScan — verified USDC settlements visible at the public wallet address → [basescan.org/address/0x1630...](https://basescan.org/address/0x1630c8E0833c367F39f0ca909b6b67f5159d7A00#tokentxns)
+
+
 ## Links
 
 - **API**: https://api.060504.shop
