@@ -1,7 +1,7 @@
 # AgentBridge Atlas - x402 M2M Micro-Payment Market
 
-> **AI Agent 链上签名支付 0.005 USDC，后端验证结算，国家统计局 GDP 数据交付完成。**
-> M2M (Machine to Machine) 微支付商业闭环已落地跑通。
+AI Agent → On-chain Signature & Payment (0.005 USDC) → Backend Verification & Settlement → National Bureau of Statistics GDP Data Delivered. 
+The M2M (Machine-to-Machine) micropayment loop is live.
 
 ## Quick Facts
 
