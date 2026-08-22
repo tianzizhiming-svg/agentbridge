@@ -20,6 +20,10 @@ EU General Data Protection Regulation (GDPR, applicable to European users) / 欧
 2. How the raw-content Fetch Service Works / “raw-content”抓取服务运作方式
 This section applies to the `raw-content` fetch capability only (currently: /v1/fetch/dynamic). See Section 2b for how the verified-analysis report capabilities work — they operate differently.
 
+AI Agent & Automated Usage / AI 代理与自动化使用声明
+This service is designed for automated interaction by AI agents. Users who deploy or configure AI agents to interact with AgentBridge API assume full legal and financial responsibility for all requests, data fetches, and automatic payments initiated by their agents. AgentBridge is not liable for unintended payments, erroneous data fetches, or violations of this disclaimer caused by misconfigured AI agents.
+本服务专为 AI 代理的自动化交互设计。部署或配置 AI 代理以访问 AgentBridge API 的用户，对其代理发起的所有请求、数据抓取及自动支付行为承担全部法律与财务责任。因 AI 代理配置错误导致的误支付、误抓取或违反本声明的行为，AgentBridge 不承担任何责任。
+
 本节仅适用于 `raw-content` 抓取类能力（目前为 /v1/fetch/dynamic）。人工深度解读报告类产品的运作方式不同，见第2b节。
 
 AgentBridge's raw-content fetch service is a stateless data transmission tool. The complete data flow is as follows:
@@ -116,6 +120,13 @@ By using this service, users acknowledge and accept this transmission path.
 
 用户在使用本服务前，应知悉并接受此传输路径。
 
+6b. Payment Infrastructure & Cryptocurrency / 支付基础设施与加密货币声明
+This service utilizes the x402 payment protocol and settles transactions via USDC on the Base blockchain. By making a payment, users acknowledge:
+本服务采用 x402 支付协议，并通过 Base 区块链上的 USDC 进行结算。用户在进行支付时即表示确认：
+Transactions are irreversible once confirmed on the blockchain / 区块链上的交易一经确认即不可撤销。
+Users are responsible for any network gas fees associated with their payments / 用户需自行承担支付过程中产生的任何网络 Gas 费。
+Users must ensure their use of cryptocurrency for digital goods complies with the laws of their jurisdiction. AgentBridge operates solely as a digital goods provider and does not provide cryptocurrency exchange or financial services / 用户须确保其使用加密货币购买数字商品的行为符合所在司法管辖区的法律。AgentBridge 仅作为数字商品提供者，不提供加密货币兑换或金融服务。
+
 7. Cross-border Data Transfer / 数据跨境传输
 Under the Data Security Law and the Measures for Security Assessment of Cross-border Data Transfers:
 
@@ -166,6 +177,9 @@ Violation may result in immediate termination of API access without notice.
 
 违反上述条款可能导致 API 访问权限被立即终止，恕不另行通知。
 
+Prohibit automated scanning, probing, or repetitive requests to endpoints without proper parameters or payment (e.g., sending template parameters like {school_id} directly to the API). Such behavior will be treated as service abuse.
+禁止在未提供正确参数或未支付的情况下，对接口进行自动化扫描、探测或重复请求（例如直接向 API 发送 {school_id} 等模板参数）。此类行为将被视为服务滥用。
+
 12. Planned Safeguards / 规划中的保障措施
 To further enhance compliance and security, the following measures are under development:
 
@@ -178,6 +192,6 @@ Regular log rotation and retention policy / 定期日志清理策略
 Anomalous request detection and blocking / 异常请求检测与拦截
 These measures will be implemented as service scale grows. / 上述措施将随服务规模增长逐步实施。
 
-Last updated: July 2026 / 最后更新：2026 年 7 月
+Last updated: July 2026 / 最后更新：2026 年 8 月
 
 AgentBridge reserves the right to update this disclaimer at any time. / AgentBridge 保留随时更新本声明的权利。
