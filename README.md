@@ -167,26 +167,25 @@ Commercial. All data sourced from public government platforms.
 
 AgentBridge is recognized and indexed across the x402 and MCP ecosystems:
 
-## 🌐 Ecosystem & Trust
-
-AgentBridge is recognized and indexed across the x402 and MCP ecosystems:
-
 **Protocol Indexes**
-- **x402scan** — active service, listed with 12+ on-chain transactions in the past 30 days → [x402scan.com](https://x402scan.com/)
-- **the402.ai** — included in the x402 ecosystem directory → [the402.ai](https://the402.ai/)
+- **x402scan** — active service, listed with 12+ on-chain transactions in the past 30 days → [[x402scan.com](https://x402scan.com/](https://www.x402scan.com/server/88823216-fea2-4f28-9337-95f59355e194))
+
+- **the402.ai** — included in the x402 ecosystem directory (MCP-accessible catalog)
 - **x402 Discovery Index** — community discovery listing, PR pending merge → [github.com/x402-index/x402-discovery-index/pull/35](https://github.com/x402-index/x402-discovery-index/pull/35)
 
-**Marketplaces**
-- **Agentic.Market** — available in the Coinbase x402 marketplace → [agentic.market](https://agentic.market/)
-- **Circle Agent Marketplace** — 95/100 readiness score; live service → [agents.circle.com/sell/score](https://agents.circle.com/sell/score?url=https://api.060504.shop)
+### Marketplaces
 
-**MCP Ecosystem**
-- **ALMC Security** — listed in the MCP security directory → [almcsecurity.com](https://almcsecurity.com/en/mcpserver/search/agentbridge)
-- **Awesome MCP Servers** — included in the community MCP index → [github.com/awesome-mcp-servers](https://github.com/awesome-mcp-servers)
-- **MCP Servers** — independent directory listing → [mcpservers.org](https://mcpservers.org/servers/tianzizhiming-svg/agentbridge)
+- **Agentic.Market** — available in the Coinbase x402 marketplace (MCP-accessible catalog)
+- **Circle Agent Marketplace** — 95/100 readiness score; live service → [agents.circle.com/sell/score?url=https://api.060504.shop](https://agents.circle.com/sell/score?url=https://api.060504.shop)
 
-**On-Chain Proof**
-- **BaseScan** — verified USDC settlements visible at the public wallet address → [basescan.org/address/0x1630...](https://basescan.org/address/0x1630c8E0833c367F39f0ca909b6b67f5159d7A00)
+### MCP Ecosystem
+
+- **ALMC Security** — listed in the MCP security directory → [almcsecurity.com/en/mcpserver/search/agentbridge](https://almcsecurity.com/en/mcpserver/search/agentbridge)
+- **Awesome MCP Servers** — included in the community MCP index → [mcpservers.org/servers/tianzizhiming-svg/agentbridge](https://mcpservers.org/servers/tianzizhiming-svg/agentbridge) ([中文版](https://mcpservers.org/zh-CN/servers/tianzizhiming-svg/agentbridge))
+
+### On-Chain Proof
+
+- **BaseScan** — verified USDC settlements visible at the public wallet address → [basescan.org/address/0x1630c8E0833c367F39f0ca909b6b67f5159d7A00](https://basescan.org/address/0x1630c8E0833c367F39f0ca909b6b67f5159d7A00)
 - Real autonomous agent payments confirmed on-chain (August 2026)
 
 ## Links
