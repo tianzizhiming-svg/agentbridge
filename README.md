@@ -168,7 +168,8 @@ Commercial. All data sourced from public government platforms.
 AgentBridge is recognized and indexed across the x402 and MCP ecosystems:
 
 **Protocol Indexes**
-- **x402scan** — active service, listed with 12+ on-chain transactions in the past 30 days → [[x402scan.com](https://x402scan.com/](https://www.x402scan.com/server/88823216-fea2-4f28-9337-95f59355e194))
+
+- **x402scan** — active service, listed with 12+ on-chain transactions in the past 30 days (search for "AgentBridge")
 
 - **the402.ai** — included in the x402 ecosystem directory (MCP-accessible catalog)
 - **x402 Discovery Index** — community discovery listing, PR pending merge → [github.com/x402-index/x402-discovery-index/pull/35](https://github.com/x402-index/x402-discovery-index/pull/35)
