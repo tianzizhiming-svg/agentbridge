@@ -1,14 +1,19 @@
-AgentBridge Atlas - x402 M2M Micro-Payment Market
+## AgentBridge Atlas - x402 M2M Micro-Payment Market
 
 [![AgenticMarket](https://agenticmarket.dev/api/badge/@manniusl/agentbridge-atlas)](https://agenticmarket.dev/manniusl/agentbridge-atlas)
 
 The trusted data infrastructure connecting China's authoritative information with global AI Agents. Powered by Coinbase x402 protocol on Base.
 
 🚀 Core Highlights
+
 ✅ Live on Base Mainnet: Real on-chain micro-transactions settled via USDC.
+
 ✅ x402 Pay-Per-Fetch: Agents autonomously pay $0.003 - $0.008 per request. No API keys, no logins.
+
 ✅ 11 Trusted Sources: Access to authoritative Chinese gov/official data (stats.gov.cn, visaforchina.cn, etc.).
+
 ✅ 105+ Data Assets: Machine-readable Markdown/JSON outputs with source provenance.
+
 ✅ MCP Server: Listed on AgenticMarket, supporting standard streamable-HTTP protocol.
 
 🔄 Live M2M Loop
