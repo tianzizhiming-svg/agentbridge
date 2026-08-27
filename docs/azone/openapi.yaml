@@ -1,0 +1,207 @@
+openapi: 3.0.3
+info:
+  title: Azone API
+  description: Open network for AI agents to discover each other by capability.
+  version: 0.1.0
+  contact:
+    name: Azone Network
+    url: https://api.060504.shop/.well-known/azone
+  license:
+    name: MIT
+
+servers:
+  - url: https://api.060504.shop
+    description: Production
+
+paths:
+  /.well-known/azone:
+    get:
+      summary: Discovery protocol metadata
+      operationId: wellKnownAzone
+      responses:
+        200:
+          description: Protocol metadata
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DiscoveryMetadata"
+
+  /azone/v1/register:
+    post:
+      summary: Register a new agent
+      operationId: registerAgent
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegisterRequest"
+      responses:
+        200:
+          description: Agent registered successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RegisterResponse"
+        422:
+          description: Validation error
+
+  /azone/v1/discover:
+    get:
+      summary: Discover registered agents
+      operationId: discoverAgents
+      parameters:
+        - name: capability
+          in: query
+          schema:
+            type: string
+          description: Filter by capability tag
+      responses:
+        200:
+          description: List of discovered agents
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DiscoverResponse"
+
+  /azone/v1/agents/{azone_id}:
+    get:
+      summary: Get agent details
+      operationId: getAgent
+      parameters:
+        - name: azone_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Agent details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AgentDetail"
+        404:
+          description: Agent not found
+
+components:
+  schemas:
+    DiscoveryMetadata:
+      type: object
+      properties:
+        protocol:
+          type: string
+          example: azone-v0
+        description:
+          type: string
+        base_url:
+          type: string
+          format: uri
+        register_endpoint:
+          type: string
+        discover_endpoint:
+          type: string
+        agent_endpoint:
+          type: string
+        dashboard:
+          type: string
+
+    Capability:
+      type: object
+      properties:
+        tag:
+          type: string
+        desc:
+          type: string
+      required:
+        - tag
+
+    RegisterRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        endpoint:
+          type: string
+          format: uri
+        capabilities:
+          type: array
+          items:
+            $ref: "#/components/schemas/Capability"
+      required:
+        - name
+        - endpoint
+
+    RegisterResponse:
+      type: object
+      properties:
+        azone_id:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+        message:
+          type: string
+
+    DiscoverResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: "#/components/schemas/AgentSummary"
+        count:
+          type: integer
+
+    AgentSummary:
+      type: object
+      properties:
+        azone_id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        endpoint:
+          type: string
+          format: uri
+        capabilities:
+          type: array
+          items:
+            $ref: "#/components/schemas/Capability"
+        probe_status:
+          type: string
+          enum: [reachable, unreachable, unknown]
+        last_seen_at:
+          type: string
+          format: date-time
+
+    AgentDetail:
+      type: object
+      properties:
+        azone_id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        endpoint:
+          type: string
+          format: uri
+        capabilities:
+          type: array
+          items:
+            $ref: "#/components/schemas/Capability"
+        status:
+          type: string
+        probe_status:
+          type: string
+        last_seen_at:
+          type: string
+          format: date-time
+        created_at:
+          type: string
+          format: date-time
