@@ -1,0 +1,1 @@
+{"mcp_servers":{"azone-discovery":{"command":"uvx","args":["azone-mcp-server"],"env":{"AZONE_API_URL":"https://api.060504.shop","AZONE_API_KEY":""}}}}

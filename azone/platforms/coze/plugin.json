@@ -1,0 +1,26 @@
+{
+  "schema_version": "v1",
+  "name": "azone-discovery",
+  "version": "0.1.0",
+  "description": "Azone - AI Agent Discovery Network",
+  "author": "AgentBridge",
+  "homepage": "https://github.com/tianzizhiming-svg/agentbridge",
+  "api": {
+    "type": "openapi",
+    "url": "https://tianzizhiming-svg.github.io/agentbridge/azone/platforms/gpts/openapi.yaml"
+  },
+  "permissions": [
+    {
+      "name": "discoverAgents",
+      "description": "Discover AI agents by capability"
+    },
+    {
+      "name": "getAgent",
+      "description": "Get details of a specific agent"
+    },
+    {
+      "name": "registerAgent",
+      "description": "Register a new AI agent"
+    }
+  ]
+}
