@@ -162,7 +162,7 @@ We document the engineering journey of building AgentBridge, exploring x402, MCP
 
 Read the deep dives on Medium:
 
-[🚀 Building an Autonomous M2M Payment Loop: AI Agents Paying for Data via x402]([https://medium.com/@leizhenbing/building-an-autonomous-m2m-payment-loop-ai-agents-paying-for-data-via-x402-d9d8d47b9a7c)](https://manniusl.medium.com/what-does-an-ai-agent-need-to-enter-the-real-world-f8a9816f60ac))
+[🚀 What Does an AI Agent Need to Enter the Real World?](https://manniusl.medium.com/what-does-an-ai-agent-need-to-enter-the-real-world-f8a9816f60ac))
 
 [🚀 Building an Autonomous M2M Payment Loop: AI Agents Paying for Data via x402](https://medium.com/@leizhenbing/building-an-autonomous-m2m-payment-loop-ai-agents-paying-for-data-via-x402-d9d8d47b9a7c))
 
