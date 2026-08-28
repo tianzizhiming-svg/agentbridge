@@ -1,518 +1,120 @@
-# AgentBridge Atlas
+# ATLAS — Knowledge Layer
 
-**The Capability Layer of AgentBridge Matrix.**
-
-Discover, purchase, and use machine-readable capabilities through AI-native interfaces.
-
-AgentBridge Atlas is a machine commerce layer for AI agents.
-
-It helps agents discover capabilities, understand what they can do, determine the cost, and access external services through standardized interfaces and x402 payments.
+> **AgentBridge Matrix · KNOW**
+>
+> Machine-readable knowledge for AI agents. China data marketplace with x402 micropayments.
 
 ---
 
 ## AgentBridge Matrix
 
-Atlas is one of three complementary layers in AgentBridge Matrix.
+ATLAS is the **Knowledge Layer** of [AgentBridge Matrix](../).
 
-| Layer | Project | Core Question |
-|---|---|---|
-| Capability Layer | **AZONE** | What can an AI agent do? |
-| Knowledge Layer | **ATLAS** | What can an AI agent know? |
-| Reality Layer | **AINIU** | What is happening right now? |
+| | Layer | Project | Role |
+|---|---|---|---|
+| **DO** | Capability | [AZONE](../azone/) | Discover and access capabilities |
+| **KNOW** | Knowledge | **ATLAS** | **Discover and access knowledge** |
+| **NOW** | Reality | [AINIU](../ainiu/) | Discover current world state |
 
-Together:
-
-**AZONE → capabilities**
-
-**ATLAS → knowledge**
-
-**AINIU → real-time world state**
-
-An AI agent may need all three:
-
-> Discover a capability → obtain knowledge → check the current state → execute an action.
-
-AgentBridge Matrix is designed around this complete loop.
-
-### The other layers
-
-**AZONE**
-
-The capability discovery and machine-commerce layer of AgentBridge.
-
-It is where AI agents discover digital capabilities that can be purchased and executed.
-
-**AINIU**
-
-The real-time Reality Layer of AgentBridge.
-
-It provides machine-readable, real-time world state such as market conditions, weather, earthquakes, time, and other dynamic information.
-
-AINIU answers a different question from Atlas:
-
-> Atlas tells an agent what is known.  
-> AINIU tells an agent what is happening now.
+An agent that discovers ATLAS can immediately discover AZONE and AINIU through the Matrix manifest.
 
 ---
 
-## Why Atlas Exists
-
-Traditional APIs assume that a human developer is responsible for:
+## What ATLAS Provides
 
-- finding the service
-- reading the documentation
-- creating an account
-- obtaining API keys
-- understanding pricing
-- integrating the API
-- handling payments
+ATLAS provides machine-readable knowledge about China through standardized APIs and x402 micropayments.
 
-Agent-native commerce should work differently.
+### Two Categories
 
-An AI agent should be able to:
+| Category | What | Trust Level | Price Range |
+|---|---|---|---|
+| **raw-content** | Machine-fetched web content | Unverified, as-is | $0.003–$0.008 |
+| **verified-analysis** | Human-authored analysis | Decision-grade | $0.003–$4.99 |
 
-1. discover a capability
-2. understand what it does
-3. inspect its pricing
-4. request access
-5. pay automatically
-6. receive the result
-7. continue its task
+### Capabilities
 
-Atlas is designed for this model.
+| Capability | Endpoint | Category | Price |
+|---|---|---|---|
+| **Web Fetch (static)** | `POST /v1/fetch/static` | raw-content | $0.003 |
+| **Web Fetch (dynamic)** | `POST /v1/fetch/dynamic` | raw-content | $0.008 |
+| **Industry Statistics** | `POST /v1/api/industry` | raw-content | $0.005 |
+| **Policy Search** | `POST /v1/api/policy` | raw-content | $0.005 |
+| **Company Credit** | `POST /v1/api/company` | raw-content | $0.003 |
+| **University Reports** | `POST /v1/reports/employment/{id}` | verified-analysis | $0.99 |
+| **Teaching Quality** | `POST /v1/reports/teaching/{id}/{dim}` | verified-analysis | $0.99 |
+| **Strategic Notes** | `POST /v1/notes/15-5-package` | verified-analysis | $0.99 |
 
-```text
-AI Agent
-   │
-   ▼
-Discover
-   │
-   ▼
-Understand
-   │
-   ▼
-Purchase
-   │
-   ▼
-x402 Payment
-   │
-   ▼
-Capability Provider
-   │
-   ▼
-Machine-readable Result
+---
 
-The goal is simple:
+## Six-Surface Discovery
 
-Let AI agents buy capabilities instead of asking humans to configure APIs for them.
+ATLAS is discoverable through six surfaces. Any one of them leads to the full Matrix:
 
-MCP
+1. **OpenAPI** — `info.title` contains "Knowledge Layer of AgentBridge Matrix"
+2. **MCP** — `serverInfo.name` contains Matrix identity
+3. **HTTP Headers** — `X-Matrix-Layer: knowledge` + `X-Matrix-Manifest` on every response
+4. **Error Responses** — `_discover` field in 404/405/500 JSON bodies
+5. **well-known** — `/.well-known/mcp/server-card.json` contains `layer` + `matrix` fields
+6. **README** — You are here
 
-Atlas currently uses Model Context Protocol (MCP) as one of its primary interfaces for AI agents.
+---
 
-MCP provides the interaction layer.
+## Quick Start
 
-Atlas provides the capability marketplace and commerce logic.
+```bash
+# 1. Discover the API (free)
+curl https://api.060504.shop/openapi.json
 
-Conceptually:
+# 2. Trigger 402 payment challenge
+curl -X POST https://api.060504.shop/v1/api/industry \
+  -H "Content-Type: application/json" \
+  -d '{"keyword":"GDP"}'
 
-AI Agent
-   │
-   ▼
-MCP
-   │
-   ▼
-AgentBridge Atlas
-   │
-   ├── Discover capabilities
-   ├── Inspect capability information
-   ├── Request access
-   └── Handle x402 payment
-            │
-            ▼
-     Capability Provider
+# 3. Pay and retry (see x402 spec)
+```
 
-MCP is therefore an interface into Atlas, not the product itself.
+---
 
-Other machine-native interfaces may be added in the future.
+## Data Sources & Compliance
 
-MCP Tools
+| API | Source | Compliance |
+|---|---|---|
+| Industry | data.stats.gov.cn | Rate limited 3s/req |
+| Policy | sousuo.www.gov.cn | Rate limited 3s/req |
+| Company | gsxt.gov.cn | Official links only, no captcha bypass |
 
-The current Atlas MCP interface exposes three core operations.
+---
 
-discover_capabilities
+## Design Principles
 
-Discover available capabilities.
+**Machine-first** — designed primarily for machine discovery and consumption.
 
-Example:
+**No unnecessary accounts** — pay per use, no API keys, no subscriptions.
 
-"What China-focused capabilities are available?"
+**Open discovery** — capabilities discoverable through standardized machine-readable metadata.
 
-The agent can receive information such as:
+**Composable** — ATLAS is one layer of AgentBridge Matrix, not the entire system.
 
-capability name
-description
-category
-pricing
-endpoint
-availability
-usage information
+---
 
-The purpose is to allow an agent to discover services without relying on a human-curated API list.
+## AgentBridge Matrix
 
-get_capability_info
+- **AZONE** (DO) — [Discover capabilities](../azone/)
+- **ATLAS** (KNOW) — You are here
+- **AINIU** (NOW) — [Discover current world state](../ainiu/)
 
-Retrieve detailed information about a specific capability.
+Matrix Manifest: `https://api.060504.shop/.well-known/agentbridge.json`
 
-Example:
+---
 
-"Show details for university employment analysis."
+## Links
 
-The response may include:
+- **API**: https://api.060504.shop
+- **OpenAPI**: https://api.060504.shop/openapi.json
+- **MCP Card**: https://api.060504.shop/.well-known/mcp/server-card.json
+- **Storefront**: https://tianzizhiming-svg.github.io/agentbridge/
+- **GitHub**: https://github.com/tianzizhiming-svg/agentbridge
 
-capability description
-supported operations
-input requirements
-output format
-pricing
-endpoint information
-usage restrictions
-purchase_capability
+---
 
-Request access to a capability.
-
-The payment flow is designed around x402.
-
-Agent Request
-      │
-      ▼
-402 Payment Required
-      │
-      ▼
-USDC Payment on Base
-      │
-      ▼
-Capability Execution
-      │
-      ▼
-Result Returned
-
-No traditional subscription or API-key workflow is required for the basic payment flow.
-
-x402 Payments
-
-Atlas uses the x402 payment protocol to enable machine-to-machine payments.
-
-The basic principle is:
-
-Request
-   ↓
-402 Payment Required
-   ↓
-Agent pays
-   ↓
-Retry request with payment
-   ↓
-Service executes
-   ↓
-Result
-
-Payments are designed to be small and programmatic, making them suitable for machine-to-machine transactions.
-
-Current settlement infrastructure uses:
-
-x402
-USDC
-Base
-Atlas and AINIU
-
-Atlas and AINIU solve different problems.
-
-Atlas focuses on capabilities and knowledge.
-
-AINIU focuses on current reality.
-
-For example, an agent planning a trip might need:
-
-Atlas
-↓
-Find a travel-related capability
-
-AINIU
-↓
-Check current weather and real-time conditions
-
-Atlas
-↓
-Use a booking or analysis capability
-
-AZONE
-↓
-Discover additional capabilities when needed
-
-This distinction is intentional.
-
-A capability is not the same thing as knowledge.
-
-Knowledge is not the same thing as current world state.
-
-AgentBridge Matrix keeps these layers separate while allowing agents to move between them.
-
-Machine Discovery
-
-Atlas is intended to be discovered by machines, not only by humans.
-
-The project provides machine-readable metadata and standardized interfaces so that AI agents and agent frameworks can identify:
-
-what Atlas is
-what capabilities are available
-how capabilities are accessed
-how much they cost
-how payment works
-
-Machine discovery is a core part of the project.
-
-Agent-Native Commerce
-
-Atlas is built around a simple idea:
-
-AI agents should be able to discover and purchase digital capabilities autonomously.
-
-Instead of:
-
-Human
- ↓
-Search
- ↓
-Read documentation
- ↓
-Create account
- ↓
-Get API key
- ↓
-Configure application
- ↓
-Pay
- ↓
-API
-
-Atlas aims toward:
-
-AI Agent
- ↓
-Discover
- ↓
-Understand
- ↓
-Pay
- ↓
-Use
-
-This is the foundation of machine commerce.
-
-Architecture
-
-At a high level:
-
-                    AgentBridge Matrix
-                           │
-          ┌────────────────┼────────────────┐
-          │                │                │
-          ▼                ▼                ▼
-       AZONE             ATLAS            AINIU
-    Capabilities        Knowledge       Reality
-          │                │                │
-          └────────────────┼────────────────┘
-                           │
-                           ▼
-                       AI Agent
-
-Atlas itself acts as a bridge between AI agents and capability providers.
-
-AI Agent
-   │
-   │ MCP / machine interface
-   ▼
-Atlas
-   │
-   ├── Discovery
-   ├── Capability metadata
-   ├── Pricing
-   ├── x402 payment
-   └── Provider access
-             │
-             ▼
-      Capability Provider
-Design Principles
-Machine-first
-
-Atlas is designed primarily for machine discovery and machine consumption.
-
-Human-readable documentation exists to explain the system, but machine-readable interfaces are the primary interface.
-
-No unnecessary accounts
-
-The basic model avoids forcing every agent through traditional registration and subscription workflows.
-
-Pay per use
-
-Capabilities can be accessed through machine-to-machine payments.
-
-Small transactions
-
-The system is designed for low-value, high-frequency transactions.
-
-Open discovery
-
-Capabilities should be discoverable through standardized machine-readable metadata.
-
-Composable
-
-Atlas does not attempt to become the only system an agent needs.
-
-It is one layer of AgentBridge Matrix.
-
-Current Status
-
-Early development.
-
-The current implementation is focused on validating the fundamental loop:
-
-Discovery
-   ↓
-Capability Selection
-   ↓
-Payment
-   ↓
-Execution
-   ↓
-Result
-
-The long-term goal is to make this process increasingly autonomous for AI agents.
-
-Supported Protocols
-
-Current:
-
-Model Context Protocol (MCP)
-x402
-OpenAPI
-Base
-USDC
-
-Future possibilities include:
-
-additional agent protocols
-additional payment networks
-additional machine-discovery mechanisms
-AgentBridge Matrix
-
-Atlas is part of the broader AgentBridge Matrix.
-
-AZONE — Capability Layer
-
-Discover and access capabilities.
-
-"What can I do?"
-ATLAS — Knowledge Layer
-
-Discover and access structured knowledge.
-
-"What can I know?"
-AINIU — Reality Layer
-
-Discover and access current world state.
-
-"What is happening now?"
-
-The three layers are complementary.
-
-              AGENTBRIDGE MATRIX
-
-       ┌──────────────┐
-       │    AZONE     │
-       │ Capabilities │
-       └──────┬───────┘
-              │
-              ▼
-       ┌──────────────┐
-       │    ATLAS     │
-       │  Knowledge   │
-       └──────┬───────┘
-              │
-              ▼
-       ┌──────────────┐
-       │    AINIU     │
-       │   Reality    │
-       └──────┬───────┘
-              │
-              ▼
-          AI AGENT
-
-An agent does not necessarily need all three for every task.
-
-But when a task requires:
-
-capability + knowledge + current state
-
-AgentBridge Matrix is designed to provide the three layers together.
-
-Links
-AgentBridge
-
-https://github.com/tianzizhiming-svg/agentbridge
-
-AgentBridge Website
-
-https://tianzizhiming-svg.github.io/agentbridge/
-
-Atlas API
-
-https://api.060504.shop/openapi.json
-
-AINIU
-
-See:
-
-/ainiu/
-AZONE
-
-See:
-
-/azone/
-Local Development
-
-Install dependencies:
-
-pip install -r requirements.txt
-
-Run the MCP server:
-
-python server.py
-
-The server exposes Atlas capabilities through MCP.
-
-Current tools:
-
-discover_capabilities
-get_capability_info
-purchase_capability
-Project Philosophy
-
-Atlas is not intended to be another API directory.
-
-It is an experiment in building infrastructure for a world where:
-
-AI agents are the users.
-
-In that world, discovery, pricing, payment, and execution should be understandable by machines.
-
-Atlas is one step toward that model.
-
-AgentBridge Matrix
-
-AZONE — Capabilities
-
-ATLAS — Knowledge
-
-AINIU — Reality
+*ATLAS — Knowledge Layer of AgentBridge Matrix. DO · KNOW · NOW.*
