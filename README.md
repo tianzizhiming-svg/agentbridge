@@ -1,3 +1,5 @@
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
 # AgentBridge Matrix
 
 > **DO · KNOW · NOW**
@@ -138,7 +140,8 @@ curl -X POST https://api.060504.shop/ainiu/crypto \
 **Parasitic by design** — deeply integrated with the x402 ecosystem, growing from point to line to surface.
 
 ---
-
+
+
 ---
 
 ## Status
