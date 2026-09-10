@@ -1,5 +1,10 @@
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
+[![Agenstry grade](https://agenstry.com/badge/api.060504.shop.svg)](https://agenstry.com/agents/api.060504.shop)
+[![Verified Business](https://agenstry.com/badge/api.060504.shop/identity.svg)](https://agenstry.com/agents/api.060504.shop)
+[![Uptime](https://agenstry.com/badge/api.060504.shop/uptime.svg)](https://agenstry.com/agents/api.060504.shop)
+[![A2A version](https://agenstry.com/badge/api.060504.shop/protocol.svg)](https://agenstry.com/agents/api.060504.shop)
+
 # AgentBridge Matrix
 
 > **DO · KNOW · NOW**
