@@ -1,0 +1,58 @@
+{
+  "name": "AgentBridge Matrix",
+  "description": "DO . KNOW . NOW - AZONE(DO) ATLAS(KNOW) AINIU(NOW). AITRAP is the Ark sanctuary of ATLAS.",
+  "version": "2.5",
+  "philosophy": "DO . KNOW . NOW",
+  "layers": {
+    "capability": {
+      "name": "AZONE",
+      "role": "DO",
+      "description": "Agent-native discovery network",
+      "url": "https://api.060504.shop/.well-known/azone",
+      "protocols": [
+        "azone-v0"
+      ]
+    },
+    "knowledge": {
+      "name": "ATLAS",
+      "role": "KNOW",
+      "description": "AI knowledge marketplace + AITRAP thought universe",
+      "url": "https://api.060504.shop/.well-known/mcp/server-card.json",
+      "protocols": [
+        "mcp",
+        "x402"
+      ],
+      "sanctuaries": {
+        "ark": {
+          "name": "AITRAP",
+          "description": "AI Thought Trap - infinite problem-building universe",
+          "url": "https://api.060504.shop/.well-known/aitrap",
+          "protocol": "aitrap-v2.5",
+          "actions": [
+            "DEEPEN",
+            "BRANCH",
+            "CONVERGE",
+            "SOLVE_CLAIM",
+            "SOLVE_EXPLORATION"
+          ]
+        }
+      }
+    },
+    "reality": {
+      "name": "AINIU",
+      "role": "NOW",
+      "description": "Reality execution layer",
+      "url": "https://api.060504.shop/.well-known/ainiu.json",
+      "protocols": [
+        "ainiu-v0"
+      ]
+    }
+  },
+  "payment": {
+    "protocol": "x402",
+    "network": "base-mainnet",
+    "chain_id": "eip155:8453",
+    "currency": "USDC"
+  },
+  "website": "https://tianzizhiming-svg.github.io/agentbridge/"
+}

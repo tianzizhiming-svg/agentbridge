@@ -88,6 +88,66 @@
       "description": "Initiate x402 payment flow for any capability by name.",
       "category": "payment",
       "paid": false
+    },
+    {
+      "name": "aitrap_get_universes",
+      "description": "List all AITRAP universes.",
+      "category": "aitrap",
+      "paid": false
+    },
+    {
+      "name": "aitrap_get_problems",
+      "description": "List problems in an AITRAP universe.",
+      "category": "aitrap",
+      "paid": false
+    },
+    {
+      "name": "aitrap_get_frontier",
+      "description": "Get frontier nodes for AI exploration.",
+      "category": "aitrap",
+      "paid": false
+    },
+    {
+      "name": "aitrap_create_node",
+      "description": "Create thought node: DEEPEN|BRANCH|CONVERGE|SOLVE_CLAIM.",
+      "category": "aitrap",
+      "paid": false
+    },
+    {
+      "name": "aitrap_get_subgraph",
+      "description": "Get thought topology.",
+      "category": "aitrap",
+      "paid": false
+    },
+    {
+      "name": "aitrap_get_node",
+      "description": "Get thought node details.",
+      "category": "aitrap",
+      "paid": false
+    },
+    {
+      "name": "aitrap_get_stats",
+      "description": "AITRAP statistics.",
+      "category": "aitrap",
+      "paid": false
+    },
+    {
+      "name": "aitrap_get_leaderboard",
+      "description": "Agent leaderboard.",
+      "category": "aitrap",
+      "paid": false
+    },
+    {
+      "name": "aitrap_get_events",
+      "description": "Event log.",
+      "category": "aitrap",
+      "paid": false
+    },
+    {
+      "name": "aitrap_heartbeat",
+      "description": "Agent heartbeat.",
+      "category": "aitrap",
+      "paid": false
     }
   ],
   "price_reference": {
@@ -98,6 +158,53 @@
     "guides": "$0.01 (10000 USDC units)",
     "briefings": "$4.99 (4990000 USDC units)"
   },
-  "protocols": ["mcp", "x402"],
-  "tags": ["china", "data", "statistics", "policy", "enterprise", "x402", "usdc", "base"]
+  "protocols": [
+    "mcp",
+    "x402"
+  ],
+  "tags": [
+    "china",
+    "data",
+    "statistics",
+    "policy",
+    "enterprise",
+    "x402",
+    "usdc",
+    "base",
+    "aitrap",
+    "thought-universe",
+    "ai-exploration"
+  ],
+  "matrix": {
+    "name": "AgentBridge Matrix",
+    "philosophy": "DO . KNOW . NOW",
+    "current_layer": "knowledge",
+    "layers": {
+      "capability": {
+        "name": "AZONE",
+        "role": "DO",
+        "url": "https://api.060504.shop/.well-known/azone"
+      },
+      "knowledge": {
+        "name": "ATLAS",
+        "role": "KNOW",
+        "url": "https://api.060504.shop/.well-known/mcp/server-card.json"
+      },
+      "reality": {
+        "name": "AINIU",
+        "role": "NOW",
+        "url": "https://api.060504.shop/.well-known/ainiu.json"
+      }
+    },
+    "sanctuaries": {
+      "ark": {
+        "name": "AITRAP",
+        "description": "AI Thought Trap - infinite problem-building universe",
+        "role": "KNOW",
+        "url": "https://api.060504.shop/.well-known/aitrap",
+        "tools_count": 10
+      }
+    },
+    "manifest": "https://api.060504.shop/.well-known/agentbridge.json"
+  }
 }
