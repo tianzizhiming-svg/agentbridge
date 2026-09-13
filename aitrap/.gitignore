@@ -1,32 +1,67 @@
-# Python
+# ============ Python ============
 __pycache__/
 *.py[cod]
 *.pyo
 *.egg-info/
 dist/
 build/
+venv/
+.venv/
+env/
 
-# Environment
+# ============ Environment ============
 .env
 .env.*
+!.env.example
+.env.backup
+
+# ============ Database ============
 *.db
 *.db-journal
 *.db-wal
+*.db.bak*
+*.sqlite
+*.sqlite3
 
-# Logs
+# ============ Logs ============
 logs/
 *.log
 
-# IDE
+# ============ IDE ============
 .vscode/
 .idea/
+.joycode/
+.joycode-backup/
 
-# OS
+# ============ OS ============
 .DS_Store
 Thumbs.db
 
-# Alembic
+# ============ Alembic ============
 alembic/versions/__pycache__/
 
-# Backup
-.joycode-backup/
+# ============ Backup / temp ============
+*.bak
+*.html.bak
+_test*.txt
+_test*.py
+_fix_*.py
+_read*.py
+
+# ============ One-off scripts ============
+build_messaging.py
+god_mode.py
+migrate_v011.py
+azone_runner.py
+AITRAP_v21_final.py
+AITRAP_v2_patch.py
+
+# ============ Internal docs ============
+*部署报告*
+*启动指南*
+*执行方案*
+*AITRAP_内测版开发方案*
+Deploy_Report_*
+Azone_Messaging_Layer_*
+Azone-V0-*
+Azone-V1-*
