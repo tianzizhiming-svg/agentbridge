@@ -1,0 +1,58 @@
+# ===== Secrets & credentials (NEVER commit) =====
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.pfx
+*.key
+id_rsa*
+id_dsa*
+*_rsa
+*_dsa
+credentials
+.htpasswd
+.netrc
+
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.egg-info/
+venv/
+.venv/
+pip-wheel-metadata/
+
+# ===== Node =====
+node_modules/
+npm-debug.log*
+yarn-error.log
+
+# ===== Editors / OS =====
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ===== Backups & temp (docs/ is PUBLIC via GitHub Pages - backups must never be published) =====
+*.bak
+*.bak-*
+*.bak.*
+*.bak_*
+*.orig
+*.rej
+*.tmp
+*.temp
+*~
+*.swp
+
+# ===== Logs & local artifacts =====
+*.log
+*.sqlite
+*.sqlite3
+*.db
+!*.db.example
+
+# ===== Local untracked working dirs =====
+_deploy_/
+_local_/
+scratch/

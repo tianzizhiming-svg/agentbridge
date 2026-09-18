@@ -1,6 +1,6 @@
 {
   "name": "AgentBridge Atlas",
-  "description": "A machine commerce layer for AI agents to discover, purchase, and consume digital capabilities.",
+  "description": "China data MCP service on Base - x402 pay-per-call API for AI agents.",
   "url": "https://tianzizhiming-svg.github.io/agentbridge/",
   "api": "https://api.060504.shop/openapi.json",
   "protocols": [
