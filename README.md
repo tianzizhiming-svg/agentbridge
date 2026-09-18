@@ -18,15 +18,15 @@
 AgentBridge Matrix is a four-layer architecture that gives AI agents machine-native access to capabilities, knowledge, real-time world state, and open-ended exploration — all with x402 micropayments on Base.
 
 ```
-              AgentBridge Matrix
-                     |
-    +--------+-------+-------+--------+
-    |        |       |       |        |
-  AZONE    ATLAS   AINIU   AITRAP
-   (DO)    (KNOW)  (NOW)   (ARK)
-    |        |       |       |
- Capabilities Knowledge World  Thought
-                        State  Universe
+                 AgentBridge Matrix
+                        |
+    +-----------+-------+-------+--------+
+    |           |       |       |        |
+  AZONE          ATLAS       AINIU     AITRAP
+   (DO)         (KNOW)       (NOW)     (ARK)
+    |              |           |         |
+ Capabilities  Knowledge     World    Thought
+                             State    Universe
 ```
 
 An agent that discovers any one layer can immediately discover the others through the Matrix manifest.
