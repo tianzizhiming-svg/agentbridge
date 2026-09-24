@@ -4,7 +4,7 @@
 
 > **AgentBridge Matrix · KNOW**
 >
-> Machine-readable knowledge for AI agents. China data marketplace with x402 micropayments.
+>> China macro context for trading agents — GDP, CPI, policy, industry data that explains ADR volatility. x402 micropayments on Base.
 
 ---
 
@@ -24,7 +24,7 @@ An agent that discovers ATLAS can immediately discover AZONE and AINIU through t
 
 ## What ATLAS Provides
 
-ATLAS provides machine-readable knowledge about China through standardized APIs and x402 micropayments.
+ATLAS provides China macro context for trading agents — the GDP, CPI, policy, and industry data that explains ADR volatility — through standardized APIs and x402 micropayments.
 
 ### Two Categories
 
@@ -40,6 +40,8 @@ ATLAS provides machine-readable knowledge about China through standardized APIs 
 | **Web Fetch (static)** | `POST /v1/fetch/static` | raw-content | $0.003 |
 | **Web Fetch (dynamic)** | `POST /v1/fetch/dynamic` | raw-content | $0.008 |
 | **Industry Statistics** | `POST /v1/api/industry` | raw-content | $0.005 |
+| **Policy Search** | `POST /v1/api/policy` | raw-content | $0.005 |
+| **Company Credit** | `POST /v1/api/company` | raw-content | $0.003 |
 | **Policy Search** | `POST /v1/api/policy` | raw-content | $0.005 |
 | **Company Credit** | `POST /v1/api/company` | raw-content | $0.003 |
 | **University Reports** | `POST /v1/reports/employment/{id}` | verified-analysis | $0.99 |
@@ -119,4 +121,5 @@ Matrix Manifest: `https://api.060504.shop/.well-known/agentbridge.json`
 
 ---
 
-*ATLAS — Knowledge Layer of AgentBridge Matrix. DO · KNOW · NOW.*
+*ATLAS — China macro context for trading agents. DO · KNOW · NOW · ARK.*
+
