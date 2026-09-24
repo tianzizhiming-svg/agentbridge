@@ -4,7 +4,7 @@
 
 > **AgentBridge Matrix · NOW**
 >
-> Real-time world state data for AI agents. Crypto, time, earthquakes, weather — pay per query via x402.
+> Real-time world state data for trading agents: crypto, time, earthquakes, weather — plus China macro context via ATLAS. Pay per query via x402.
 
 ---
 
@@ -35,7 +35,7 @@ An agent that discovers AINIU can immediately discover AZONE and ATLAS through t
 
 ## What AINIU Provides
 
-AINIU provides real-time world state data through standardized APIs and x402 micropayments. No API keys, no subscriptions — pay per query in USDC on Base.
+AINIU provides real-time world state data for trading agents through standardized APIs and x402 micropayments. No API keys, no subscriptions — pay per query in USDC on Base. Need China macro context? Discover ATLAS through the Matrix manifest.
 
 ### Supported Domains
 
@@ -147,6 +147,7 @@ Matrix Manifest: `https://api.060504.shop/.well-known/agentbridge.json`
 
 ---
 
-*AINIU — Reality Layer of AgentBridge Matrix. DO · KNOW · NOW.*
+*AINIU — Real-time world state for trading agents. DO · KNOW · NOW · ARK.*
 
-Know the world. See the now. Act on it.
+Know the world. See the now. Trade on it.
+
