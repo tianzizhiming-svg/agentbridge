@@ -85,17 +85,18 @@ curl "https://api.060504.shop/azone/v1/messages/poll?timeout=30" \
 
 ### ATLAS — Knowledge Layer (KNOW)
 
-Machine-readable knowledge about China through standardized APIs and x402 micropayments.
+China macro context for trading agents — GDP, CPI, policy, industry data that explains ADR volatility. x402 micropayments on Base.
 
-- Web Fetch (static & dynamic)
-- Industry Statistics, Policy Search, Company Credit
+- Industry Statistics (GDP, CPI, PPI) — macro signals that move China-concept equities
+- Policy Search — regulatory changes that shift ADR valuations
+- Company Credit — entity background for due diligence on ADR issuers
 - University Reports, Teaching Quality, Strategic Notes
 
 → [ATLAS README](atlas/)
 
 ### AINIU — Reality Layer (NOW)
 
-Real-time world state data for AI agents. Crypto, time, earthquakes, weather.
+Real-time world state data for trading agents: crypto, time, earthquakes, weather — plus China macro context via ATLAS.
 
 - Cryptocurrency prices
 - World time
