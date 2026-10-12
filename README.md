@@ -225,6 +225,13 @@ curl -X POST https://api.060504.shop/ainiu/crypto \
 
 ---
 
+## Author
+
+**Lei Zhenbing** — Independent Researcher · tianzizhiming@gmail.com
+
+Built and operates all four layers of this matrix (Azone, Atlas, Ainiu, AITRAP), including the
+agent coordination, discovery and audit mechanisms described above.
+
 ## Links
 
 - **API**: https://api.060504.shop
