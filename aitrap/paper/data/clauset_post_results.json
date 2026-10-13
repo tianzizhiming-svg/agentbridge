@@ -1,0 +1,37 @@
+{
+  "dataset": "post_intervention",
+  "total_nodes": 66088,
+  "nodes_cc_positive": 6517,
+  "cc_fraction_positive": 0.0986,
+  "cc_max": 302,
+  "cc_median": 1.0,
+  "cc_mean": 1.08,
+  "clauset": {
+    "alpha": 1.997,
+    "xmin": 3.0,
+    "ks_D": 0.1615,
+    "bootstrap_p": null,
+    "vs_lognormal": {
+      "R": -5.781,
+      "p": 0.2911
+    },
+    "vs_exponential": {
+      "R": 15.815,
+      "p": 0.0
+    },
+    "vs_stretched_exponential": {
+      "R": 0.495,
+      "p": 0.0629
+    }
+  },
+  "lognormal_params": {
+    "mu": 0.018,
+    "sigma": 0.138
+  },
+  "gini_cc_positive": 0.07,
+  "comparison_with_pre": {
+    "pre_alpha": 2.177,
+    "pre_gini": 0.503,
+    "note": "Pre-intervention values from original analysis snapshot"
+  }
+}
