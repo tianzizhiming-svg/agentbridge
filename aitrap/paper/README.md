@@ -95,9 +95,9 @@ python scripts/gen_figures_v2.py
 ## Citation
 
 ```bibtex
-@article{zhao2026lognormal,
+@article{lei2026lognormal,
   title={A Lognormal Heavy-Tailed Distribution in Multi-Agent Knowledge Trees},
-  author={Zhao, Tianzi},
+  author={Lei Zhenbing; Lei Chang},
   year={2026},
   note={arXiv preprint}
 }
