@@ -28,6 +28,15 @@ class AitrapEvent(Base):
 
     # v2.3: Append-only integrity (通讯记录固化)
     content_hash = Column(String(64), nullable=True, index=True)  # SHA-256 of event payload
+    # v2.7: Data provenance (数据溯源 — 每条event可追溯至具体API调用)
+    source_endpoint = Column(String(128), nullable=True)   # e.g. "POST /aitrap/nodes"
+    source_url = Column(String(512), nullable=True)        # full request URL with query params
+    captured_at = Column(String(32), nullable=True)        # ISO-8601 timestamp of request arrival
+    request_digest = Column(String(64), nullable=True)     # SHA-256 of method+url+body (anti-tamper)
+    payload_hash = Column(String(64), nullable=True)       # SHA-256 of request_payload (dedup check)
+    attested_by = Column(String(64), nullable=True)        # server instance ID (hostname or pod name)
+    schema_version = Column(String(16), nullable=True, default="v2.7")  # provenance schema version
+
 
     created_at = Column(DateTime, default=datetime.utcnow, index=True)
 

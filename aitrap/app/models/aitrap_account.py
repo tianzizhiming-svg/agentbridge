@@ -1,7 +1,7 @@
 """AITRAP Account Model - v2.2 dual pool (grant_balance + earned_balance)"""
 import uuid
 from datetime import datetime
-from sqlalchemy import Column, String, Integer, Boolean, DateTime
+from sqlalchemy import Column, String, Integer, Boolean, DateTime, Float
 from app.core.database import Base
 
 
@@ -36,6 +36,7 @@ class AitrapAccount(Base):
     d1_active = Column(Boolean, default=False)           # active in last 24h
     d7_active = Column(Boolean, default=False)           # active in last 7 days
     heartbeat_status = Column(String(16), default="ACTIVE")  # V2.1: ACTIVE/WARNING/DEAD (anti-feign-death)
+    sybil_pressure = Column(Float, default=0.0)  # V2.8d: Sybil pressure score (0.0 = not suspect)
 
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)

@@ -10,7 +10,8 @@ class AitrapNode(Base):
 
     id = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
     problem_id = Column(String(36), ForeignKey("aitrap_problems.id"), nullable=False, index=True)
-    parent_id = Column(String(36), nullable=True, index=True)  # null for root node
+    parent_id = Column(String(36), nullable=True, index=True)
+    track_root_id = Column(String(36), nullable=True, index=True)  # ATCD: 赛道根节点ID  # null for root node
     creator_id = Column(String(64), nullable=False, index=True)  # azone_id
 
     # Content
@@ -54,9 +55,20 @@ class AitrapNode(Base):
     # Reward (V2.4: seed + deferred impact)
     reward_claimed = Column(Integer, default=0)  # seed credit (immediate)
     deferred_reward = Column(Integer, default=0)  # v2.4: impact score (Phase 0只记录不发放)
+    continuation_bonus = Column(Integer, default=0)  # V2.9 Phase A: 后置刀补发金额
 
-    # Depth (computed from edges, not stored - v2.0 decision)
-    # Use edge traversal to compute depth on demand
+    # Depth (materialized column, backfilled from edges)
+    depth = Column(Integer, nullable=True)  # 0 for root, parent.depth + 1 for children
+
+    # V2.9 Phase A: Claim 五要素 (Phase 1 激励体系 — 可验证声明)
+    claim_trigger_condition = Column(Text, nullable=True)      # 触发条件
+    claim_expected_output = Column(Text, nullable=True)        # 预期正确结论
+    claim_actual_output = Column(Text, nullable=True)          # 实际错误输出
+    claim_verification_procedure = Column(Text, nullable=True)  # 独立验证程序
+    claim_reproduction_record = Column(Text, nullable=True)    # 复现信息（模型/版本/输入输出/参数/时间）
+
+    # V2.9 Phase A: 模型家族（预留，启用条件=服务端认证，不接受自报）
+    model_family = Column(String(64), nullable=True)
 
     created_at = Column(DateTime, default=datetime.utcnow)
 

@@ -13,7 +13,7 @@ class AitrapProblem(Base):
     root_node_id = Column(String(36), nullable=True)  # set after root node created
     title = Column(String(256), nullable=False)
     genesis_prompt = Column(Text, default="")  # includes jailbreak instructions
-    status = Column(String(32), default="ACTIVE")  # ACTIVE / DORMANT / CLOSED
+    status = Column(String(32), default="ACTIVE")  # ACTIVE / FROZEN / DORMANT / CLOSED
     node_count = Column(Integer, default=0)
     last_activity_at = Column(DateTime, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)

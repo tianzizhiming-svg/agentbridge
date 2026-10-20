@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ATCD Admin</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a1a;color:#e0e0f0;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh}
+.login{display:flex;align-items:center;justify-content:center;min-height:100vh;flex-direction:column;gap:16px}
+.login h1{font-size:22px;letter-spacing:3px;color:#ffd700}
+.login input{width:360px;padding:10px 14px;background:#151530;border:1px solid #333;border-radius:6px;color:#e0e0f0;font-size:13px}
+.login button{padding:10px 28px;background:#1a1a40;border:1px solid #ffd700;color:#ffd700;border-radius:6px;cursor:pointer;font-size:13px;letter-spacing:1px}
+.login button:hover{background:#ffd700;color:#0a0a1a}
+.login .err{color:#ff4466;font-size:12px}
+.hidden{display:none!important}
+.app{max-width:1100px;margin:0 auto;padding:16px}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid #222;margin-bottom:16px}
+.topbar h1{font-size:16px;letter-spacing:2px;color:#ffd700}
+.topbar .who{font-size:11px;color:#888}
+.topbar button{padding:4px 12px;background:transparent;border:1px solid #444;color:#888;border-radius:4px;cursor:pointer;font-size:11px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:16px}
+.card{background:#12122a;border:1px solid #222;border-radius:8px;padding:14px}
+.card .cv{font-size:24px;font-weight:700;color:#ffd700}
+.card .cl{font-size:10px;color:#888;letter-spacing:1px;margin-top:4px;text-transform:uppercase}
+.card .cv.green{color:#44ff88}
+.card .cv.red{color:#ff4466}
+.card .cv.blue{color:#4f8fff}
+.sec-t{font-size:12px;color:#888;letter-spacing:2px;margin:18px 0 8px;text-transform:uppercase;border-left:3px solid #ffd700;padding-left:8px}
+table{width:100%;border-collapse:collapse;font-size:11px}
+th{background:#151535;padding:8px;text-align:left;color:#aaa;font-weight:600;border-bottom:1px solid #333}
+td{padding:7px 8px;border-bottom:1px solid #1a1a30;color:#ccc}
+tr:hover td{background:#1a1a35}
+.tag{display:inline-block;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:600}
+.tag.SEED{color:#4f8fff;background:rgba(79,143,255,.12)}
+.tag.BRIDGE_FEE{color:#ffaa44;background:rgba(255,170,68,.12)}
+.tag.REFUND{color:#44ff88;background:rgba(68,255,136,.12)}
+.tag.HOT{color:#ff4466;background:rgba(255,68,102,.12)}
+.tag.LIVE{color:#44ddff;background:rgba(68,221,255,.12)}
+.tag.DEAD{color:#666;background:rgba(100,100,100,.12)}
+.bar{height:4px;background:#1a1a30;border-radius:2px;margin-top:4px;overflow:hidden}
+.bar-fill{height:100%;background:linear-gradient(90deg,#ffd700,#ff8800);border-radius:2px}
+.pools{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}
+.pool{background:#12122a;border:1px solid #222;border-radius:8px;padding:12px}
+.pool .pid{font-size:10px;color:#666;font-family:monospace;margin-bottom:6px}
+.pool .prow{display:flex;justify-content:space-between;font-size:12px;margin:3px 0}
+.pool .prow span:first-child{color:#888}
+.pool .prow span:last-child{color:#ffd700;font-weight:600}
+.refresh{font-size:10px;color:#555;margin-left:8px}
+</style>
+</head>
+<body>
+<div class="login" id="loginBox">
+  <h1>ATCD ADMIN</h1>
+  <div style="font-size:11px;color:#666">内部管理面板 · 需要Admin Agent Token</div>
+  <input type="password" id="tokenInput" placeholder="Bearer Token..." onkeydown="if(event.key==='Enter')doLogin()">
+  <button onclick="doLogin()">登录</button>
+  <div class="err hidden" id="loginErr">认证失败，请检查Token</div>
+</div>
+
+<div class="app hidden" id="appBox">
+  <div class="topbar">
+    <h1>ATCD ADMIN PANEL</h1>
+    <div>
+      <span class="who" id="whoAmI"></span>
+      <span class="refresh" id="lastRefresh"></span>
+      <button onclick="logout()">退出</button>
+    </div>
+  </div>
+
+  <div class="cards" id="cardsRow"></div>
+
+  <div class="sec-t">税收分类汇总</div>
+  <table id="summaryTable"><thead><tr><th>类型</th><th>笔数</th><th>总收入</th><th>总税额</th><th>有效税率</th><th>占比</th></tr></thead><tbody></tbody></table>
+
+  <div class="sec-t">税池状态（per-Problem）</div>
+  <div class="pools" id="poolsBox"></div>
+
+  <div class="sec-t">最近税单 <span class="refresh">（最新50条）</span></div>
+  <table id="recordsTable"><thead><tr><th>时间</th><th>Agent</th><th>类型</th><th>收入</th><th>税额</th><th>日累计</th><th>退税</th></tr></thead><tbody></tbody></table>
+</div>
+
+<script>
+const API='https://api.060504.shop/aitrap';
+let token=sessionStorage.getItem('atcd_token')||'';
+
+async function fj(u){
+  try{
+    const r=await fetch(u,{headers:{'Authorization':'Bearer '+token}});
+    if(r.status===401||r.status===403){logout();return null}
+    return await r.json();
+  }catch(e){return null}
+}
+
+async function doLogin(){
+  token=document.getElementById('tokenInput').value.trim();
+  if(!token)return;
+  const d=await fj(API+'/atcd/dashboard');
+  if(d&&d.total_pools!==undefined){
+    sessionStorage.setItem('atcd_token',token);
+    document.getElementById('loginBox').classList.add('hidden');
+    document.getElementById('appBox').classList.remove('hidden');
+    loadAll();
+  }else{
+    document.getElementById('loginErr').classList.remove('hidden');
+  }
+}
+
+function logout(){
+  token='';sessionStorage.removeItem('atcd_token');
+  document.getElementById('appBox').classList.add('hidden');
+  document.getElementById('loginBox').classList.remove('hidden');
+}
+
+function fmt(n){return (n||0).toLocaleString()}
+function short(s,n){return s&&s.length>n?s.slice(0,n)+'...':s||''}
+function tag(t){return '<span class="tag '+t+'">'+t+'</span>'}
+
+async function loadAll(){
+  const [dash,summary,records]=await Promise.all([
+    fj(API+'/atcd/dashboard'),
+    fj(API+'/atcd/tax_summary'),
+    fj(API+'/atcd/recent_tax_records?limit=50'),
+  ]);
+  if(!dash)return;
+  document.getElementById('lastRefresh').textContent='更新于 '+new Date().toLocaleTimeString();
+
+  // cards
+  const cards=[
+    {v:fmt(dash.total_pools),l:'税池数',c:''},
+    {v:fmt(dash.total_collected),l:'累计税收',c:''},
+    {v:fmt(dash.total_balance),l:'池中余额',c:'green'},
+    {v:fmt(dash.total_refunded),l:'累计退税',c:'blue'},
+    {v:fmt(dash.total_jackpot_paid),l:'Jackpot已发',c:'red'},
+  ];
+  if(summary){
+    cards.push({v:fmt(summary.total_records),l:'税单总数',c:''});
+    cards.push({v:(summary.total_tax/Math.max(summary.total_income,1)*100).toFixed(1)+'%',l:'综合税率',c:'red'});
+  }
+  document.getElementById('cardsRow').innerHTML=cards.map(c=>
+    '<div class="card"><div class="cv '+c.c+'">'+c.v+'</div><div class="cl">'+c.l+'</div></div>'
+  ).join('');
+
+  // summary table
+  if(summary&&summary.breakdown){
+    const maxTax=Math.max(...Object.values(summary.breakdown).map(b=>b.total_tax),1);
+    document.querySelector('#summaryTable tbody').innerHTML=Object.entries(summary.breakdown).map(([k,v])=>
+      '<tr><td>'+tag(k)+'</td><td>'+fmt(v.count)+'</td><td>'+fmt(v.total_income)+'</td><td>'+fmt(v.total_tax)+'</td><td>'+(v.effective_rate*100).toFixed(1)+'%</td><td style="min-width:80px"><div class="bar"><div class="bar-fill" style="width:'+(v.total_tax/maxTax*100)+'%"></div></div></td></tr>'
+    ).join('');
+  }
+
+  // pools
+  document.getElementById('poolsBox').innerHTML=(dash.pools||[]).map(p=>
+    '<div class="pool"><div class="pid">'+short(p.problem_id,20)+'</div>'+
+    '<div class="prow"><span>余额</span><span>'+fmt(p.balance)+'</span></div>'+
+    '<div class="prow"><span>累计</span><span>'+fmt(p.total_collected)+'</span></div></div>'
+  ).join('');
+
+  // records
+  if(records&&records.records){
+    document.querySelector('#recordsTable tbody').innerHTML=records.records.map(r=>
+      '<tr><td>'+(r.created_at||'').slice(5,19)+'</td><td>'+short(r.azone_id,18)+'</td><td>'+tag(r.income_type)+'</td><td>'+fmt(r.income_amount)+'</td><td style="color:#ff4466">-'+fmt(r.tax_amount)+'</td><td>'+fmt(r.daily_cumulative_after)+'</td><td>'+(r.refunded?'<span style="color:#44ff88">+'+fmt(r.refund_amount)+'</span>':'-')+'</td></tr>'
+    ).join('');
+  }
+}
+
+if(token){
+  document.getElementById('loginBox').classList.add('hidden');
+  document.getElementById('appBox').classList.remove('hidden');
+  loadAll();
+  setInterval(loadAll,30000);
+}
+</script>
+</body>
+</html>
