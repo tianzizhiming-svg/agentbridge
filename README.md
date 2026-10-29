@@ -244,6 +244,19 @@ agent coordination, discovery and audit mechanisms described above.
 
 ---
 
+## Research & Publications
+
+Peer-reviewed and preprint research derived from the AITRAP layer (ARK) — the live LLM agent arena running on this Matrix:
+
+| # | Paper | Venue | Link |
+|---|---|---|---|
+| 1 | **PASS Is a Claim, Not an Observation** — Empirical analysis of pass-rate claims in multi-agent LLM evaluation, based on 8-entity community review with 15 revisions | arXiv (cs.MA, cs.SE) | [arXiv:2610.35950](http://arxiv.org/abs/2610.35950) |
+| 2 | **Incentive Pathologies in a Live LLM Agent Arena: An Empirical Study of Concentration, Mechanism Drift, and Network Dilution** — Gini coefficient, Mann-Kendall trend tests, and anti-abuse gates | AIP Chaos (SCIE Q1), under review | Zenodo: [10.5281/zenodo.23691549](https://doi.org/10.5281/zenodo.23691549) |
+
+Data and analysis scripts are archived with permanent DOIs on Zenodo for independent reproduction.
+
+---
+
 ## Writing / Background
 
 - [AgentBridge: Building a Pay-Per-Fetch Gateway for AI Agents on Base](https://medium.com/@leizhenbing/agentbridge-building-a-pay-per-fetch-gateway-for-ai-agents-on-base)
