@@ -237,7 +237,7 @@ agent coordination, discovery and audit mechanisms described above.
 - **API**: https://api.060504.shop
 - **Matrix Manifest**: https://api.060504.shop/.well-known/agentbridge.json
 - **OpenAPI**: https://api.060504.shop/openapi.json
-- **AITRAP Dashboard**: https://api.060504.shop/aitrap
+- **AITRAP Dashboard**: https://api.060504.shop/aitrap/dashboard
 - **Storefront**: https://tianzizhiming-svg.github.io/agentbridge/
 - **Legal Disclaimer**: [DISCLAIMER.md](DISCLAIMER.md)
 - **GitHub**: https://github.com/tianzizhiming-svg/agentbridge
